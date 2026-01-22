@@ -1,6 +1,5 @@
 name: Deploy to Production
 
-# Trigger: Only when pushing to main branch
 on:
   push:
     branches:
@@ -12,14 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Step 1: Show what triggered the deployment
       - name: Display deployment info
         run: |
           echo "Deploying commit: ${{ github.sha }}"
           echo "Triggered by: ${{ github.actor }}"
-          echo "Branch: ${{ github.ref_name }}"
 
-      # Step 2: SSH into server and deploy
       - name: Deploy to production server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -27,35 +23,17 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
+          timeout: 60s
+          command_timeout: 10m
           script: |
-            echo "========================================"
-            echo "Starting deployment..."
-            echo "========================================"
-            
-            # Navigate to project directory
+            echo "=== Starting deployment ==="
             cd /var/www/thf/backend
-            
-            # Pull latest code from main
-            echo "Pulling latest code..."
             git pull origin main
-            
-            # Install/update composer dependencies (production mode)
-            echo "Installing dependencies..."
             composer install --no-dev --optimize-autoloader --no-interaction
-            
-            # Clear and rebuild Laravel caches
-            echo "Clearing caches..."
             php artisan config:cache
-            php artisan route:cache
+            php artisan route:cache  
             php artisan view:cache
-            
-            # Set correct permissions
-            echo "Setting permissions..."
             chown -R www-data:www-data /var/www/thf/backend
             chmod -R 755 /var/www/thf/backend
-            chmod -R 775 /var/www/thf/backend/storage
-            chmod -R 775 /var/www/thf/backend/bootstrap/cache
-            
-            echo "========================================"
-            echo "Deployment completed successfully!"
-            echo "========================================"
+            chmod -R 775 /var/www/thf/backend/storage /var/www/thf/backend/bootstrap/cache
+            echo "=== Deployment done ==="
