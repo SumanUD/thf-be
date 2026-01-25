@@ -805,23 +805,74 @@
         });
 
         // Add to Cart function (placeholder - will integrate with Bagisto API)
-        function addToCart(productId) {
-            // This will be connected to Bagisto's cart API
-            alert('Product added to cart! (Demo - will connect to Bagisto API with database)');
 
-            // Actual implementation would be:
-            // fetch('{{ route("shop.api.checkout.cart.store") }}', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            //     },
-            //     body: JSON.stringify({
-            //         product_id: productId,
-            //         quantity: 1
-            //     })
-            // });
+        function addToCart(productId) {
+            fetch('{{ route("shop.api.checkout.cart.store") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    product_id: productId,
+                    quantity: 1
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    showNotification(data.message, 'success');
+                    updateCartCount();
+                } else if (data.data && data.data.message) {
+                    showNotification(data.data.message, 'warning');
+                }
+            })
+            .catch(error => {
+                showNotification('Error adding to cart', 'error');
+                console.error('Cart error:', error);
+            });
         }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = 'cart-notification ' + type;
+            notification.innerHTML = message;
+            notification.style.cssText = 'position:fixed;top:80px;right:20px;padding:15px 25px;border-radius:8px;z-index:9999;font-family:Forum,serif;animation:slideIn 0.3s ease;';
+            if (type === 'success') notification.style.background = '#d4af37';
+            else if (type === 'warning') notification.style.background = '#f0ad4e';
+            else notification.style.background = '#d9534f';
+            notification.style.color = '#000';
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        function updateCartCount() {
+            fetch('{{ route("shop.api.checkout.cart.index") }}')
+                .then(response => response.json())
+                .then(data => {
+                    const count = data.data ? data.data.items_qty || 0 : 0;
+                    const cartCountEl = document.getElementById('cart-count');
+                    if (cartCountEl) cartCountEl.textContent = count;
+                })
+                .catch(() => {});
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
