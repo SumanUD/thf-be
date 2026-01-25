@@ -34,11 +34,20 @@ module.exports = {
                 darkGreen: '#40994A',
                 darkBlue: '#0044F2',
                 darkPink: '#F85156',
+                // THF Theme Colors
+                thfGold: '#d4af37',
+                thfBlack: '#000000',
+                thfDark: '#0a0a0a',
+                thfGoldLight: 'rgba(212, 175, 55, 0.2)',
+                thfGoldMuted: 'rgba(212, 175, 55, 0.1)',
             },
 
             fontFamily: {
                 poppins: ["Poppins", "sans-serif"],
                 dmserif: ["DM Serif Display", "serif"],
+                // THF Fonts
+                forum: ["Forum", "serif"],
+                century: ["Century", "sans-serif"],
             },
         }
     },
