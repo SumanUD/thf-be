@@ -686,7 +686,7 @@
                     <div class="price-badge">&#8377;599</div>
                     <div class="hover-actions">
                         <button onclick="addToCart(1)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToWishlist(1)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -702,7 +702,7 @@
                     <div class="price-badge">&#8377;749</div>
                     <div class="hover-actions">
                         <button onclick="addToCart(2)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToWishlist(2)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -718,7 +718,7 @@
                     <div class="price-badge">&#8377;699</div>
                     <div class="hover-actions">
                         <button onclick="addToCart(3)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToWishlist(3)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -734,7 +734,7 @@
                     <div class="price-badge">&#8377;549</div>
                     <div class="hover-actions">
                         <button onclick="addToCart(4)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToWishlist(4)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -750,7 +750,7 @@
                     <div class="price-badge">&#8377;899</div>
                     <div class="hover-actions">
                         <button onclick="addToCart(5)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToWishlist(8)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -766,7 +766,7 @@
                     <div class="price-badge">&#8377;1299</div>
                     <div class="hover-actions">
                         <button onclick="addToCart(6)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToWishlist(9)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -856,6 +856,40 @@
                     if (cartCountEl) cartCountEl.textContent = count;
                 })
                 .catch(() => {});
+        }
+
+        function addToWishlist(productId) {
+            fetch('{{ route("shop.api.customers.account.wishlist.store") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    product_id: productId
+                })
+            })
+            .then(response => {
+                if (response.status === 401) {
+                    showNotification('Please login to add items to wishlist', 'warning');
+                    setTimeout(() => {
+                        window.location.href = '{{ route("shop.customer.session.index") }}';
+                    }, 1500);
+                    return;
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.data && data.data.message) {
+                    showNotification(data.data.message, 'success');
+                } else if (data && data.message) {
+                    showNotification(data.message, 'success');
+                }
+            })
+            .catch(error => {
+                console.error('Wishlist error:', error);
+            });
         }
 
 
