@@ -5,6 +5,147 @@
     <meta name="keywords" content="@lang('shop::app.checkout.cart.index.cart')"/>
 @endPush
 
+@push('styles')
+<style>
+    /* THF Cart Page Theme */
+    body {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%) !important;
+        font-family: 'Forum', serif !important;
+    }
+
+    /* Header area */
+    .flex.w-full.justify-between.border {
+        background: rgba(0, 0, 0, 0.9) !important;
+        border-color: rgba(212, 175, 55, 0.2) !important;
+    }
+
+    /* Main container */
+    .container {
+        background: transparent !important;
+    }
+
+    /* Cart title */
+    h1, h2, .text-2xl, .text-3xl {
+        color: #d4af37 !important;
+        font-family: 'Forum', serif !important;
+    }
+
+    /* Cart items container */
+    .rounded-xl, .rounded-lg, .rounded-md {
+        background: rgba(20, 20, 20, 0.95) !important;
+        border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    }
+
+    /* Text colors */
+    p, span, label, .text-base, .text-sm, .text-xs {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    /* Product names */
+    .font-medium {
+        color: #ffffff !important;
+    }
+
+    /* Prices */
+    .font-semibold {
+        color: #d4af37 !important;
+    }
+
+    /* Buttons - Primary */
+    .primary-button, .bg-navyBlue, button[type="submit"] {
+        background: #d4af37 !important;
+        color: #000 !important;
+        border: none !important;
+        font-family: 'Forum', serif !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .primary-button:hover, .bg-navyBlue:hover {
+        background: #b8962e !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* Secondary buttons */
+    .secondary-button {
+        background: transparent !important;
+        border: 1px solid rgba(212, 175, 55, 0.5) !important;
+        color: #d4af37 !important;
+    }
+
+    .secondary-button:hover {
+        background: rgba(212, 175, 55, 0.1) !important;
+        border-color: #d4af37 !important;
+    }
+
+    /* Input fields */
+    input, select, textarea {
+        background: rgba(30, 30, 30, 0.9) !important;
+        border: 1px solid rgba(212, 175, 55, 0.2) !important;
+        color: #ffffff !important;
+        font-family: 'Forum', serif !important;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #d4af37 !important;
+        outline: none !important;
+        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2) !important;
+    }
+
+    /* Links */
+    a {
+        color: #d4af37 !important;
+        transition: color 0.3s ease !important;
+    }
+
+    a:hover {
+        color: #ffffff !important;
+    }
+
+    /* Quantity selector */
+    .icon-minus, .icon-plus {
+        color: #d4af37 !important;
+    }
+
+    /* Remove/Delete icons */
+    .icon-delete, .icon-cancel {
+        color: rgba(255, 100, 100, 0.8) !important;
+    }
+
+    /* Summary section */
+    .bg-gray-100, .bg-zinc-100 {
+        background: rgba(25, 25, 25, 0.95) !important;
+    }
+
+    /* Dividers */
+    .border-b, .border-t {
+        border-color: rgba(212, 175, 55, 0.15) !important;
+    }
+
+    /* Empty cart message */
+    .text-zinc-500 {
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Breadcrumbs */
+    nav[aria-label="breadcrumb"] span, nav[aria-label="breadcrumb"] a {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    /* Icons */
+    [class^="icon-"], [class*=" icon-"] {
+        color: #d4af37 !important;
+    }
+
+    /* Cart logo - use THF logo */
+    .flex.min-h-\[30px\] img {
+        content: url('{{ asset("thf-assets/images/name-logo.png") }}') !important;
+        height: 40px !important;
+        width: auto !important;
+    }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">
+@endpush
 <x-shop::layouts
     :has-header="false"
     :has-feature="false"
