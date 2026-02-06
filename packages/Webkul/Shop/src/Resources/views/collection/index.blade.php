@@ -369,6 +369,34 @@
             z-index: 2;
         }
 
+        /* Variant Selector */
+        .variant-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 2;
+        }
+
+        .variant-selector select {
+            background: transparent;
+            color: #d4af37;
+            border: none;
+            font-family: "Forum", serif;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .variant-selector select option {
+            background: #0a0a0a;
+            color: white;
+        }
+
         /* Hover Actions */
         .hover-actions {
             position: absolute;
@@ -423,11 +451,25 @@
             letter-spacing: 0.5px;
         }
 
-        .card-content p {
+        .card-content .pieces {
+            color: #d4af37;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .card-content .description {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             line-height: 1.6;
             font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .card-content .shelf-life {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 5px;
         }
 
         /* Footer */
@@ -552,6 +594,14 @@
                 padding: 8px 16px;
             }
 
+            .variant-selector {
+                padding: 6px 12px;
+            }
+
+            .variant-selector select {
+                font-size: 0.9rem;
+            }
+
             .hover-actions {
                 flex-direction: column;
                 width: 80%;
@@ -674,104 +724,174 @@
     <!-- Product Section -->
     <section class="content">
         <div class="section-header">
-            <h2>Our Signature Sweets</h2>
-            <p>Handcrafted delicacies made with passion, precision, and pure indulgence.</p>
+            <h2>Our Signature Baklava Collection</h2>
+            <p>Handcrafted with layers of premium filo pastry, filled with the finest nuts, and sweetened with pure honey.</p>
         </div>
 
         <div class="product-grid" id="product-grid">
-            <!-- Product Card 1 -->
-            <div class="product-card">
+            <!-- Product Card 1: Assorted Baklava Box 14pcs -->
+            <div class="product-card" data-product="1">
                 <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.4.jpg') }}" alt="Classic Baklava">
-                    <div class="price-badge">&#8377;599</div>
+                    <img src="{{ asset('thf-assets/images/THF Box 3.4.jpg') }}" alt="Assorted Baklava Box">
+                    <div class="price-badge">&#8377;820</div>
+                    <div class="variant-selector">
+                        <select onchange="changeVariant(1, this.value)">
+                            <option value="820_14">14pcs - ₹820</option>
+                            <option value="1200_20">20pcs - ₹1200</option>
+                            <option value="1775_30">30pcs - ₹1775</option>
+                        </select>
+                    </div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(1)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="addToCart(1, 820, 14)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                         <button onclick="addToWishlist(1)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Baklava Delight Box</h3>
-                    <p>Our new artisanal baklava collection brings together premium ingredients and fine craftsmanship for a perfectly balanced bite.</p>
+                    <h3>Assorted Baklava Box</h3>
+                    <div class="pieces">14 Pieces</div>
+                    <div class="description">baklava royale[2pcs]+baklava roll[4pcs]+baklava square[4pcs]+baklava pouch[2pcs]+baklava ring[2pcs]</div>
+                    <div class="shelf-life">Shelf Life: 30 Days</div>
                 </div>
             </div>
 
-            <!-- Product Card 2 -->
-            <div class="product-card">
+            <!-- Product Card 2: Assorted Baklava Box 20pcs -->
+            <div class="product-card" data-product="2">
                 <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Chocolate Dates">
-                    <div class="price-badge">&#8377;749</div>
+                    <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Assorted Baklava Box 20pcs">
+                    <div class="price-badge">&#8377;1200</div>
+                    <div class="variant-selector">
+                        <select onchange="changeVariant(2, this.value)">
+                            <option value="820_14">14pcs - ₹820</option>
+                            <option value="1200_20" selected>20pcs - ₹1200</option>
+                            <option value="1775_30">30pcs - ₹1775</option>
+                        </select>
+                    </div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(2)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="addToCart(2, 1200, 20)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                         <button onclick="addToWishlist(2)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Premium Dates Collection</h3>
-                    <p>Exquisite dates filled with almonds and coated in fine chocolate, presented in our signature gift box.</p>
+                    <h3>Assorted Baklava Box</h3>
+                    <div class="pieces">20 Pieces</div>
+                    <div class="description">baklava royale[4pcs]+baklava roll[4pcs]+baklava pouch[4pcs]+baklava square[4pcs]+baklava ring[4pcs]</div>
+                    <div class="shelf-life">Shelf Life: 30 Days</div>
                 </div>
             </div>
 
-            <!-- Product Card 3 -->
-            <div class="product-card">
+            <!-- Product Card 3: Assorted Baklava Box 30pcs -->
+            <div class="product-card" data-product="3">
                 <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Honey Bites">
-                    <div class="price-badge">&#8377;699</div>
+                    <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Assorted Baklava Box 30pcs">
+                    <div class="price-badge">&#8377;1775</div>
+                    <div class="variant-selector">
+                        <select onchange="changeVariant(3, this.value)">
+                            <option value="820_14">14pcs - ₹820</option>
+                            <option value="1200_20">20pcs - ₹1200</option>
+                            <option value="1775_30" selected>30pcs - ₹1775</option>
+                        </select>
+                    </div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(3)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="addToCart(3, 1775, 30)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                         <button onclick="addToWishlist(3)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Baklava Indulgence Box</h3>
-                    <p>A luxurious creation of artisanal baklava and gourmet honeys, crafted to delight in every bite.</p>
+                    <h3>Assorted Baklava Box</h3>
+                    <div class="pieces">30 Pieces</div>
+                    <div class="description">baklava royale[5pcs]+baklava roll[10pcs]+baklava pouch[5pcs]+baklava square[5pcs]+baklava ring[5pcs]</div>
+                    <div class="shelf-life">Shelf Life: 30 Days</div>
                 </div>
             </div>
 
-            <!-- Product Card 4 -->
-            <div class="product-card">
+            <!-- Product Card 4: Baklava Delight Box 14pcs -->
+            <div class="product-card" data-product="4">
                 <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/mewabite.jpg') }}" alt="Mewabites">
-                    <div class="price-badge">&#8377;549</div>
+                    <img src="{{ asset('thf-assets/images/baklava.png') }}" alt="Baklava Delight Box">
+                    <div class="price-badge">&#8377;1320</div>
+                    <div class="variant-selector">
+                        <select onchange="changeVariant(4, this.value)">
+                            <option value="1320_14">14pcs - ₹1320</option>
+                            <option value="2120_20">20pcs - ₹2120</option>
+                            <option value="2975_30">30pcs - ₹2975</option>
+                        </select>
+                    </div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(4)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="addToCart(4, 1320, 14)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                         <button onclick="addToWishlist(4)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Mewabite Selection</h3>
-                    <p>Traditional Indian sweets reimagined with a modern twist, perfect for gifting and celebrations.</p>
+                    <h3>Baklava Delight Box</h3>
+                    <div class="pieces">14 Pieces</div>
+                    <div class="description">Baklava Nadir Dolama[2pcs]+Baklava Royale[2pcs]+Pistachio Padishah Baklava[2pcs]+Baklava Berry Square[2pcs]+Baklava White Chocolate Rose[2pcs]+Osh Al Bulbul[4pcs]</div>
+                    <div class="shelf-life">Shelf Life: 20 Days</div>
                 </div>
             </div>
 
-            <!-- Product Card 5 -->
-            <div class="product-card">
+            <!-- Product Card 5: Baklava Delight Box 20pcs -->
+            <div class="product-card" data-product="5">
                 <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/labon.png') }}" alt="Labon">
-                    <div class="price-badge">&#8377;899</div>
+                    <img src="{{ asset('thf-assets/images/THF Box 3.4.jpg') }}" alt="Baklava Delight Box 20pcs">
+                    <div class="price-badge">&#8377;2120</div>
+                    <div class="variant-selector">
+                        <select onchange="changeVariant(5, this.value)">
+                            <option value="1320_14">14pcs - ₹1320</option>
+                            <option value="2120_20" selected>20pcs - ₹2120</option>
+                            <option value="2975_30">30pcs - ₹2975</option>
+                        </select>
+                    </div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(5)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(8)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToCart(5, 2120, 20)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="addToWishlist(5)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Labon Premium Box</h3>
-                    <p>Our signature Labon collection featuring the finest milk-based sweets with exotic flavors.</p>
+                    <h3>Baklava Delight Box</h3>
+                    <div class="pieces">20 Pieces</div>
+                    <div class="description">Baklava Nadir Dolama[4pcs]+Baklava Royale[4pcs]+Pistachio Padishah Baklava[4pcs]+Baklava Berry Square[4pcs]+Baklava White Chocolate Rose[4pcs]</div>
+                    <div class="shelf-life">Shelf Life: 20 Days</div>
                 </div>
             </div>
 
-            <!-- Product Card 6 -->
-            <div class="product-card">
+            <!-- Product Card 6: Baklava Delight Box 30pcs -->
+            <div class="product-card" data-product="6">
                 <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/baklava.png') }}" alt="Assorted Collection">
-                    <div class="price-badge">&#8377;1299</div>
+                    <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Baklava Delight Box 30pcs">
+                    <div class="price-badge">&#8377;2975</div>
+                    <div class="variant-selector">
+                        <select onchange="changeVariant(6, this.value)">
+                            <option value="1320_14">14pcs - ₹1320</option>
+                            <option value="2120_20">20pcs - ₹2120</option>
+                            <option value="2975_30" selected>30pcs - ₹2975</option>
+                        </select>
+                    </div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(6)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(9)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="addToCart(6, 2975, 30)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="addToWishlist(6)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3>Luxury Assorted Hamper</h3>
-                    <p>The ultimate THF experience - a curated selection of our finest sweets in an elegant presentation box.</p>
+                    <h3>Baklava Delight Box</h3>
+                    <div class="pieces">30 Pieces</div>
+                    <div class="description">Baklava Nadir Dolama[5pcs]+Baklava Royale[5pcs]+Pistachio Padishah Baklava[5pcs]+Baklava Berry Square[5pcs]+Baklava White Chocolate Rose[5pcs]+Osh Al Bulbul[5pcs]</div>
+                    <div class="shelf-life">Shelf Life: 20 Days</div>
+                </div>
+            </div>
+
+            <!-- Product Card 7: Baklava Indulgence Box -->
+            <div class="product-card" data-product="7">
+                <div class="card-image">
+                    <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Baklava Indulgence Box">
+                    <div class="price-badge">&#8377;3500</div>
+                    <div class="hover-actions">
+                        <button onclick="addToCart(7, 3500, 1)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="addToWishlist(7)"><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>Baklava Indulgence Box</h3>
+                    <div class="description">Hazelnut Chocolate Baklava [4 Pieces]+Berry Square Baklava [4 Pieces]+White Chocolate Rose Baklava [4 Pieces]+Pistachio Padishah Baklava [4 Pieces]+Nadir Dolama Hazelnut Baklava [4 Pieces]+Cinnamon Infused [200 ml]+Vanilla Infused Honey [200 ml]</div>
                 </div>
             </div>
         </div>
@@ -779,7 +899,114 @@
 
     <!-- Footer -->
     @include("shop::partials.thf-footer")
+
     <script>
+        // Product data mapping
+        const productData = {
+            1: {
+                820: {
+                    pieces: "14pcs",
+                    description: "baklava royale[2pcs]+baklava roll[4pcs]+baklava square[4pcs]+baklava pouch[2pcs]+baklava ring[2pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                },
+                1200: {
+                    pieces: "20pcs",
+                    description: "baklava royale[4pcs]+baklava roll[4pcs]+baklava pouch[4pcs]+baklava square[4pcs]+baklava ring[4pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                },
+                1775: {
+                    pieces: "30pcs",
+                    description: "baklava royale[5pcs]+baklava roll[10pcs]+baklava pouch[5pcs]+baklava square[5pcs]+baklava ring[5pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                }
+            },
+            2: {
+                820: {
+                    pieces: "14pcs",
+                    description: "baklava royale[2pcs]+baklava roll[4pcs]+baklava square[4pcs]+baklava pouch[2pcs]+baklava ring[2pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                },
+                1200: {
+                    pieces: "20pcs",
+                    description: "baklava royale[4pcs]+baklava roll[4pcs]+baklava pouch[4pcs]+baklava square[4pcs]+baklava ring[4pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                },
+                1775: {
+                    pieces: "30pcs",
+                    description: "baklava royale[5pcs]+baklava roll[10pcs]+baklava pouch[5pcs]+baklava square[5pcs]+baklava ring[5pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                }
+            },
+            3: {
+                820: {
+                    pieces: "14pcs",
+                    description: "baklava royale[2pcs]+baklava roll[4pcs]+baklava square[4pcs]+baklava pouch[2pcs]+baklava ring[2pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                },
+                1200: {
+                    pieces: "20pcs",
+                    description: "baklava royale[4pcs]+baklava roll[4pcs]+baklava pouch[4pcs]+baklava square[4pcs]+baklava ring[4pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                },
+                1775: {
+                    pieces: "30pcs",
+                    description: "baklava royale[5pcs]+baklava roll[10pcs]+baklava pouch[5pcs]+baklava square[5pcs]+baklava ring[5pcs]",
+                    shelfLife: "Shelf Life: 30 Days"
+                }
+            },
+            4: {
+                1320: {
+                    pieces: "14pcs",
+                    description: "Baklava Nadir Dolama[2pcs]+Baklava Royale[2pcs]+Pistachio Padishah Baklava[2pcs]+Baklava Berry Square[2pcs]+Baklava White Chocolate Rose[2pcs]+Osh Al Bulbul[4pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                },
+                2120: {
+                    pieces: "20pcs",
+                    description: "Baklava Nadir Dolama[4pcs]+Baklava Royale[4pcs]+Pistachio Padishah Baklava[4pcs]+Baklava Berry Square[4pcs]+Baklava White Chocolate Rose[4pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                },
+                2975: {
+                    pieces: "30pcs",
+                    description: "Baklava Nadir Dolama[5pcs]+Baklava Royale[5pcs]+Pistachio Padishah Baklava[5pcs]+Baklava Berry Square[5pcs]+Baklava White Chocolate Rose[5pcs]+Osh Al Bulbul[5pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                }
+            },
+            5: {
+                1320: {
+                    pieces: "14pcs",
+                    description: "Baklava Nadir Dolama[2pcs]+Baklava Royale[2pcs]+Pistachio Padishah Baklava[2pcs]+Baklava Berry Square[2pcs]+Baklava White Chocolate Rose[2pcs]+Osh Al Bulbul[4pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                },
+                2120: {
+                    pieces: "20pcs",
+                    description: "Baklava Nadir Dolama[4pcs]+Baklava Royale[4pcs]+Pistachio Padishah Baklava[4pcs]+Baklava Berry Square[4pcs]+Baklava White Chocolate Rose[4pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                },
+                2975: {
+                    pieces: "30pcs",
+                    description: "Baklava Nadir Dolama[5pcs]+Baklava Royale[5pcs]+Pistachio Padishah Baklava[5pcs]+Baklava Berry Square[5pcs]+Baklava White Chocolate Rose[5pcs]+Osh Al Bulbul[5pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                }
+            },
+            6: {
+                1320: {
+                    pieces: "14pcs",
+                    description: "Baklava Nadir Dolama[2pcs]+Baklava Royale[2pcs]+Pistachio Padishah Baklava[2pcs]+Baklava Berry Square[2pcs]+Baklava White Chocolate Rose[2pcs]+Osh Al Bulbul[4pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                },
+                2120: {
+                    pieces: "20pcs",
+                    description: "Baklava Nadir Dolama[4pcs]+Baklava Royale[4pcs]+Pistachio Padishah Baklava[4pcs]+Baklava Berry Square[4pcs]+Baklava White Chocolate Rose[4pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                },
+                2975: {
+                    pieces: "30pcs",
+                    description: "Baklava Nadir Dolama[5pcs]+Baklava Royale[5pcs]+Pistachio Padishah Baklava[5pcs]+Baklava Berry Square[5pcs]+Baklava White Chocolate Rose[5pcs]+Osh Al Bulbul[5pcs]",
+                    shelfLife: "Shelf Life: 20 Days"
+                }
+            }
+        };
+
         // Text Animation
         const texts = document.querySelectorAll('.banner-texts h1');
         let currentIndex = 0;
@@ -804,9 +1031,39 @@
             video.style.filter = `brightness(${brightness})`;
         });
 
-        // Add to Cart function (placeholder - will integrate with Bagisto API)
+        // Change variant function
+        function changeVariant(productId, value) {
+            const [price, pieces] = value.split('_');
+            const productCard = document.querySelector(`.product-card[data-product="${productId}"]`);
+            
+            // Update price badge
+            const priceBadge = productCard.querySelector('.price-badge');
+            priceBadge.innerHTML = `&#8377;${price}`;
+            
+            // Update pieces and description
+            const piecesEl = productCard.querySelector('.pieces');
+            const descriptionEl = productCard.querySelector('.description');
+            const shelfLifeEl = productCard.querySelector('.shelf-life');
+            
+            if (productData[productId] && productData[productId][price]) {
+                const data = productData[productId][price];
+                piecesEl.textContent = data.pieces;
+                descriptionEl.textContent = data.description;
+                if (shelfLifeEl) {
+                    shelfLifeEl.textContent = data.shelfLife;
+                }
+            }
+            
+            // Update add to cart button
+            const addToCartBtn = productCard.querySelector('.hover-actions button:first-child');
+            addToCartBtn.setAttribute('onclick', `addToCart(${productId}, ${price}, ${pieces})`);
+        }
 
-        function addToCart(productId) {
+        // Add to Cart function
+        function addToCart(productId, price, quantity) {
+            const productName = document.querySelector(`.product-card[data-product="${productId}"] h3`).textContent;
+            const pieces = document.querySelector(`.product-card[data-product="${productId}"] .pieces`).textContent;
+            
             fetch('{{ route("shop.api.checkout.cart.store") }}', {
                 method: 'POST',
                 headers: {
@@ -816,7 +1073,9 @@
                 },
                 body: JSON.stringify({
                     product_id: productId,
-                    quantity: 1
+                    quantity: quantity,
+                    price: price,
+                    product_name: `${productName} - ${pieces}`
                 })
             })
             .then(response => response.json())
@@ -891,22 +1150,6 @@
                 console.error('Wishlist error:', error);
             });
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
