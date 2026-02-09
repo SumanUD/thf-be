@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ asset('thf-assets/css/category.css') }}">
 </head>
 <body>
+    @include('shop::partials.thf-header')
+    
     <!-- Video Banner -->
     <section class="video-banner">
         <video autoplay muted loop playsinline>
@@ -79,6 +81,8 @@
         </div>
     </section>
 
+    @include('shop::partials.thf-footer')
+    
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="{{ asset('thf-assets/js/home.js') }}"></script>
