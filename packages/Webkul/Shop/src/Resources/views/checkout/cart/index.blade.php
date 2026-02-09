@@ -60,20 +60,25 @@
 
     /* Cart Grid Layout */
     .grid {
-        gap: 30px !important;
+        gap: 20px !important;
     }
 
     /* Cart Items Container */
     .rounded-xl, .rounded-lg, .rounded-md, .rounded {
         background: rgba(18, 18, 18, 0.95) !important;
-        border: 1px solid rgba(212, 175, 55, 0.2) !important;
+        border: 1px solid rgba(212, 175, 55, 0.15) !important;
         backdrop-filter: blur(10px) !important;
     }
 
     /* Product Cards */
     .flex.gap-5, .flex.gap-4 {
         padding: 20px !important;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+        border-bottom: none !important;
+    }
+
+    /* Remove borders from cart item containers */
+    .border-zinc-200, .border-b {
+        border-color: rgba(212, 175, 55, 0.08) !important;
     }
 
     /* Product Images */
@@ -154,7 +159,17 @@
     /* Summary Rows */
     .flex.justify-between {
         padding: 10px 0 !important;
-        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    }
+
+    /* Cart item separators - more subtle */
+    .grid.gap-y-6 > div {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+    }
+
+    .grid.gap-y-6 > div:last-child {
+        border-bottom: none;
     }
 
     /* Primary Button - Checkout */
@@ -271,6 +286,37 @@
     .thf-wishlist-link:hover {
         background: rgba(212, 175, 55, 0.1);
         border-color: #d4af37;
+    }
+
+    /* Hide shimmer placeholders when loading */
+    .shimmer {
+        opacity: 0.3;
+    }
+
+    /* Better spacing for main cart area */
+    .container.px-\\[60px\\] {
+        padding-left: 60px !important;
+        padding-right: 60px !important;
+    }
+
+    /* Remove excessive white space */
+    .mt-8, .mt-5 {
+        margin-top: 20px !important;
+    }
+
+    /* Checkbox styling */
+    .icon-uncheck, .icon-check-box {
+        color: #d4af37 !important;
+    }
+
+    /* Better product image container */
+    .h-\\[110px\\] {
+        border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    }
+
+    /* Remove extra borders from select all section */
+    .border-zinc-200.pb-2\\.5 {
+        border-color: rgba(212, 175, 55, 0.1) !important;
     }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">

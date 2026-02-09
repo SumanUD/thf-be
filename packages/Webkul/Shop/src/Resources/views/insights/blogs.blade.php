@@ -265,6 +265,10 @@
         .blog-header {
             text-align: center;
             margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .blog-header h1 {
@@ -273,7 +277,8 @@
             color: #fff;
             margin-bottom: 20px;
             position: relative;
-            display: inline-block;
+            display: block;
+            text-align: center;
         }
 
         .blog-header h1::after {
@@ -292,6 +297,7 @@
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
+            text-align: center;
         }
 
         /* BLOG CATEGORIES */
