@@ -1232,7 +1232,7 @@
                 <!-- Recipe 1 -->
                 <div class="recipe-card" data-category="modern">
                     <div class="recipe-card-image">
-                        <img src="{{ asset('thf-assets/images/recipes/date-truffles.jpg') }}" alt="Date & Nut Truffles">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800" alt="Date & Nut Truffles">
                         <span class="recipe-card-badge">No Bake</span>
                     </div>
                     <div class="recipe-card-content">
@@ -1270,7 +1270,7 @@
                 <!-- Recipe 2 -->
                 <div class="recipe-card" data-category="festive">
                     <div class="recipe-card-image">
-                        <img src="{{ asset('thf-assets/images/recipes/diwali-ladoo.jpg') }}" alt="Diwali Dry Fruit Ladoo">
+                        <img src="https://images.unsplash.com/photo-1605105526819-bf0d67b86a20?w=800" alt="Diwali Dry Fruit Ladoo">
                         <span class="recipe-card-badge">Festive</span>
                     </div>
                     <div class="recipe-card-content">
@@ -1308,7 +1308,7 @@
                 <!-- Recipe 3 -->
                 <div class="recipe-card" data-category="healthy">
                     <div class="recipe-card-image">
-                        <img src="{{ asset('thf-assets/images/recipes/jaggery-barfi.jpg') }}" alt="Jaggery & Nut Barfi">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Jaggery & Nut Barfi">
                         <span class="recipe-card-badge">Sugar-Free</span>
                     </div>
                     <div class="recipe-card-content">
@@ -1346,7 +1346,7 @@
                 <!-- Recipe 4 -->
                 <div class="recipe-card" data-category="quick">
                     <div class="recipe-card-image">
-                        <img src="{{ asset('thf-assets/images/recipes/rose-shrikhand.jpg') }}" alt="Rose & Pistachio Shrikhand">
+                        <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=800" alt="Rose & Pistachio Shrikhand">
                         <span class="recipe-card-badge">Quick Dessert</span>
                     </div>
                     <div class="recipe-card-content">
@@ -1384,7 +1384,7 @@
                 <!-- Recipe 5 -->
                 <div class="recipe-card" data-category="traditional">
                     <div class="recipe-card-image">
-                        <img src="{{ asset('thf-assets/images/recipes/besan-ladoo.jpg') }}" alt="Premium Besan Ladoo">
+                        <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=800" alt="Premium Besan Ladoo">
                         <span class="recipe-card-badge">Classic</span>
                     </div>
                     <div class="recipe-card-content">
@@ -1422,7 +1422,7 @@
                 <!-- Recipe 6 -->
                 <div class="recipe-card" data-category="modern">
                     <div class="recipe-card-image">
-                        <img src="{{ asset('thf-assets/images/recipes/chocolate-date-cake.jpg') }}" alt="Chocolate Date Cake">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800" alt="Chocolate Date Cake">
                         <span class="recipe-card-badge">Baking</span>
                     </div>
                     <div class="recipe-card-content">
@@ -1471,7 +1471,7 @@
                     <!-- Seasonal Recipe 1 -->
                     <div class="recipe-card" data-category="seasonal">
                         <div class="recipe-card-image">
-                            <img src="{{ asset('thf-assets/images/recipes/gajar-halwa.jpg') }}" alt="Premium Gajar Halwa">
+                            <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800" alt="Premium Gajar Halwa">
                             <span class="recipe-card-badge">Winter Special</span>
                         </div>
                         <div class="recipe-card-content">
@@ -1509,7 +1509,7 @@
                     <!-- Seasonal Recipe 2 -->
                     <div class="recipe-card" data-category="seasonal">
                         <div class="recipe-card-image">
-                            <img src="{{ asset('thf-assets/images/recipes/badam-milk.jpg') }}" alt="Saffron Almond Milk">
+                            <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?w=800" alt="Saffron Almond Milk">
                             <span class="recipe-card-badge">Warm Drink</span>
                         </div>
                         <div class="recipe-card-content">

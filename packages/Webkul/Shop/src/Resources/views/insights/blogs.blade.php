@@ -1030,7 +1030,7 @@
             <div class="featured-post">
                 <div class="featured-content">
                     <div class="featured-image">
-                        <img src="{{ asset('thf-assets/images/blog/featured-post.jpg') }}" alt="The Art of Baklava">
+                        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800" alt="The Art of Baklava">
                     </div>
                     <div class="featured-text">
                         <span class="featured-badge">Featured Story</span>
@@ -1062,7 +1062,7 @@
                 <!-- Blog Post 1 -->
                 <article class="blog-card" data-category="gifting">
                     <div class="blog-card-image">
-                        <img src="{{ asset('thf-assets/images/blog/post1.jpg') }}" alt="Corporate Gifting Trends">
+                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800" alt="Corporate Gifting Trends">
                         <span class="blog-card-badge">Gifting Guide</span>
                     </div>
                     <div class="blog-card-content">
@@ -1084,7 +1084,7 @@
                 <!-- Blog Post 2 -->
                 <article class="blog-card" data-category="seasonal">
                     <div class="blog-card-image">
-                        <img src="{{ asset('thf-assets/images/blog/post2.jpg') }}" alt="Diwali Celebrations">
+                        <img src="https://images.unsplash.com/photo-1604861979844-fe5f17c52ef6?w=800" alt="Diwali Celebrations">
                         <span class="blog-card-badge">Seasonal</span>
                     </div>
                     <div class="blog-card-content">
@@ -1106,7 +1106,7 @@
                 <!-- Blog Post 3 -->
                 <article class="blog-card" data-category="health">
                     <div class="blog-card-image">
-                        <img src="{{ asset('thf-assets/images/blog/post3.jpg') }}" alt="Natural Sweeteners">
+                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784098?w=800" alt="Natural Sweeteners">
                         <span class="blog-card-badge">Health & Wellness</span>
                     </div>
                     <div class="blog-card-content">
@@ -1128,7 +1128,7 @@
                 <!-- Blog Post 4 -->
                 <article class="blog-card" data-category="behind-scenes">
                     <div class="blog-card-image">
-                        <img src="{{ asset('thf-assets/images/blog/post4.jpg') }}" alt="THF Kitchen">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800" alt="THF Kitchen">
                         <span class="blog-card-badge">Behind the Scenes</span>
                     </div>
                     <div class="blog-card-content">
@@ -1150,7 +1150,7 @@
                 <!-- Blog Post 5 -->
                 <article class="blog-card" data-category="recipes">
                     <div class="blog-card-image">
-                        <img src="{{ asset('thf-assets/images/blog/post5.jpg') }}" alt="Date Recipes">
+                        <img src="https://images.unsplash.com/photo-1608797178974-15b35a64ede9?w=800" alt="Date Recipes">
                         <span class="blog-card-badge">Recipes</span>
                     </div>
                     <div class="blog-card-content">
@@ -1172,7 +1172,7 @@
                 <!-- Blog Post 6 -->
                 <article class="blog-card" data-category="sweet-making">
                     <div class="blog-card-image">
-                        <img src="{{ asset('thf-assets/images/blog/post6.jpg') }}" alt="Saffron Quality">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a0b7e580c034?w=800" alt="Saffron Quality">
                         <span class="blog-card-badge">Sweet Making</span>
                     </div>
                     <div class="blog-card-content">
