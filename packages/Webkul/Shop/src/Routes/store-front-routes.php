@@ -47,6 +47,42 @@ Route::get('store-locator', [HomeController::class, 'storeLocator'])
     ->middleware('cache.response');
 
 /**
+ * FAQ page.
+ */
+Route::get('faq', [HomeController::class, 'faq'])
+    ->name('shop.faq.faq-index')
+    ->middleware('cache.response');
+
+/**
+ * Contact page.
+ */
+Route::get('contact', [HomeController::class, 'contact'])
+    ->name('shop.contact.contact-index')
+    ->middleware('cache.response');
+
+/**
+ * Career page.
+ */
+Route::get('career', [HomeController::class, 'career'])
+    ->name('shop.career.career-index')
+    ->middleware('cache.response');
+
+/**
+ * Blogs page.
+ */
+Route::get('blogs', [HomeController::class, 'blogs'])
+    ->name('shop.insights.blogs')
+    ->middleware('cache.response');
+
+/**
+ * Recepie page.
+ */
+Route::get('recepie', [HomeController::class, 'recepie'])
+    ->name('shop.insights.recepie')
+    ->middleware('cache.response');
+
+
+/**
  * Corporate gifting page.
  */
 Route::get('corporate', [HomeController::class, 'corporate'])
