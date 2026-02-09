@@ -78,23 +78,11 @@ function addToWishlist(productId) {
             product_id: productId
         })
     })
-    .then(response => {
-        if (response.status === 401) {
-            showNotification('Please sign in to add to wishlist', 'error');
-            setTimeout(() => {
-                window.location.href = '/customer/login';
-            }, 1500);
-            return;
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-        if (data && (data.data || data.message)) {
-            showNotification('Added to wishlist!', 'success');
-        }
+        showNotification('Added to wishlist!', 'success');
     })
     .catch(error => {
-        console.error('Wishlist error:', error);
         showNotification('Please sign in to add to wishlist', 'error');
     });
 }
@@ -114,21 +102,26 @@ function showNotification(message, type) {
         z-index: 10000;
         font-weight: 500;
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        font-family: "Forum", serif;
     `;
     document.body.appendChild(notification);
     setTimeout(() => notification.remove(), 3000);
 }
 
-// Update cart count
+// Update cart count - FIXED: Use actual API endpoint
 function updateCartCount() {
-    fetch('{{ route("shop.api.checkout.cart.index") }}')
+    fetch('/api/checkout/cart')
         .then(response => response.json())
         .then(data => {
             const count = data.data ? data.data.items_qty || 0 : 0;
             const headerCartCount = document.getElementById('header-cart-count');
-            if (headerCartCount) headerCartCount.textContent = count;
+            if (headerCartCount) {
+                headerCartCount.textContent = count;
+            }
         })
-        .catch(() => {});
+        .catch(error => {
+            console.error('Failed to update cart count:', error);
+        });
 }
 
 // Initialize
