@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">
+    <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
 
     <style>
         @font-face {
@@ -905,98 +906,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Header -->
-    <header class="header">
-        <div class="header-left">
-            <a href="{{ route('shop.home.index') }}" class="logo">
-                <img src="{{ asset('thf-assets/images/logo-transparent-white.png') }}" alt="THF Logo">
-            </a>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-
-        <div class="header-center">
-            <a href="{{ route('shop.home.index') }}">
-                <img src="{{ asset('thf-assets/images/name-logo.png') }}" alt="The Hazlenut Factory">
-            </a>
-        </div>
-
-        <div class="header-right">
-            <a href="{{ route('shop.search.index') }}" class="nav-link">SHOP</a>
-            <a href="{{ route('shop.insights.blogs') }}" class="nav-link" style="color: #d4af37;">BLOG</a>
-            <a href="{{ route('shop.store-locator.index') }}" class="nav-link">STORE LOCATOR</a>
-            <a href="{{ route('shop.faq.faq-index') }}" class="nav-link">FAQS</a>
-            <a href="{{ route('shop.contact.contact-index') }}" class="nav-link">CONTACT</a>
-            @guest('customer')
-                <a href="{{ route('shop.customer.session.create') }}" class="nav-link">SIGN IN</a>
-            @else
-                <a href="{{ route('shop.customers.account.profile.index') }}" class="nav-link">MY ACCOUNT</a>
-            @endguest
-        </div>
-    </header>
-
-    <!-- Mega Menu -->
-    <nav class="mega-menu">
-        <div class="mega-panel">
-            <div class="menu-left">
-                <div class="links-col">
-                    <div class="col-title">Sweets</div>
-                    <ul>
-                        <li><a href="{{ route('shop.collection.index') }}">Baklava</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Labon</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Dates</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Mewabite</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Assorted Collection</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Collections</div>
-                    <ul>
-                        <li><a href="{{ route('shop.collection.index') }}">Luxury Gifting</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Premium Coffee</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Merchandise</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Corporate Gifting</a></li>
-                        <li><a href="#">Gifting Brochures</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Seasonal</div>
-                    <ul>
-                        <li><a href="{{ route('shop.collection.index') }}">Festive Hampers</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Diwali Specials</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Eid Collection</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Christmas Treats</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">New Year Gifting</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Corporate</div>
-                    <ul>
-                        <li><a href="{{ route('shop.corporate.index') }}">Bulk Orders</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Custom Branding</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Employee Gifting</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Client Appreciation</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Corporate Catalog</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Services & Info</div>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="{{ route('shop.insights.blogs') }}">Blog</a></li>
-                        <li><a href="{{ route('shop.career.career-index') }}">Careers</a></li>
-                        <li><a href="#">JalGhar</a></li>
-                        <li><a href="{{ route('shop.contact.contact-index') }}">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('shop::partials.thf-header')
 
     <!-- HERO BANNER -->
     <div class="hero-banner">
