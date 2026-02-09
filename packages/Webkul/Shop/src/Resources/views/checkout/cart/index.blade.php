@@ -246,6 +246,118 @@
         background: #0a0a0a !important;
     }
 
+    /* Product carousel cards - Fix broken cards */
+    .container.mt-20 .grid,
+    .container.mt-20 .flex.gap-8,
+    .container.mt-20 [class*="gap-"] {
+        background: transparent !important;
+    }
+
+    /* Product cards in carousel */
+    .container.mt-20 .relative.group,
+    .container.mt-20 .rounded-xl,
+    .product-card {
+        background: rgba(18, 18, 18, 0.95) !important;
+        border: 1px solid rgba(212, 175, 55, 0.2) !important;
+        overflow: hidden !important;
+    }
+
+    /* Product card images */
+    .container.mt-20 img,
+    .product-card img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+    }
+
+    /* Product card titles and text */
+    .container.mt-20 .text-base,
+    .container.mt-20 .font-medium,
+    .product-card .text-base {
+        color: rgba(255, 255, 255, 0.9) !important;
+        background: transparent !important;
+    }
+
+    /* Product card prices */
+    .container.mt-20 .text-lg,
+    .container.mt-20 .font-semibold,
+    .product-card .font-semibold {
+        color: #d4af37 !important;
+        background: transparent !important;
+    }
+
+    /* Product card bottom section - remove white background */
+    .container.mt-20 .p-6,
+    .container.mt-20 .bg-white,
+    .product-card [class*="bg-white"] {
+        background: rgba(18, 18, 18, 0.95) !important;
+    }
+
+    /* "More choices" title */
+    .container.mt-20 h2,
+    .container.mt-20 .text-3xl {
+        color: #d4af37 !important;
+        font-family: "Forum", serif !important;
+    }
+
+    /* View all button */
+    .container.mt-20 .secondary-button {
+        background: transparent !important;
+        border: 2px solid rgba(212, 175, 55, 0.5) !important;
+        color: #d4af37 !important;
+    }
+
+    .container.mt-20 .secondary-button:hover {
+        background: rgba(212, 175, 55, 0.1) !important;
+        border-color: #d4af37 !important;
+    }
+
+    /* Fix white backgrounds on product cards */
+    .container.mt-20 [class*="bg-gray"],
+    .container.mt-20 [class*="bg-zinc"],
+    .container.mt-20 .bg-white,
+    .min-w-\\[291px\\] .bg-white,
+    .min-w-\\[291px\\] [class*="bg-white"] {
+        background: rgba(18, 18, 18, 0.95) !important;
+    }
+
+    /* Product card container */
+    .min-w-\\[291px\\],
+    .max-md\\:min-w-56,
+    .max-sm\\:min-w-\\[192px\\] {
+        background: rgba(18, 18, 18, 0.95) !important;
+        border: 1px solid rgba(212, 175, 55, 0.2) !important;
+        border-radius: 12px !important;
+    }
+
+    /* Ensure product images are visible */
+    .container.mt-20 .relative.rounded-xl img,
+    .min-w-\\[291px\\] img {
+        display: block !important;
+        min-height: 200px !important;
+        background: rgba(30, 30, 30, 0.9) !important;
+    }
+
+    /* Product badges (NEW, SALE, etc) */
+    .container.mt-20 .absolute.top-2,
+    .min-w-\\[291px\\] .absolute {
+        background: rgba(212, 175, 55, 0.9) !important;
+        color: #000 !important;
+        padding: 4px 12px !important;
+        border-radius: 6px !important;
+    }
+
+    /* Remove default Bagisto white backgrounds globally in cart page */
+    #app .bg-white {
+        background: rgba(18, 18, 18, 0.95) !important;
+    }
+
+    /* But keep summary section styled */
+    .bg-gray-100 {
+        background: rgba(20, 20, 20, 0.95) !important;
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar {
         width: 8px;
