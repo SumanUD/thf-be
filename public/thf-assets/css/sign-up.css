@@ -24,15 +24,27 @@ body {
     background: var(--thf-dark);
     color: #ffffff;
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
     background: var(--thf-dark);
+    margin: 0 !important;
+    padding: 40px 20px !important;
+    max-width: 100% !important;
 }
 
 /* Logo styling */
 .container > div:first-of-type {
     background: transparent;
+    margin-bottom: 30px !important;
+}
+
+.container > div:first-of-type a img {
+    max-width: 200px;
+    height: auto;
 }
 
 /* Form container */

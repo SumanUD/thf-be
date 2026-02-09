@@ -6,11 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Labon | The HazleNut Factory</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/category.css') }}">
 </head>
 <body>
-    @include('shop::partials.thf-header')
     <section class="video-banner">
         <video autoplay muted loop playsinline>
             <source src="{{ asset('thf-assets/images/banner1.mp4') }}" type="video/mp4">
@@ -73,7 +71,6 @@
             </div>
         </div>
     </section>
-    @include('shop::partials.thf-footer')
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="{{ asset('thf-assets/js/home.js') }}"></script>

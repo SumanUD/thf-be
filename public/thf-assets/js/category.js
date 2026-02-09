@@ -32,11 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add to cart function
 function addToCart(productId) {
-    fetch('{{ route("shop.api.checkout.cart.store") }}', {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    
+    fetch('/api/checkout/cart', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json'
         },
         body: JSON.stringify({
             product_id: productId,
@@ -45,33 +48,53 @@ function addToCart(productId) {
     })
     .then(response => response.json())
     .then(data => {
-        if (data.message) {
+        if (data.data || data.message) {
             showNotification('Added to cart!', 'success');
             updateCartCount();
+        } else if (data.redirect_uri) {
+            window.location.href = data.redirect_uri;
+        } else {
+            showNotification('Error adding to cart', 'error');
         }
     })
     .catch(error => {
+        console.error('Cart error:', error);
         showNotification('Error adding to cart', 'error');
     });
 }
 
 // Add to wishlist
 function addToWishlist(productId) {
-    fetch('{{ route("shop.api.customers.account.wishlist.store") }}', {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    
+    fetch('/api/customers/account/wishlist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json'
         },
         body: JSON.stringify({
             product_id: productId
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (response.status === 401) {
+            showNotification('Please sign in to add to wishlist', 'error');
+            setTimeout(() => {
+                window.location.href = '/customer/login';
+            }, 1500);
+            return;
+        }
+        return response.json();
+    })
     .then(data => {
-        showNotification('Added to wishlist!', 'success');
+        if (data && (data.data || data.message)) {
+            showNotification('Added to wishlist!', 'success');
+        }
     })
     .catch(error => {
+        console.error('Wishlist error:', error);
         showNotification('Please sign in to add to wishlist', 'error');
     });
 }
