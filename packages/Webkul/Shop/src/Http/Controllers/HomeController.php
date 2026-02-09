@@ -222,4 +222,34 @@ class HomeController extends Controller
     {
         return view('shop::categories.assorted');
     }
+
+    /**
+     * Specialty Coffee & Espresso Bar page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function specialtyCoffee()
+    {
+        return view('shop::pages.specialty-coffee');
+    }
+
+    /**
+     * Healthy Café Food page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function healthyFood()
+    {
+        return view('shop::pages.healthy-food');
+    }
+
+    /**
+     * Brand Story page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function brandStory()
+    {
+        return view('shop::pages.brand-story');
+    }
 }

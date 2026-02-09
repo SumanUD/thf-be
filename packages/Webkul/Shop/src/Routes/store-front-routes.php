@@ -120,6 +120,21 @@ Route::get('assorted-collection', [HomeController::class, 'assorted'])
     ->middleware('cache.response');
 
 /**
+ * Additional pages.
+ */
+Route::get('specialty-coffee', [HomeController::class, 'specialtyCoffee'])
+    ->name('shop.specialty-coffee.index')
+    ->middleware('cache.response');
+
+Route::get('healthy-food', [HomeController::class, 'healthyFood'])
+    ->name('shop.healthy-food.index')
+    ->middleware('cache.response');
+
+Route::get('brand-story', [HomeController::class, 'brandStory'])
+    ->name('shop.brand-story.index')
+    ->middleware('cache.response');
+
+/**
  * Store front search.
  */
 Route::get('search', [SearchController::class, 'index'])
