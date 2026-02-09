@@ -5,6 +5,10 @@
     <meta name="keywords" content="@lang('shop::app.customers.login-form.page-title')"/>
 @endPush
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('thf-assets/css/sign-in.css') }}">
+@endPush
+
 <x-shop::layouts
     :has-header="false"
     :has-feature="false"

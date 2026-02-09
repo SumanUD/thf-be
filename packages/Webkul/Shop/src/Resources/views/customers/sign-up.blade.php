@@ -11,6 +11,10 @@
     />
 @endPush
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('thf-assets/css/sign-up.css') }}">
+@endPush
+
 <x-shop::layouts
     :has-header="false"
     :has-feature="false"

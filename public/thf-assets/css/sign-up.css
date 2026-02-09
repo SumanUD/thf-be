@@ -1,0 +1,153 @@
+@font-face {
+    font-family: "Forum";
+    src: url("../fonts/forum/Forum-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --thf-gold: #D4AF37;
+    --thf-dark: #0a0a0a;
+    --thf-card-bg: rgba(30, 30, 30, 0.9);
+    --thf-border: rgba(212, 175, 55, 0.3);
+}
+
+body {
+    font-family: "Forum", serif;
+    background: var(--thf-dark);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.container {
+    background: var(--thf-dark);
+}
+
+/* Logo styling */
+.container > div:first-of-type {
+    background: transparent;
+}
+
+/* Form container */
+.container > div:nth-child(2) {
+    background: var(--thf-card-bg);
+    border: 1px solid var(--thf-border) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.1);
+}
+
+/* Headings */
+h1 {
+    font-family: "Forum", serif !important;
+    color: var(--thf-gold) !important;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+/* Paragraphs */
+p {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Form labels */
+label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-family: "Forum", serif;
+}
+
+/* Form inputs */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    background: rgba(20, 20, 20, 0.8) !important;
+    border: 1px solid var(--thf-border) !important;
+    color: #ffffff !important;
+    font-family: "Forum", serif;
+    transition: all 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+    border-color: var(--thf-gold) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+    outline: none !important;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Checkbox styling */
+input[type="checkbox"] + label {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.icon-uncheck,
+.icon-check-box {
+    color: var(--thf-gold) !important;
+}
+
+/* Links */
+a {
+    color: var(--thf-gold) !important;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* Primary button */
+.primary-button,
+button[type="submit"] {
+    background: linear-gradient(135deg, var(--thf-gold) 0%, #B8941F 100%) !important;
+    color: var(--thf-dark) !important;
+    font-family: "Forum", serif;
+    font-weight: 600;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.primary-button:hover,
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Error messages */
+.text-red-500,
+.text-red-600 {
+    color: #ff6b6b !important;
+}
+
+/* Footer text */
+.container > p:last-child {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Modal styling (for terms & conditions) */
+.modal {
+    background: var(--thf-card-bg);
+    border: 1px solid var(--thf-border);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container > div:nth-child(2) {
+        border: none !important;
+        background: var(--thf-dark);
+    }
+}
