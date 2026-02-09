@@ -6,6 +6,14 @@
                 this.header = document.querySelector('.header');
                 this.searchToggle = document.querySelector('.search-toggle');
                 this.searchBox = document.querySelector('.search-box');
+                this.galleryTrack = document.querySelector('.gallery-track');
+                this.prevBtn = document.querySelector('.prev');
+                this.nextBtn = document.querySelector('.next');
+                this.indicators = document.querySelectorAll('.gallery-indicator');
+                this.galleryItems = document.querySelectorAll('.gallery-item');
+                this.currentSlide = 0;
+                this.slideWidth = 310; // item width + gap
+                this.maxSlides = Math.max(0, this.galleryItems.length - 3);
 
                 this.init();
             }
@@ -42,7 +50,21 @@
                     }
                 });
 
+                // Gallery navigation
+                if (this.prevBtn && this.nextBtn) {
+                    this.prevBtn.addEventListener('click', () => this.prevSlide());
+                    this.nextBtn.addEventListener('click', () => this.nextSlide());
+                }
+
+                // Indicators
+                if (this.indicators) {
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => this.goToSlide(index));
+                    });
+                }
+
                 window.addEventListener('scroll', () => this.handleScroll());
+                this.updateGallery();
             }
 
             toggleMenu() {
@@ -62,6 +84,44 @@
                     this.header.classList.add('scrolled');
                 } else {
                     this.header.classList.remove('scrolled');
+                }
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 0) {
+                    this.currentSlide--;
+                    this.updateGallery();
+                }
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.maxSlides) {
+                    this.currentSlide++;
+                    this.updateGallery();
+                }
+            }
+
+            goToSlide(index) {
+                this.currentSlide = index * 2;
+                if (this.currentSlide > this.maxSlides) {
+                    this.currentSlide = this.maxSlides;
+                }
+                this.updateGallery();
+            }
+
+            updateGallery() {
+                if (this.galleryTrack) {
+                    const translateX = -(this.currentSlide * this.slideWidth);
+                    this.galleryTrack.style.transform = `translateX(${translateX}px)`;
+                }
+
+                if (this.indicators) {
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.classList.remove('active');
+                        if (index === Math.floor(this.currentSlide / 2)) {
+                            indicator.classList.add('active');
+                        }
+                    });
                 }
             }
         }
@@ -297,10 +357,16 @@
                 .then(response => response.json())
                 .then(data => {
                     const count = data.data ? data.data.items_qty || 0 : 0;
-                    document.getElementById('cart-count').textContent = count;
+                    const cartCount = document.getElementById('cart-count');
+                    const headerCartCount = document.getElementById('header-cart-count');
+                    if (cartCount) cartCount.textContent = count;
+                    if (headerCartCount) headerCartCount.textContent = count;
                 })
                 .catch(() => {
-                    document.getElementById('cart-count').textContent = '0';
+                    const cartCount = document.getElementById('cart-count');
+                    const headerCartCount = document.getElementById('header-cart-count');
+                    if (cartCount) cartCount.textContent = '0';
+                    if (headerCartCount) headerCartCount.textContent = '0';
                 });
         }
 

@@ -40,9 +40,20 @@
 
         <a href="{{ route('shop.store-locator.index') }}" class="nav-link">STORE LOCATOR</a>
 
-        <!-- Sign In Dropdown -->
+        <!-- Cart Icon (Always Visible) -->
+        <a href="{{ route('shop.checkout.cart.index') }}" class="nav-cart-icon" aria-label="Shopping Cart">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count-badge" id="header-cart-count">0</span>
+        </a>
+
+        <!-- Sign In / User Dropdown -->
         <div class="nav-dropdown signin-dropdown">
-            <a href="#" class="nav-link">SIGN IN</a>
+            @guest('customer')
+                <a href="#" class="nav-link">SIGN IN</a>
+            @else
+                <a href="#" class="nav-link">{{ strtoupper(auth()->guard('customer')->user()->first_name) }}</a>
+            @endguest
+
             <div class="dropdown-content">
                 @guest('customer')
                     <div class="signin-header">
@@ -67,14 +78,6 @@
                     </form>
                     <a href="#" onclick="event.preventDefault(); document.getElementById('customerLogout').submit();" class="dropdown-link">Logout</a>
                 @endguest
-
-                <div class="cart-section">
-                    <a href="{{ route('shop.checkout.cart.index') }}" class="cart-link">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span>Shopping Bag</span>
-                        <span class="cart-count" id="cart-count">0</span>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
@@ -87,11 +90,11 @@
             <div class="links-col">
                 <div class="col-title">Sweets</div>
                 <ul>
-                    <li><a href="{{ route('shop.collection.index') }}">Baklava</a></li>
-                    <li><a href="{{ route('shop.collection.index') }}">Labon</a></li>
-                    <li><a href="{{ route('shop.collection.index') }}">Dates</a></li>
-                    <li><a href="{{ route('shop.collection.index') }}">Mewabite</a></li>
-                    <li><a href="{{ route('shop.collection.index') }}">Assorted Collection</a></li>
+                    <li><a href="{{ route('shop.baklava.index') }}">Baklava</a></li>
+                    <li><a href="{{ route('shop.labon.index') }}">Labon</a></li>
+                    <li><a href="{{ route('shop.dates.index') }}">Dates</a></li>
+                    <li><a href="{{ route('shop.mewabite.index') }}">Mewabite</a></li>
+                    <li><a href="{{ route('shop.assorted.index') }}">Assorted Collection</a></li>
                 </ul>
             </div>
 
@@ -137,6 +140,59 @@
                     <li><a href="#">JalGhar</a></li>
                     <li><a href="{{ route('shop.store-locator.index') }}">Store Locator</a></li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- Bestseller Slider -->
+        <div class="menu-gallery">
+            <div class="gallery-header">
+                <h3>Bestsellers</h3>
+                <div class="gallery-controls">
+                    <button class="g-arrow prev" aria-label="Previous">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="g-arrow next" aria-label="Next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="gallery-viewport">
+                <div class="gallery-track">
+                    <div class="gallery-item">
+                        <img src="{{ asset('thf-assets/images/best_seller/THF Baklava Delight Box.jpg') }}" alt="Baklava Delight Box">
+                        <div class="item-caption"><strong>Baklava Delight Box</strong></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset('thf-assets/images/best_seller/Labon Delight Box.jpg') }}" alt="Labon Delight Box">
+                        <div class="item-caption"><strong>Labon Delight Box</strong></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset('thf-assets/images/best_seller/THF Royal Treat Box.jpg') }}" alt="Royal Treat Box">
+                        <div class="item-caption"><strong>Royal Treat Box</strong></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset('thf-assets/images/best_seller/Collective Box.jpg') }}" alt="Collective Box">
+                        <div class="item-caption"><strong>Collective Box</strong></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset('thf-assets/images/best_seller/Artisanal Treasure Box.jpg') }}" alt="Artisanal Treasure Box">
+                        <div class="item-caption"><strong>Artisanal Treasure Box</strong></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset('thf-assets/images/best_seller/Glorious Box.jpg') }}" alt="Glorious Box">
+                        <div class="item-caption"><strong>Glorious Box</strong></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset('thf-assets/images/best_seller/Assorted Date Box.jpg') }}" alt="Assorted Date Box">
+                        <div class="item-caption"><strong>Assorted Date Box</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-indicators">
+                <div class="gallery-indicator active" data-index="0"></div>
+                <div class="gallery-indicator" data-index="1"></div>
+                <div class="gallery-indicator" data-index="2"></div>
             </div>
         </div>
     </div>
