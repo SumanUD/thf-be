@@ -1182,7 +1182,7 @@
             <div class="featured-recipe" data-category="traditional">
                 <div class="featured-content">
                     <div class="featured-image">
-                        <img src="{{ asset('thf-assets/images/recipes/featured-baklava.jpg') }}" alt="Premium Baklava">
+                        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800" alt="Premium Baklava">
                     </div>
                     <div class="featured-text">
                         <span class="featured-badge">Chef's Special</span>

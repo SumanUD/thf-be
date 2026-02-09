@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">
+    <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     
     <style>
         @font-face {
@@ -222,6 +223,8 @@
     </style>
 </head>
 <body>
+    @include('shop::partials.thf-header')
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -388,5 +391,7 @@
             </div>
         </div>
     </section>
+    
+    @include('shop::partials.thf-footer')
 </body>
 </html>
