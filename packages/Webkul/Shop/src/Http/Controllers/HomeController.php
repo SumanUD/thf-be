@@ -89,4 +89,87 @@ class HomeController extends Controller
 
         return back();
     }
+
+    /**
+     * Store locator page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function storeLocator()
+    {
+        return view('shop::store-locator.index');
+    }
+
+    /**
+     * FAQ page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function faq()
+    {
+        return view('shop::faq.faq-index');
+    }
+
+/**
+ * FAQ page.
+ *
+ * @return \Illuminate\View\View
+ */
+    public function contact()
+    {
+        return view('shop::contact.contact-index');
+    }
+
+
+    
+/**
+ * Career page.
+ *
+ * @return \Illuminate\View\View
+ */
+    public function career()
+    {
+        return view('shop::career.career-index');
+    }
+
+    /**
+ * Blogs page.
+ *
+ * @return \Illuminate\View\View
+ */
+    public function blogs()
+    {
+        return view('shop::insights.blogs');
+    }
+
+    /**
+ * Recepie page.
+ *
+ * @return \Illuminate\View\View
+ */
+    public function recepie()
+    {
+        return view('shop::insights.recepie');
+    }
+
+
+    /**
+     * Corporate gifting page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function corporate()
+    {
+        return view('shop::corporate.index');
+    }
+
+    /**
+     * Collection/Category page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function collection()
+    {
+        return view('shop::collection.index');
+    }
 }

@@ -5,6 +5,277 @@
     <meta name="keywords" content="@lang('shop::app.checkout.cart.index.cart')"/>
 @endPush
 
+@push('styles')
+<style>
+    /* THF Cart Page - Complete Theme Override */
+    
+    /* Base */
+    * {
+        font-family: 'Forum', serif !important;
+    }
+    
+    body {
+        background: #0a0a0a !important;
+        min-height: 100vh;
+    }
+
+    /* Header */
+    .flex.w-full.justify-between.border {
+        background: #000 !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+        padding: 15px 40px !important;
+    }
+
+    /* Logo */
+    .flex.min-h-\[30px\] img {
+        content: url('{{ asset("thf-assets/images/name-logo.png") }}') !important;
+        height: 45px !important;
+        width: auto !important;
+    }
+
+    /* Main Container */
+    .flex-auto {
+        background: #0a0a0a !important;
+    }
+
+    .container {
+        max-width: 1200px !important;
+        padding-top: 30px !important;
+    }
+
+    /* Page Title */
+    .text-2xl, .text-3xl, h1, h2, h3 {
+        color: #d4af37 !important;
+        font-weight: 400 !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* Breadcrumbs */
+    nav[aria-label="Breadcrumb"] a,
+    nav[aria-label="Breadcrumb"] span,
+    .text-zinc-500 {
+        color: rgba(255,255,255,0.6) !important;
+    }
+
+    /* Cart Grid Layout */
+    .grid {
+        gap: 30px !important;
+    }
+
+    /* Cart Items Container */
+    .rounded-xl, .rounded-lg, .rounded-md, .rounded {
+        background: rgba(18, 18, 18, 0.95) !important;
+        border: 1px solid rgba(212, 175, 55, 0.2) !important;
+        backdrop-filter: blur(10px) !important;
+    }
+
+    /* Product Cards */
+    .flex.gap-5, .flex.gap-4 {
+        padding: 20px !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+    }
+
+    /* Product Images */
+    .relative img, .product-image img {
+        border-radius: 8px !important;
+        border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    }
+
+    /* Product Name */
+    .font-medium, .text-base.font-medium {
+        color: #fff !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* Product Details Text */
+    p, span, .text-sm, .text-xs, .text-base {
+        color: rgba(255,255,255,0.8) !important;
+    }
+
+    /* Prices */
+    .font-semibold {
+        color: #d4af37 !important;
+        font-size: 1.15rem !important;
+    }
+
+    /* Quantity Input */
+    input[type="text"], input[type="number"], input {
+        background: rgba(30, 30, 30, 0.9) !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
+        color: #fff !important;
+        border-radius: 6px !important;
+        padding: 8px 12px !important;
+    }
+
+    input:focus {
+        border-color: #d4af37 !important;
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15) !important;
+    }
+
+    /* Quantity Buttons */
+    .icon-minus, .icon-plus {
+        color: #d4af37 !important;
+        cursor: pointer !important;
+        transition: all 0.2s !important;
+    }
+
+    .icon-minus:hover, .icon-plus:hover {
+        color: #fff !important;
+    }
+
+    /* Delete/Remove Icons */
+    .icon-delete, .icon-cancel, .icon-bin {
+        color: #e74c3c !important;
+        opacity: 0.8 !important;
+        transition: all 0.2s !important;
+    }
+
+    .icon-delete:hover, .icon-cancel:hover, .icon-bin:hover {
+        opacity: 1 !important;
+        transform: scale(1.1) !important;
+    }
+
+    /* Summary Section */
+    .bg-gray-100, .bg-zinc-100, [class*="bg-gray"], [class*="bg-zinc"] {
+        background: rgba(20, 20, 20, 0.95) !important;
+        border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    }
+
+    /* Summary Title */
+    .text-lg.font-semibold {
+        color: #d4af37 !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+        padding-bottom: 15px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Summary Rows */
+    .flex.justify-between {
+        padding: 10px 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    }
+
+    /* Primary Button - Checkout */
+    .primary-button, button.bg-navyBlue, .bg-navyBlue, button[type="submit"] {
+        background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%) !important;
+        color: #000 !important;
+        border: none !important;
+        padding: 14px 28px !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+    }
+
+    .primary-button:hover, .bg-navyBlue:hover, button[type="submit"]:hover {
+        background: linear-gradient(135deg, #e5c349 0%, #d4af37 100%) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
+    }
+
+    /* Secondary Button */
+    .secondary-button {
+        background: transparent !important;
+        border: 2px solid rgba(212, 175, 55, 0.5) !important;
+        color: #d4af37 !important;
+        padding: 12px 24px !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .secondary-button:hover {
+        background: rgba(212, 175, 55, 0.1) !important;
+        border-color: #d4af37 !important;
+    }
+
+    /* Links */
+    a {
+        color: #d4af37 !important;
+        text-decoration: none !important;
+        transition: all 0.2s !important;
+    }
+
+    a:hover {
+        color: #e5c349 !important;
+    }
+
+    /* Coupon Section */
+    .coupon-section, [class*="coupon"] {
+        background: rgba(25, 25, 25, 0.9) !important;
+        border: 1px solid rgba(212, 175, 55, 0.15) !important;
+        border-radius: 8px !important;
+        padding: 20px !important;
+    }
+
+    /* Empty Cart */
+    .flex.flex-col.items-center {
+        padding: 60px 20px !important;
+    }
+
+    .flex.flex-col.items-center p {
+        color: rgba(255,255,255,0.6) !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* Icons general */
+    [class^="icon-"], [class*=" icon-"] {
+        color: #d4af37 !important;
+    }
+
+    /* Cross-sell section */
+    .container.mt-20, .container.mt-14 {
+        background: #0a0a0a !important;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(212, 175, 55, 0.5);
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #d4af37;
+    }
+
+    /* Login popup */
+    .modal, [class*="modal"] {
+        background: rgba(0,0,0,0.9) !important;
+    }
+
+    .modal-content, [class*="modal-content"] {
+        background: #1a1a1a !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    }
+
+    /* Wishlist link */
+    .thf-wishlist-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #d4af37 !important;
+        padding: 10px 20px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: 6px;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+    }
+    .thf-wishlist-link:hover {
+        background: rgba(212, 175, 55, 0.1);
+        border-color: #d4af37;
+    }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+@endpush
 <x-shop::layouts
     :has-header="false"
     :has-feature="false"
@@ -58,6 +329,10 @@
             @endif
 
             {!! view_render_event('bagisto.shop.checkout.cart.breadcrumbs.after') !!}
+            <!-- Wishlist Link -->
+            <a href="{{ route("shop.customers.account.wishlist.index") }}" class="thf-wishlist-link">
+                <i class="fas fa-heart"></i> View My Wishlist
+            </a>
 
             @php
                 $errors = \Webkul\Checkout\Facades\Cart::getErrors();

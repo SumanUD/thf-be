@@ -73,7 +73,16 @@
 
         <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Serif+Display&family=Forum&display=swap"
+        />
+
+        <!-- Font Awesome for THF Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+            integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo16zO0H3bIWWcFcz+gRwZkKxr+lH1qAzJq5jnIg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
         />
 
         @stack('styles')

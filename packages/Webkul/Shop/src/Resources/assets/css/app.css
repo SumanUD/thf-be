@@ -10,6 +10,509 @@
     font-display: swap;
 }
 
+/* THF Custom Fonts */
+@font-face {
+    font-family: "Forum";
+    src: url("../fonts/forum/Forum-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Century";
+    src: url("../fonts/century/Century.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ================================================
+   THF - THE HAZLENUT FACTORY CUSTOM STYLES
+   ================================================ */
+
+/* THF Dark Theme Variables */
+:root {
+    --thf-gold: #d4af37;
+    --thf-black: #000000;
+    --thf-dark: #0a0a0a;
+    --thf-gold-light: rgba(212, 175, 55, 0.2);
+    --thf-gold-muted: rgba(212, 175, 55, 0.1);
+    --thf-white-muted: rgba(255, 255, 255, 0.8);
+}
+
+/* THF Home Page Dark Theme */
+.thf-dark-theme {
+    background: #000;
+    color: white;
+}
+
+.thf-dark-theme .bg-white {
+    background: transparent !important;
+}
+
+/* THF Header Styles */
+.thf-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.thf-header.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    height: 70px;
+}
+
+.thf-header .logo img {
+    width: 280px;
+    height: auto;
+    transition: transform 0.3s ease;
+    max-width: 100%;
+}
+
+.thf-header .logo img:hover {
+    transform: scale(1.05);
+}
+
+/* THF Navigation Links */
+.thf-nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: "Forum", serif;
+}
+
+.thf-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--thf-gold);
+    transition: width 0.3s ease;
+}
+
+.thf-nav-link:hover {
+    color: white;
+}
+
+.thf-nav-link:hover::after {
+    width: 100%;
+}
+
+/* THF Dropdown */
+.thf-dropdown-content {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: -20px;
+    background: rgba(0, 0, 0, 0.98);
+    border: 1px solid var(--thf-gold-light);
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+}
+
+.thf-dropdown:hover .thf-dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.thf-dropdown-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 12px 0;
+    display: block;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-left: 10px;
+    font-family: "Century", sans-serif;
+}
+
+.thf-dropdown-link:hover {
+    color: var(--thf-gold);
+    transform: translateX(10px);
+}
+
+/* THF Mega Menu */
+.thf-mega-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(20, 20, 20, 0.95));
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    backdrop-filter: blur(20px);
+}
+
+.thf-mega-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* THF Video Section */
+.thf-video-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    transition: opacity 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.thf-video-section video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+.thf-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+}
+
+/* THF Content Section */
+.thf-content-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    pointer-events: none;
+}
+
+.thf-heading {
+    font-size: 5rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: -2px;
+    font-family: "Forum", serif;
+    color: white;
+}
+
+.thf-subtext {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.5;
+    font-family: "Forum", serif;
+    color: white;
+}
+
+/* THF Image Gallery */
+.thf-image-gallery {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+}
+
+.thf-gallery-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.thf-gallery-item.active {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+}
+
+.thf-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+.thf-category-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 100px;
+    z-index: 2;
+}
+
+.thf-category-title {
+    font-size: 4.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    max-width: 800px;
+    font-family: "Forum", serif;
+    color: black;
+}
+
+.thf-category-subtitle {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 600px;
+    color: rgba(0, 0, 0, 0.9);
+    font-family: "Century", sans-serif;
+}
+
+/* THF Footer */
+.thf-footer {
+    position: relative;
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    padding: 60px 20px 20px;
+    border-top: 1px solid var(--thf-gold-light);
+}
+
+.thf-footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--thf-gold);
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-family: "Forum", serif;
+}
+
+.thf-footer p,
+.thf-footer a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    font-family: "Century", sans-serif;
+}
+
+.thf-footer a:hover {
+    color: var(--thf-gold);
+}
+
+/* THF Scroll Indicator */
+.thf-scroll-indicator {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.9;
+}
+
+.thf-scroll-text {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Forum", serif;
+}
+
+/* THF Hamburger Menu Toggle */
+.thf-menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.thf-menu-toggle:hover {
+    color: var(--thf-gold);
+}
+
+.thf-menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.thf-menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.thf-menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.thf-menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* THF Social Icons */
+.thf-social-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.thf-social-icon:hover {
+    background: var(--thf-gold);
+    transform: translateY(-3px);
+    border-color: var(--thf-gold);
+    color: #000;
+}
+
+/* THF Gold Button */
+.thf-btn-gold {
+    background: var(--thf-gold);
+    color: #000;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-family: "Forum", serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.thf-btn-gold:hover {
+    background: #c9a033;
+    transform: translateY(-2px);
+}
+
+/* THF Responsive Styles */
+@media (max-width: 1024px) {
+    .thf-header {
+        padding: 0 20px;
+    }
+
+    .thf-header .logo img {
+        width: 180px;
+    }
+
+    .thf-heading {
+        font-size: 3.5rem;
+    }
+
+    .thf-category-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .thf-header {
+        height: 70px;
+        padding: 0 15px;
+    }
+
+    .thf-header .logo img {
+        width: 150px;
+    }
+
+    .thf-heading {
+        font-size: 2.5rem;
+    }
+
+    .thf-subtext {
+        font-size: 1.2rem;
+    }
+
+    .thf-category-content {
+        padding: 0 40px;
+    }
+
+    .thf-category-title {
+        font-size: 2.5rem;
+    }
+
+    .thf-category-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .thf-header .logo img {
+        width: 120px;
+    }
+
+    .thf-heading {
+        font-size: 2rem;
+    }
+
+    .thf-category-title {
+        font-size: 2rem;
+    }
+}
+
 img.lazy {
   visibility: hidden;
 }
@@ -526,4 +1029,273 @@ img.lazy {
     .skip-to-main-content-link:focus {
         @apply ltr:left-1/2 rtl:right-1/2 ltr:translate-x-1/2 rtl:translate-x-[-50%] opacity-100;
     }
+}
+
+/* ================================================
+   THF SHOP PAGES DARK THEME
+   ================================================ */
+
+/* Dark theme wrapper for shop pages */
+.thf-shop-dark {
+    background: #0a0a0a !important;
+    color: rgba(255, 255, 255, 0.9);
+    min-height: 100vh;
+}
+
+.thf-shop-dark main {
+    background: transparent !important;
+}
+
+/* THF Shop Header Banner */
+.thf-shop-banner {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thf-shop-banner video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.thf-shop-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+    z-index: 1;
+}
+
+.thf-shop-banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.thf-shop-banner h1 {
+    font-size: 4.5rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    font-family: "Forum", serif;
+}
+
+.thf-shop-banner h1 span {
+    color: var(--thf-gold);
+}
+
+/* THF Product Card Styles */
+.thf-shop-dark .product-card,
+.thf-shop-dark [class*="product-card"] {
+    background: rgba(20, 20, 20, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.thf-shop-dark .product-card:hover {
+    transform: translateY(-15px) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+/* THF Shop Text Colors */
+.thf-shop-dark h1,
+.thf-shop-dark h2,
+.thf-shop-dark h3,
+.thf-shop-dark h4,
+.thf-shop-dark h5,
+.thf-shop-dark h6 {
+    color: #fff !important;
+}
+
+.thf-shop-dark p,
+.thf-shop-dark span,
+.thf-shop-dark label {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.thf-shop-dark a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: color 0.3s ease;
+}
+
+.thf-shop-dark a:hover {
+    color: var(--thf-gold) !important;
+}
+
+/* THF Shop Buttons */
+.thf-shop-dark .primary-button {
+    background: var(--thf-gold) !important;
+    color: #000 !important;
+    border-color: var(--thf-gold) !important;
+}
+
+.thf-shop-dark .primary-button:hover {
+    background: #c9a033 !important;
+}
+
+.thf-shop-dark .secondary-button {
+    background: transparent !important;
+    color: white !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+.thf-shop-dark .secondary-button:hover {
+    background: rgba(212, 175, 55, 0.1) !important;
+    border-color: var(--thf-gold) !important;
+}
+
+/* THF Shop Inputs */
+.thf-shop-dark input,
+.thf-shop-dark select,
+.thf-shop-dark textarea {
+    background: rgba(20, 20, 20, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+.thf-shop-dark input:focus,
+.thf-shop-dark select:focus,
+.thf-shop-dark textarea:focus {
+    border-color: var(--thf-gold) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+}
+
+/* THF Shop Filters */
+.thf-shop-dark [class*="filter"],
+.thf-shop-dark [class*="Filter"] {
+    background: rgba(20, 20, 20, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* THF Shop Price Badge */
+.thf-price-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    color: var(--thf-gold);
+    font-weight: 400;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    font-family: "Forum", serif;
+}
+
+/* THF Shop Hover Actions */
+.thf-hover-actions {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+}
+
+.product-card:hover .thf-hover-actions {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.thf-hover-actions button {
+    background: rgba(212, 175, 55, 0.9);
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Forum", serif;
+}
+
+.thf-hover-actions button:hover {
+    background: var(--thf-gold);
+    transform: translateY(-2px);
+}
+
+/* THF Section Header */
+.thf-section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.thf-section-header h2 {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+    font-family: "Forum", serif;
+}
+
+.thf-section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--thf-gold);
+}
+
+.thf-section-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 300;
+    font-family: "Century", sans-serif;
+}
+
+/* THF Custom Scrollbar for Dark Theme */
+.thf-shop-dark ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.thf-shop-dark ::-webkit-scrollbar-track {
+    background: rgba(20, 20, 20, 0.8);
+}
+
+.thf-shop-dark ::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+}
+
+.thf-shop-dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
 }
