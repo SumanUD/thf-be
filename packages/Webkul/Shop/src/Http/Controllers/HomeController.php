@@ -172,4 +172,54 @@ class HomeController extends Controller
     {
         return view('shop::collection.index');
     }
+
+    /**
+     * Baklava category page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function baklava()
+    {
+        return view('shop::categories.baklava');
+    }
+
+    /**
+     * Labon category page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function labon()
+    {
+        return view('shop::categories.labon');
+    }
+
+    /**
+     * Dates category page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function dates()
+    {
+        return view('shop::categories.dates');
+    }
+
+    /**
+     * Mewabite category page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function mewabite()
+    {
+        return view('shop::categories.mewabite');
+    }
+
+    /**
+     * Assorted collection category page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function assorted()
+    {
+        return view('shop::categories.assorted');
+    }
 }

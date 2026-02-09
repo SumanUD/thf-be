@@ -97,6 +97,29 @@ Route::get('collection', [HomeController::class, 'collection'])
     ->middleware('cache.response');
 
 /**
+ * Category pages.
+ */
+Route::get('baklava', [HomeController::class, 'baklava'])
+    ->name('shop.baklava.index')
+    ->middleware('cache.response');
+
+Route::get('labon', [HomeController::class, 'labon'])
+    ->name('shop.labon.index')
+    ->middleware('cache.response');
+
+Route::get('dates', [HomeController::class, 'dates'])
+    ->name('shop.dates.index')
+    ->middleware('cache.response');
+
+Route::get('mewabite', [HomeController::class, 'mewabite'])
+    ->name('shop.mewabite.index')
+    ->middleware('cache.response');
+
+Route::get('assorted-collection', [HomeController::class, 'assorted'])
+    ->name('shop.assorted.index')
+    ->middleware('cache.response');
+
+/**
  * Store front search.
  */
 Route::get('search', [SearchController::class, 'index'])
