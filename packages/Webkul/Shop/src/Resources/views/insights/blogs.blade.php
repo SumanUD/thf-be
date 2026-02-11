@@ -755,6 +755,16 @@
             border-color: rgba(212, 175, 55, 0.2);
         }
 
+        .pagination-dots {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .sidebar-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
         /* NEWSLETTER CTA */
         .newsletter-cta {
             background: rgba(212, 175, 55, 0.1);
@@ -1116,7 +1126,7 @@
                 <button class="pagination-btn active">1</button>
                 <button class="pagination-btn">2</button>
                 <button class="pagination-btn">3</button>
-                <span style="color: rgba(255, 255, 255, 0.5);">...</span>
+                <span class="pagination-dots">...</span>
                 <button class="pagination-btn">8</button>
                 <button class="pagination-btn">
                     <i class="fas fa-chevron-right"></i>
@@ -1125,7 +1135,7 @@
 
             <!-- Sidebar Section -->
             <div class="blog-sidebar">
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;">
+                <div class="sidebar-grid">
                     <!-- Main Content Area -->
                     <div>
                         <!-- Newsletter CTA -->

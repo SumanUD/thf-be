@@ -1,7 +1,9 @@
 <!-- Navigation Header -->
 <header class="header">
     <div class="nav-left">
-        <img src="{{ asset('thf-assets/images/logo-transparent-white.png') }}" alt="THF" class="hamburger-logo">
+        <a href="{{ route('shop.home.index') }}" style="display: flex; align-items: center;">
+            <img src="{{ asset('thf-assets/images/logo-transparent-white.png') }}" alt="THF" class="hamburger-logo" style="cursor: pointer;">
+        </a>
         <button class="menu-toggle" aria-label="Toggle menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -201,3 +203,6 @@
         </div>
     </div>
 </nav>
+
+<!-- Global Header JavaScript -->
+<script src="{{ asset('thf-assets/js/header.js') }}"></script>
