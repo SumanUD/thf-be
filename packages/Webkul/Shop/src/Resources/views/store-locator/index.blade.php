@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/store-locator.css') }}">
 </head>
+
 <body>
     @include('shop::partials.thf-header')
 
@@ -23,7 +25,8 @@
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-title">Discover THF Stores</div>
-            <div class="hero-sub">Find our premium sweets and gifts at locations across the country. Each store offers the same exceptional quality and service you expect from The HazleNut Factory.</div>
+            <div class="hero-sub">Find our premium sweets and gifts at locations across the country. Each store offers
+                the same exceptional quality and service you expect from The HazleNut Factory.</div>
         </div>
     </div>
 
@@ -80,7 +83,8 @@
                 <!-- Store 1 -->
                 <div class="cafe-card">
                     <div class="cafe-image-wrap">
-                        <img src="{{ asset('thf-assets/images/mewabites_banner.jpg') }}" class="cafe-image" alt="The HazleNut Factory Agra">
+                        <img src="{{ asset('thf-assets/images/mewabites_banner.jpg') }}" class="cafe-image"
+                            alt="The HazleNut Factory Agra">
                     </div>
                     <div class="cafe-info">
                         <div class="cafe-header">The HazleNut Factory</div>
@@ -88,7 +92,8 @@
                         <div class="cafe-details">
                             <div class="details-row">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Handicraft Nagar 18A, Plot No.8, Fatehabad Road, Vibhav Nagar, Tajganj, Agra, Uttar Pradesh 282001</span>
+                                <span>Handicraft Nagar 18A, Plot No.8, Fatehabad Road, Vibhav Nagar, Tajganj, Agra,
+                                    Uttar Pradesh 282001</span>
                             </div>
                             <div class="details-row">
                                 <i class="fas fa-phone"></i>
@@ -101,7 +106,8 @@
                             <span class="open-now">Open Now</span>
                         </div>
                         <div class="cafe-actions">
-                            <a href="https://maps.google.com/?q=Handicraft+Nagar+18A+Agra" target="_blank" class="primary-btn">
+                            <a href="https://maps.google.com/?q=Handicraft+Nagar+18A+Agra" target="_blank"
+                                class="primary-btn">
                                 <i class="fas fa-directions"></i>
                                 Get Directions
                             </a>
@@ -116,7 +122,8 @@
                 <!-- Store 2 -->
                 <div class="cafe-card">
                     <div class="cafe-image-wrap">
-                        <img src="{{ asset('thf-assets/images/labon_banner.jpg') }}" class="cafe-image" alt="The HazleNut Factory Aerocity">
+                        <img src="{{ asset('thf-assets/images/labon_banner.jpg') }}" class="cafe-image"
+                            alt="The HazleNut Factory Aerocity">
                     </div>
                     <div class="cafe-info">
                         <div class="cafe-header">The HazleNut Factory</div>
@@ -124,7 +131,8 @@
                         <div class="cafe-details">
                             <div class="details-row">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>GF-K1, Ground Floor, Worldmark 2, Asset Area 8, Aerocity, New Delhi, Delhi 110037</span>
+                                <span>GF-K1, Ground Floor, Worldmark 2, Asset Area 8, Aerocity, New Delhi, Delhi
+                                    110037</span>
                             </div>
                             <div class="details-row">
                                 <i class="fas fa-phone"></i>
@@ -137,7 +145,8 @@
                             <span class="open-now">Open Now</span>
                         </div>
                         <div class="cafe-actions">
-                            <a href="https://maps.google.com/?q=Worldmark+2+Aerocity+Delhi" target="_blank" class="primary-btn">
+                            <a href="https://maps.google.com/?q=Worldmark+2+Aerocity+Delhi" target="_blank"
+                                class="primary-btn">
                                 <i class="fas fa-directions"></i>
                                 Get Directions
                             </a>
@@ -152,7 +161,8 @@
                 <!-- Store 3 -->
                 <div class="cafe-card">
                     <div class="cafe-image-wrap">
-                        <img src="{{ asset('thf-assets/images/19201080Baklava.jpg') }}" class="cafe-image" alt="The HazleNut Factory Mumbai">
+                        <img src="{{ asset('thf-assets/images/19201080Baklava.jpg') }}" class="cafe-image"
+                            alt="The HazleNut Factory Mumbai">
                     </div>
                     <div class="cafe-info">
                         <div class="cafe-header">The HazleNut Factory</div>
@@ -160,7 +170,8 @@
                         <div class="cafe-details">
                             <div class="details-row">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Unit 12, Ground Floor, Linking Road, Bandra West, Mumbai, Maharashtra 400050</span>
+                                <span>Unit 12, Ground Floor, Linking Road, Bandra West, Mumbai, Maharashtra
+                                    400050</span>
                             </div>
                             <div class="details-row">
                                 <i class="fas fa-phone"></i>
@@ -173,7 +184,8 @@
                             <span class="open-now">Open Now</span>
                         </div>
                         <div class="cafe-actions">
-                            <a href="https://maps.google.com/?q=Linking+Road+Bandra+Mumbai" target="_blank" class="primary-btn">
+                            <a href="https://maps.google.com/?q=Linking+Road+Bandra+Mumbai" target="_blank"
+                                class="primary-btn">
                                 <i class="fas fa-directions"></i>
                                 Get Directions
                             </a>
@@ -189,33 +201,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="{{ route('shop.home.index') }}">Home</a>
-                <a href="{{ route('shop.search.index') }}">Shop</a>
-                <a href="{{ route('shop.store-locator.index') }}">Store Locator</a>
-                <a href="{{ route('shop.corporate.index') }}">Corporate Gifting</a>
-            </div>
-            <div class="footer-section">
-                <h3>Customer Service</h3>
-                <a href="#">Contact Us</a>
-                <a href="#">FAQs</a>
-                <a href="#">Shipping & Returns</a>
-                <a href="#">Track Order</a>
-            </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <a href="tel:+911234567890">+91 123 456 7890</a>
-                <a href="mailto:info@thf.com">info@thf.com</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; {{ date('Y') }} The HazleNut Factory. All rights reserved.</p>
-        </div>
-    </footer>
+    @include("shop::partials.thf-footer")
 
     <script src="{{ asset('thf-assets/js/store-locator.js') }}"></script>
 </body>
+
 </html>

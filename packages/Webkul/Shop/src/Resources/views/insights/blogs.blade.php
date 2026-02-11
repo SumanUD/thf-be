@@ -675,47 +675,6 @@
             margin: 0 auto 30px;
         }
 
-        /* Footer */
-        .footer {
-            background: rgba(10, 10, 10, 0.95);
-            padding: 60px 40px 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            color: #d4af37;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #d4af37;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-        }
 
         /* RESPONSIVE */
         @media (max-width: 1200px) {
@@ -725,9 +684,6 @@
         }
 
         @media (max-width: 992px) {
-            .menu-left {
-                grid-template-columns: repeat(3, 1fr);
-            }
 
             .blog-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -735,13 +691,6 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                padding: 15px 20px;
-            }
-
-            .header-right {
-                display: none;
-            }
 
             .container {
                 padding: 0 20px;
@@ -778,13 +727,6 @@
         }
 
         @media (max-width: 576px) {
-            .menu-left {
-                grid-template-columns: 1fr;
-            }
-
-            .mega-panel {
-                padding: 100px 30px 40px;
-            }
 
             .blog-categories {
                 flex-direction: column;

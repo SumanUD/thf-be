@@ -40,136 +40,7 @@
             line-height: 1.6;
         }
 
-        /* Navigation Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo img {
-            height: 50px;
-        }
-
-        .menu-toggle {
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            color: #d4af37;
-        }
-
-        /* Mega Menu */
-        .mega-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(20, 20, 20, 0.95));
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-y: auto;
-            backdrop-filter: blur(20px);
-        }
-
-        .mega-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .mega-panel {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 120px 60px 60px;
-        }
-
-        .menu-left {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 40px;
-        }
-
-        .links-col .col-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-            color: #d4af37;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .links-col ul {
-            list-style: none;
-        }
-
-        .links-col ul li {
-            margin-bottom: 15px;
-        }
-
-        .links-col ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .links-col ul li a:hover {
-            color: #d4af37;
-            transform: translateX(5px);
-        }
-
-        .header-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .header-center img {
-            height: 30px;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #d4af37;
-        }
+        /* Navigation Header - uses shared header.css */
 
         /* HERO BANNER */
         .hero-banner {
@@ -922,47 +793,6 @@
             transform: translateX(5px);
         }
 
-        /* Footer */
-        .footer {
-            background: rgba(10, 10, 10, 0.95);
-            padding: 60px 40px 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            color: #d4af37;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #d4af37;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-        }
 
         /* RESPONSIVE */
         @media (max-width: 1200px) {
@@ -972,9 +802,6 @@
         }
 
         @media (max-width: 992px) {
-            .menu-left {
-                grid-template-columns: repeat(3, 1fr);
-            }
 
             .recipe-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -986,13 +813,6 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                padding: 15px 20px;
-            }
-
-            .header-right {
-                display: none;
-            }
 
             .container {
                 padding: 0 20px;
@@ -1043,13 +863,6 @@
         }
 
         @media (max-width: 576px) {
-            .menu-left {
-                grid-template-columns: 1fr;
-            }
-
-            .mega-panel {
-                padding: 100px 30px 40px;
-            }
 
             .recipe-categories {
                 flex-direction: column;
@@ -1552,11 +1365,7 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle - handled by header.js
-
-
-
-        // Recipe Category Filtering
+        // Menu Toggle - handled by header.js// Recipe Category Filtering
         document.querySelectorAll('.category-btn').forEach(button => {
             button.addEventListener('click', () => {
                 // Update active button
