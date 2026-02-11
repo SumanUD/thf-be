@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,8 +196,15 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
@@ -256,8 +264,15 @@
         }
 
         @keyframes cardFloatUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* FAQ HEADER */
@@ -594,6 +609,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Header -->
     <header class="header">
@@ -690,7 +706,8 @@
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-title">Frequently Asked Questions</div>
-            <div class="hero-sub">Find answers to common questions about our products, ordering process, delivery, and more. Can't find what you're looking for? Contact our support team.</div>
+            <div class="hero-sub">Find answers to common questions about our products, ordering process, delivery, and
+                more. Can't find what you're looking for? Contact our support team.</div>
         </div>
     </div>
 
@@ -699,7 +716,8 @@
         <div class="floating-card">
             <div class="faq-header">
                 <h1>How Can We Help?</h1>
-                <p>Browse through our frequently asked questions or use the categories below to find specific information.</p>
+                <p>Browse through our frequently asked questions or use the categories below to find specific
+                    information.</p>
             </div>
 
             <!-- FAQ Categories -->
@@ -729,7 +747,8 @@
                             <li>Digital Wallets (Paytm, PhonePe, Google Pay)</li>
                             <li>Cash on Delivery (available for select locations)</li>
                         </ul>
-                        <p>All payments are processed through secure, encrypted gateways to ensure your information is protected.</p>
+                        <p>All payments are processed through secure, encrypted gateways to ensure your information is
+                            protected.</p>
                     </div>
                 </div>
 
@@ -739,7 +758,8 @@
                         <div class="faq-icon"><i class="fas fa-plus"></i></div>
                     </div>
                     <div class="faq-answer">
-                        <p>Once your order is shipped, you'll receive a confirmation email with a tracking number and link. You can also track your order by:</p>
+                        <p>Once your order is shipped, you'll receive a confirmation email with a tracking number and
+                            link. You can also track your order by:</p>
                         <ul>
                             <li>Logging into your account on our website</li>
                             <li>Using the order tracking page with your order number</li>
@@ -763,7 +783,8 @@
                             <li><strong>Tier 2 & 3 Cities:</strong> 4-7 business days</li>
                             <li><strong>Rural Areas:</strong> 7-10 business days</li>
                         </ul>
-                        <p>Express delivery options are available for urgent orders. During festive seasons, delivery times may be extended by 1-2 days.</p>
+                        <p>Express delivery options are available for urgent orders. During festive seasons, delivery
+                            times may be extended by 1-2 days.</p>
                     </div>
                 </div>
 
@@ -773,8 +794,11 @@
                         <div class="faq-icon"><i class="fas fa-plus"></i></div>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we offer international shipping to select countries. International delivery typically takes 7-15 business days, depending on the destination.</p>
-                        <p>Please note that international orders may be subject to customs duties and taxes, which are the responsibility of the recipient. For specific country availability and shipping rates, please contact our customer support team.</p>
+                        <p>Yes, we offer international shipping to select countries. International delivery typically
+                            takes 7-15 business days, depending on the destination.</p>
+                        <p>Please note that international orders may be subject to customs duties and taxes, which are
+                            the responsibility of the recipient. For specific country availability and shipping rates,
+                            please contact our customer support team.</p>
                     </div>
                 </div>
 
@@ -792,7 +816,8 @@
                             <li><strong>Sugar-Free:</strong> Select sugar-free options available</li>
                             <li><strong>Gluten Information:</strong> Clearly labeled on product pages</li>
                         </ul>
-                        <p>For specific dietary concerns, please check individual product descriptions or contact our customer service team for detailed ingredient information.</p>
+                        <p>For specific dietary concerns, please check individual product descriptions or contact our
+                            customer service team for detailed ingredient information.</p>
                     </div>
                 </div>
 
@@ -830,7 +855,8 @@
                             <li>Flexible delivery scheduling</li>
                             <li>Digital gift cards for employee rewards</li>
                         </ul>
-                        <p>Our corporate team can create bespoke solutions tailored to your requirements. Contact corporate@hazlenutfactory.com for personalized service.</p>
+                        <p>Our corporate team can create bespoke solutions tailored to your requirements. Contact
+                            corporate@hazlenutfactory.com for personalized service.</p>
                     </div>
                 </div>
 
@@ -843,12 +869,15 @@
                     <div class="faq-answer">
                         <p>We stand by the quality of our products:</p>
                         <ul>
-                            <li><strong>Damaged Products:</strong> Full refund or replacement within 48 hours of delivery</li>
+                            <li><strong>Damaged Products:</strong> Full refund or replacement within 48 hours of
+                                delivery</li>
                             <li><strong>Quality Issues:</strong> Immediate resolution with refund or replacement</li>
                             <li><strong>Cancellation:</strong> Free cancellation before order processing</li>
                             <li><strong>Refund Processing:</strong> 5-7 business days to original payment method</li>
                         </ul>
-                        <p>Due to the perishable nature of our products, we cannot accept returns for change of mind. For any issues, please contact us within 24 hours of delivery with photos of the product and packaging.</p>
+                        <p>Due to the perishable nature of our products, we cannot accept returns for change of mind.
+                            For any issues, please contact us within 24 hours of delivery with photos of the product and
+                            packaging.</p>
                     </div>
                 </div>
 
@@ -865,7 +894,8 @@
                             <li>For urgent modifications, contact our support team immediately</li>
                             <li>Pre-orders for festive seasons may have different cancellation policies</li>
                         </ul>
-                        <p>To request changes, please call our customer support at +91-XXXXXXXXXX or email support@hazlenutfactory.com with your order number.</p>
+                        <p>To request changes, please call our customer support at +91-XXXXXXXXXX or email
+                            support@hazlenutfactory.com with your order number.</p>
                     </div>
                 </div>
             </div>
@@ -873,7 +903,8 @@
             <!-- Contact CTA -->
             <div class="contact-cta">
                 <h2>Still Have Questions?</h2>
-                <p>Our customer support team is here to help you with any additional questions or concerns you may have.</p>
+                <p>Our customer support team is here to help you with any additional questions or concerns you may have.
+                </p>
                 <div class="contact-buttons">
                     <a href="tel:+911234567890" class="contact-btn primary">
                         <i class="fas fa-phone"></i> Call Us Now
@@ -893,34 +924,16 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
+        // Menu Toggle - handled by header.js
 
-        menuToggle.addEventListener('click', () => {
-            megaMenu.classList.toggle('active');
-        });
 
-        // Close menu on clicking outside
-        document.addEventListener('click', (e) => {
-            if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
-
-        // Close menu on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
 
         // FAQ Accordion Functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentElement;
                 item.classList.toggle('active');
-                
+
                 // Update icon
                 const icon = question.querySelector('.faq-icon i');
                 if (item.classList.contains('active')) {
@@ -945,7 +958,7 @@
                 // Filter FAQ items
                 const category = button.getAttribute('data-category');
                 const allItems = document.querySelectorAll('.faq-item');
-                
+
                 allItems.forEach(item => {
                     if (category === 'all' || item.getAttribute('data-category') === category) {
                         item.style.display = 'block';
@@ -961,4 +974,5 @@
         document.querySelector('.faq-item .faq-icon i').classList.replace('fa-plus', 'fa-times');
     </script>
 </body>
+
 </html>

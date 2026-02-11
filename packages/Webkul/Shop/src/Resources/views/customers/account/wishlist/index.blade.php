@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -338,6 +339,7 @@
         }
     </style>
 </head>
+
 <body>
     @include('shop::partials.thf-header')
 
@@ -365,12 +367,13 @@
                             </a>
                         </li>
                         @if (core()->getConfigData('customer.settings.wishlist.wishlist_option'))
-                        <li class="profile-nav-item">
-                            <a href="{{ route('shop.customers.account.wishlist.index') }}" class="profile-nav-link active">
-                                <i class="fas fa-heart"></i>
-                                <span>Wishlist</span>
-                            </a>
-                        </li>
+                            <li class="profile-nav-item">
+                                <a href="{{ route('shop.customers.account.wishlist.index') }}"
+                                    class="profile-nav-link active">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Wishlist</span>
+                                </a>
+                            </li>
                         @endif
                         <li class="profile-nav-item">
                             <a href="{{ route('shop.customers.account.addresses.index') }}" class="profile-nav-link">
@@ -379,7 +382,9 @@
                             </a>
                         </li>
                         <li class="profile-nav-item">
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('customerLogout').submit();" class="profile-nav-link">
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('customerLogout').submit();"
+                                class="profile-nav-link">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
                             </a>
@@ -387,7 +392,8 @@
                     </ul>
                 </nav>
 
-                <form id="customerLogout" method="POST" action="{{ route('shop.customer.session.destroy') }}" style="display: none;">
+                <form id="customerLogout" method="POST" action="{{ route('shop.customer.session.destroy') }}"
+                    style="display: none;">
                     @csrf
                     @method('DELETE')
                 </form>
@@ -411,27 +417,9 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
+        // Menu Toggle - handled by header.js
 
-        if (menuToggle && megaMenu) {
-            menuToggle.addEventListener('click', () => {
-                megaMenu.classList.toggle('active');
-            });
 
-            document.addEventListener('click', (e) => {
-                if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                    megaMenu.classList.remove('active');
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                    megaMenu.classList.remove('active');
-                }
-            });
-        }
 
         // Fetch Wishlist
         fetch('{{ route("shop.api.customers.account.wishlist.index") }}')
@@ -510,17 +498,17 @@
                     'Accept': 'application/json'
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message) {
-                    alert(data.message);
-                    location.reload();
-                }
-            })
-            .catch(error => {
-                console.error('Error removing from wishlist:', error);
-                alert('Failed to remove item. Please try again.');
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error removing from wishlist:', error);
+                    alert('Failed to remove item. Please try again.');
+                });
         }
 
         function addToCart(productId, event) {
@@ -541,22 +529,23 @@
                     quantity: 1
                 })
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.data || data.message) {
-                    alert('Added to cart!');
-                    // Update cart count
-                    const cartCount = document.getElementById('header-cart-count');
-                    if (cartCount && data.data?.items_qty) {
-                        cartCount.textContent = data.data.items_qty;
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data || data.message) {
+                        alert('Added to cart!');
+                        // Update cart count
+                        const cartCount = document.getElementById('header-cart-count');
+                        if (cartCount && data.data?.items_qty) {
+                            cartCount.textContent = data.data.items_qty;
+                        }
                     }
-                }
-            })
-            .catch(error => {
-                console.error('Error adding to cart:', error);
-                alert('Failed to add to cart. Please try again.');
-            });
+                })
+                .catch(error => {
+                    console.error('Error adding to cart:', error);
+                    alert('Failed to add to cart. Please try again.');
+                });
         }
     </script>
 </body>
+
 </html>

@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,8 +196,15 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
@@ -256,8 +264,15 @@
         }
 
         @keyframes cardFloatUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* SECTION TITLES */
@@ -695,11 +710,11 @@
             .positions-grid {
                 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             }
-            
+
             .values-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
-            
+
             .menu-left {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -784,6 +799,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Header -->
     <header class="header">
@@ -879,7 +895,8 @@
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-title">Build Your Career at THF</div>
-            <div class="hero-sub">Join our passionate team dedicated to creating India's finest sweets and gifting experiences. Grow with us in an environment that values creativity, quality, and innovation.</div>
+            <div class="hero-sub">Join our passionate team dedicated to creating India's finest sweets and gifting
+                experiences. Grow with us in an environment that values creativity, quality, and innovation.</div>
         </div>
     </div>
 
@@ -889,14 +906,15 @@
             <!-- LIFE AT THF SECTION -->
             <section class="life-at-thf">
                 <h2 class="section-title">Life at The HazleNut Factory</h2>
-                
+
                 <div class="intro-text">
-                    At THF, we believe our people are our greatest ingredient. We foster a culture of innovation, collaboration, and excellence where every team member contributes to our sweet success story.
+                    At THF, we believe our people are our greatest ingredient. We foster a culture of innovation,
+                    collaboration, and excellence where every team member contributes to our sweet success story.
                 </div>
 
                 <!-- Our Values -->
                 <h3 style="font-size: 2rem; color: #fff; text-align: center; margin-bottom: 40px;">Our Core Values</h3>
-                
+
                 <div class="values-grid">
                     <!-- Value 1 -->
                     <div class="value-card">
@@ -904,7 +922,8 @@
                             <i class="fas fa-heart"></i>
                         </div>
                         <h3>Passion for Quality</h3>
-                        <p>We're obsessed with perfection. From sourcing the finest ingredients to crafting each sweet with care, quality is at the heart of everything we do.</p>
+                        <p>We're obsessed with perfection. From sourcing the finest ingredients to crafting each sweet
+                            with care, quality is at the heart of everything we do.</p>
                     </div>
 
                     <!-- Value 2 -->
@@ -913,7 +932,8 @@
                             <i class="fas fa-lightbulb"></i>
                         </div>
                         <h3>Innovation First</h3>
-                        <p>We constantly push boundaries in sweet-making traditions, creating new experiences while respecting heritage and craftsmanship.</p>
+                        <p>We constantly push boundaries in sweet-making traditions, creating new experiences while
+                            respecting heritage and craftsmanship.</p>
                     </div>
 
                     <!-- Value 3 -->
@@ -922,7 +942,8 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <h3>Collaborative Spirit</h3>
-                        <p>We believe great things happen when diverse talents work together. Our teams collaborate across departments to create magical experiences.</p>
+                        <p>We believe great things happen when diverse talents work together. Our teams collaborate
+                            across departments to create magical experiences.</p>
                     </div>
 
                     <!-- Value 4 -->
@@ -931,7 +952,8 @@
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <h3>Continuous Growth</h3>
-                        <p>We invest in our people's development with training programs, mentorship, and opportunities to take on new challenges.</p>
+                        <p>We invest in our people's development with training programs, mentorship, and opportunities
+                            to take on new challenges.</p>
                     </div>
 
                     <!-- Value 5 -->
@@ -940,7 +962,8 @@
                             <i class="fas fa-leaf"></i>
                         </div>
                         <h3>Sustainable Practices</h3>
-                        <p>We're committed to ethical sourcing, reducing our environmental footprint, and supporting the communities we serve.</p>
+                        <p>We're committed to ethical sourcing, reducing our environmental footprint, and supporting the
+                            communities we serve.</p>
                     </div>
 
                     <!-- Value 6 -->
@@ -949,14 +972,16 @@
                             <i class="fas fa-star"></i>
                         </div>
                         <h3>Excellence Always</h3>
-                        <p>We strive for excellence in every interaction, every product, and every moment of service delivery to our customers.</p>
+                        <p>We strive for excellence in every interaction, every product, and every moment of service
+                            delivery to our customers.</p>
                     </div>
                 </div>
 
                 <!-- Employee Benefits -->
                 <div class="benefits-section">
-                    <h3 style="font-size: 2rem; color: #fff; text-align: center; margin-bottom: 40px;">Employee Benefits & Perks</h3>
-                    
+                    <h3 style="font-size: 2rem; color: #fff; text-align: center; margin-bottom: 40px;">Employee Benefits
+                        & Perks</h3>
+
                     <div class="benefits-grid">
                         <!-- Benefit 1 -->
                         <div class="benefit-item">
@@ -1052,7 +1077,7 @@
             <!-- OPEN POSITIONS SECTION -->
             <section class="open-positions">
                 <h2 class="section-title">Open Positions</h2>
-                
+
                 <!-- Filter Buttons -->
                 <div class="positions-filter">
                     <button class="filter-btn active" data-department="all">All Positions</button>
@@ -1090,7 +1115,8 @@
                         </div>
                         <div class="position-body">
                             <p class="position-details">
-                                Lead our premium confectionery team in creating innovative sweet creations while maintaining traditional craftsmanship standards.
+                                Lead our premium confectionery team in creating innovative sweet creations while
+                                maintaining traditional craftsmanship standards.
                             </p>
                             <ul class="requirements-list">
                                 <li>Expertise in traditional Indian sweets and modern techniques</li>
@@ -1132,7 +1158,8 @@
                         </div>
                         <div class="position-body">
                             <p class="position-details">
-                                Oversee daily store operations at our flagship Mumbai location, ensuring exceptional customer experiences and team development.
+                                Oversee daily store operations at our flagship Mumbai location, ensuring exceptional
+                                customer experiences and team development.
                             </p>
                             <ul class="requirements-list">
                                 <li>Proven retail management experience in premium brands</li>
@@ -1174,7 +1201,8 @@
                         </div>
                         <div class="position-body">
                             <p class="position-details">
-                                Drive our digital presence and customer acquisition through innovative social media, email, and content marketing strategies.
+                                Drive our digital presence and customer acquisition through innovative social media,
+                                email, and content marketing strategies.
                             </p>
                             <ul class="requirements-list">
                                 <li>Experience with social media platforms and analytics</li>
@@ -1187,7 +1215,8 @@
                             <button class="apply-btn" data-position="Digital Marketing Specialist">
                                 <i class="fas fa-paper-plane"></i> Apply Now
                             </button>
-                            <button class="detail-btn" data-position="Digital Marketing Specialist">View Details</button>
+                            <button class="detail-btn" data-position="Digital Marketing Specialist">View
+                                Details</button>
                         </div>
                     </div>
 
@@ -1216,7 +1245,8 @@
                         </div>
                         <div class="position-body">
                             <p class="position-details">
-                                Oversee daily production operations at our main facility, ensuring quality, efficiency, and adherence to food safety standards.
+                                Oversee daily production operations at our main facility, ensuring quality, efficiency,
+                                and adherence to food safety standards.
                             </p>
                             <ul class="requirements-list">
                                 <li>Experience in food manufacturing environment</li>
@@ -1258,7 +1288,8 @@
                         </div>
                         <div class="position-body">
                             <p class="position-details">
-                                Develop and manage corporate client relationships for our premium gifting solutions and bulk order business.
+                                Develop and manage corporate client relationships for our premium gifting solutions and
+                                bulk order business.
                             </p>
                             <ul class="requirements-list">
                                 <li>Proven B2B sales experience</li>
@@ -1300,7 +1331,8 @@
                         </div>
                         <div class="position-body">
                             <p class="position-details">
-                                Join our creative pastry team and learn from master chefs while contributing to our premium dessert creations.
+                                Join our creative pastry team and learn from master chefs while contributing to our
+                                premium dessert creations.
                             </p>
                             <ul class="requirements-list">
                                 <li>Culinary arts degree or equivalent training</li>
@@ -1322,7 +1354,8 @@
             <!-- CTA SECTION -->
             <div class="cta-section">
                 <h2>Don't See Your Dream Role?</h2>
-                <p>We're always looking for passionate individuals to join our team. Send us your resume and tell us how you can contribute to our sweet journey.</p>
+                <p>We're always looking for passionate individuals to join our team. Send us your resume and tell us how
+                    you can contribute to our sweet journey.</p>
                 <div class="cta-buttons">
                     <button class="cta-btn primary" id="generalApplication">
                         <i class="fas fa-user-plus"></i> Submit General Application
@@ -1339,27 +1372,9 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
+        // Menu Toggle - handled by header.js
 
-        menuToggle.addEventListener('click', () => {
-            megaMenu.classList.toggle('active');
-        });
 
-        // Close menu on clicking outside
-        document.addEventListener('click', (e) => {
-            if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
-
-        // Close menu on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
 
         // Position Filtering
         document.querySelectorAll('.filter-btn').forEach(button => {
@@ -1373,7 +1388,7 @@
                 // Filter positions
                 const department = button.getAttribute('data-department');
                 const allPositions = document.querySelectorAll('.position-card');
-                
+
                 allPositions.forEach(position => {
                     if (department === 'all' || position.getAttribute('data-department') === department) {
                         position.style.display = 'block';
@@ -1394,7 +1409,7 @@
 
         // Apply Button Functionality
         document.querySelectorAll('.apply-btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const positionTitle = this.getAttribute('data-position');
                 showApplicationForm(positionTitle);
             });
@@ -1402,14 +1417,14 @@
 
         // View Details Button Functionality
         document.querySelectorAll('.detail-btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const positionTitle = this.getAttribute('data-position');
                 showPositionDetails(positionTitle);
             });
         });
 
         // General Application
-        document.getElementById('generalApplication').addEventListener('click', function() {
+        document.getElementById('generalApplication').addEventListener('click', function () {
             showApplicationForm('General Application');
         });
 
@@ -1550,23 +1565,23 @@
                     </div>
                 </div>
             `;
-            
+
             document.body.insertAdjacentHTML('beforeend', modalHTML);
-            
+
             // Handle form submission
-            document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            document.getElementById('applicationForm').addEventListener('submit', function (e) {
                 e.preventDefault();
                 alert(`Thank you for applying for ${positionTitle}! We will review your application and contact you soon.`);
                 document.querySelector('.application-modal').remove();
             });
-            
+
             // Handle cancel
-            document.getElementById('cancelApply').addEventListener('click', function() {
+            document.getElementById('cancelApply').addEventListener('click', function () {
                 document.querySelector('.application-modal').remove();
             });
-            
+
             // Close on outside click
-            document.querySelector('.application-modal').addEventListener('click', function(e) {
+            document.querySelector('.application-modal').addEventListener('click', function (e) {
                 if (e.target === this) {
                     this.remove();
                 }
@@ -1579,4 +1594,5 @@
         }
     </script>
 </body>
+
 </html>

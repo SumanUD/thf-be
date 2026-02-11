@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,136 +40,7 @@
             line-height: 1.6;
         }
 
-        /* Navigation Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo img {
-            height: 50px;
-        }
-
-        .menu-toggle {
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            color: #d4af37;
-        }
-
-        /* Mega Menu */
-        .mega-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(20, 20, 20, 0.95));
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-y: auto;
-            backdrop-filter: blur(20px);
-        }
-
-        .mega-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .mega-panel {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 120px 60px 60px;
-        }
-
-        .menu-left {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 40px;
-        }
-
-        .links-col .col-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-            color: #d4af37;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .links-col ul {
-            list-style: none;
-        }
-
-        .links-col ul li {
-            margin-bottom: 15px;
-        }
-
-        .links-col ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .links-col ul li a:hover {
-            color: #d4af37;
-            transform: translateX(5px);
-        }
-
-        .header-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .header-center img {
-            height: 30px;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #d4af37;
-        }
+        /* Navigation Header - uses shared header.css */
 
         /* HERO BANNER */
         .hero-banner {
@@ -196,8 +68,15 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
@@ -257,8 +136,15 @@
         }
 
         @keyframes cardFloatUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* BLOG HEADER */
@@ -842,7 +728,7 @@
             .menu-left {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .blog-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
@@ -921,6 +807,7 @@
         }
     </style>
 </head>
+
 <body>
     @include('shop::partials.thf-header')
 
@@ -928,7 +815,8 @@
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-title">THF Journal</div>
-            <div class="hero-sub">Discover stories behind our sweets, expert tips, seasonal celebrations, and the art of premium gifting. Welcome to our world of flavor and tradition.</div>
+            <div class="hero-sub">Discover stories behind our sweets, expert tips, seasonal celebrations, and the art of
+                premium gifting. Welcome to our world of flavor and tradition.</div>
         </div>
     </div>
 
@@ -938,7 +826,8 @@
             <!-- Blog Header -->
             <div class="blog-header">
                 <h1>Latest Stories & Insights</h1>
-                <p>From sweet-making traditions to modern gifting trends, explore articles that celebrate our passion for quality and innovation.</p>
+                <p>From sweet-making traditions to modern gifting trends, explore articles that celebrate our passion
+                    for quality and innovation.</p>
             </div>
 
             <!-- Blog Categories -->
@@ -956,12 +845,15 @@
             <div class="featured-post">
                 <div class="featured-content">
                     <div class="featured-image">
-                        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800" alt="The Art of Baklava">
+                        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800"
+                            alt="The Art of Baklava">
                     </div>
                     <div class="featured-text">
                         <span class="featured-badge">Featured Story</span>
                         <h2 class="featured-title">The Art of Baklava: A Centuries-Old Tradition</h2>
-                        <p class="featured-excerpt">Discover the intricate craftsmanship behind our premium baklava, from selecting the finest pistachios to perfecting the delicate layering technique passed down through generations of master confectioners.</p>
+                        <p class="featured-excerpt">Discover the intricate craftsmanship behind our premium baklava,
+                            from selecting the finest pistachios to perfecting the delicate layering technique passed
+                            down through generations of master confectioners.</p>
                         <div class="featured-meta">
                             <div class="meta-item">
                                 <i class="far fa-calendar"></i>
@@ -988,7 +880,8 @@
                 <!-- Blog Post 1 -->
                 <article class="blog-card" data-category="gifting">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800" alt="Corporate Gifting Trends">
+                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800"
+                            alt="Corporate Gifting Trends">
                         <span class="blog-card-badge">Gifting Guide</span>
                     </div>
                     <div class="blog-card-content">
@@ -997,7 +890,8 @@
                             <span><i class="far fa-folder"></i> Gifting</span>
                         </div>
                         <h3 class="blog-card-title">Corporate Gifting Trends 2025: Making Lasting Impressions</h3>
-                        <p class="blog-card-excerpt">Explore how premium sweets are becoming the preferred choice for corporate gifting, combining tradition with personal touch.</p>
+                        <p class="blog-card-excerpt">Explore how premium sweets are becoming the preferred choice for
+                            corporate gifting, combining tradition with personal touch.</p>
                         <div class="blog-card-footer">
                             <a href="#" class="blog-card-link">
                                 Read More <i class="fas fa-arrow-right"></i>
@@ -1010,7 +904,8 @@
                 <!-- Blog Post 2 -->
                 <article class="blog-card" data-category="seasonal">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1604861979844-fe5f17c52ef6?w=800" alt="Diwali Celebrations">
+                        <img src="https://images.unsplash.com/photo-1604861979844-fe5f17c52ef6?w=800"
+                            alt="Diwali Celebrations">
                         <span class="blog-card-badge">Seasonal</span>
                     </div>
                     <div class="blog-card-content">
@@ -1019,7 +914,8 @@
                             <span><i class="far fa-folder"></i> Seasonal</span>
                         </div>
                         <h3 class="blog-card-title">Diwali Delights: Sweet Traditions Across India</h3>
-                        <p class="blog-card-excerpt">A journey through regional Diwali sweet traditions and how we're reimagining them for modern celebrations.</p>
+                        <p class="blog-card-excerpt">A journey through regional Diwali sweet traditions and how we're
+                            reimagining them for modern celebrations.</p>
                         <div class="blog-card-footer">
                             <a href="#" class="blog-card-link">
                                 Read More <i class="fas fa-arrow-right"></i>
@@ -1032,7 +928,8 @@
                 <!-- Blog Post 3 -->
                 <article class="blog-card" data-category="health">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784098?w=800" alt="Natural Sweeteners">
+                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784098?w=800"
+                            alt="Natural Sweeteners">
                         <span class="blog-card-badge">Health & Wellness</span>
                     </div>
                     <div class="blog-card-content">
@@ -1041,7 +938,8 @@
                             <span><i class="far fa-folder"></i> Health</span>
                         </div>
                         <h3 class="blog-card-title">The Sweet Balance: Natural Sweeteners in Modern Confectionery</h3>
-                        <p class="blog-card-excerpt">How we're incorporating dates, jaggery, and honey into our sweets for healthier indulgence without compromising taste.</p>
+                        <p class="blog-card-excerpt">How we're incorporating dates, jaggery, and honey into our sweets
+                            for healthier indulgence without compromising taste.</p>
                         <div class="blog-card-footer">
                             <a href="#" class="blog-card-link">
                                 Read More <i class="fas fa-arrow-right"></i>
@@ -1063,7 +961,8 @@
                             <span><i class="far fa-folder"></i> Behind Scenes</span>
                         </div>
                         <h3 class="blog-card-title">A Day in Our Kitchen: Crafting Premium Sweets</h3>
-                        <p class="blog-card-excerpt">Step inside our state-of-the-art kitchen to see how tradition meets technology in creating our signature sweets.</p>
+                        <p class="blog-card-excerpt">Step inside our state-of-the-art kitchen to see how tradition meets
+                            technology in creating our signature sweets.</p>
                         <div class="blog-card-footer">
                             <a href="#" class="blog-card-link">
                                 Read More <i class="fas fa-arrow-right"></i>
@@ -1076,7 +975,8 @@
                 <!-- Blog Post 5 -->
                 <article class="blog-card" data-category="recipes">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1608797178974-15b35a64ede9?w=800" alt="Date Recipes">
+                        <img src="https://images.unsplash.com/photo-1608797178974-15b35a64ede9?w=800"
+                            alt="Date Recipes">
                         <span class="blog-card-badge">Recipes</span>
                     </div>
                     <div class="blog-card-content">
@@ -1085,7 +985,8 @@
                             <span><i class="far fa-folder"></i> Recipes</span>
                         </div>
                         <h3 class="blog-card-title">5 Date-Based Recipes for Festive Seasons</h3>
-                        <p class="blog-card-excerpt">Creative ways to incorporate premium dates into your festive cooking, from desserts to savory dishes.</p>
+                        <p class="blog-card-excerpt">Creative ways to incorporate premium dates into your festive
+                            cooking, from desserts to savory dishes.</p>
                         <div class="blog-card-footer">
                             <a href="#" class="blog-card-link">
                                 Read More <i class="fas fa-arrow-right"></i>
@@ -1098,7 +999,8 @@
                 <!-- Blog Post 6 -->
                 <article class="blog-card" data-category="sweet-making">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1596040033229-a0b7e580c034?w=800" alt="Saffron Quality">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a0b7e580c034?w=800"
+                            alt="Saffron Quality">
                         <span class="blog-card-badge">Sweet Making</span>
                     </div>
                     <div class="blog-card-content">
@@ -1107,7 +1009,8 @@
                             <span><i class="far fa-folder"></i> Sweet Making</span>
                         </div>
                         <h3 class="blog-card-title">Saffron Selection: Why Quality Matters in Premium Sweets</h3>
-                        <p class="blog-card-excerpt">Discover how we source the world's finest saffron and why it makes all the difference in our premium sweets.</p>
+                        <p class="blog-card-excerpt">Discover how we source the world's finest saffron and why it makes
+                            all the difference in our premium sweets.</p>
                         <div class="blog-card-footer">
                             <a href="#" class="blog-card-link">
                                 Read More <i class="fas fa-arrow-right"></i>
@@ -1141,7 +1044,8 @@
                         <!-- Newsletter CTA -->
                         <div class="newsletter-cta">
                             <h2>Stay Updated with Sweet Stories</h2>
-                            <p>Subscribe to our newsletter for exclusive recipes, behind-the-scenes insights, and seasonal specials delivered to your inbox.</p>
+                            <p>Subscribe to our newsletter for exclusive recipes, behind-the-scenes insights, and
+                                seasonal specials delivered to your inbox.</p>
                             <div class="newsletter-form">
                                 <input type="email" placeholder="Enter your email address" required>
                                 <button type="submit">
@@ -1167,7 +1071,8 @@
                             <h3 class="sidebar-title">Recent Posts</h3>
                             <ul class="recent-posts-list">
                                 <li class="recent-post-item">
-                                    <a href="#" class="recent-post-link">The Art of Baklava: A Centuries-Old Tradition</a>
+                                    <a href="#" class="recent-post-link">The Art of Baklava: A Centuries-Old
+                                        Tradition</a>
                                     <div class="recent-post-date">
                                         <i class="far fa-calendar"></i> Dec 15, 2024
                                     </div>
@@ -1223,27 +1128,7 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
-
-        menuToggle.addEventListener('click', () => {
-            megaMenu.classList.toggle('active');
-        });
-
-        // Close menu on clicking outside
-        document.addEventListener('click', (e) => {
-            if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
-
-        // Close menu on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
+        // Menu Toggle - handled by header.js
 
         // Blog Category Filtering
         document.querySelectorAll('.category-btn').forEach(button => {
@@ -1257,7 +1142,7 @@
                 // Filter blog posts
                 const category = button.getAttribute('data-category');
                 const allPosts = document.querySelectorAll('.blog-card');
-                
+
                 allPosts.forEach(post => {
                     if (category === 'all' || post.getAttribute('data-category') === category) {
                         post.style.display = 'flex';
@@ -1295,7 +1180,7 @@
 
         // Newsletter Subscription
         const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', function(e) {
+        newsletterForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
             if (email) {
@@ -1306,14 +1191,14 @@
 
         // Pagination
         document.querySelectorAll('.pagination-btn:not(.disabled)').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 if (this.classList.contains('active')) return;
-                
+
                 // Update active state
                 document.querySelectorAll('.pagination-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
-                
+
                 if (!this.querySelector('i')) {
                     this.classList.add('active');
                     const pageNum = this.textContent;
@@ -1324,20 +1209,20 @@
 
         // Read More Links
         document.querySelectorAll('.blog-card-link, .read-more-btn').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
-                const postTitle = this.closest('article')?.querySelector('.blog-card-title')?.textContent || 
-                                this.closest('.featured-post')?.querySelector('.featured-title')?.textContent;
+                const postTitle = this.closest('article')?.querySelector('.blog-card-title')?.textContent ||
+                    this.closest('.featured-post')?.querySelector('.featured-title')?.textContent;
                 alert(`Loading article: "${postTitle}"\n\nIn a real implementation, this would navigate to the blog post detail page.`);
             });
         });
 
         // Tag Cloud Click
         document.querySelectorAll('.tag-item').forEach(tag => {
-            tag.addEventListener('click', function(e) {
+            tag.addEventListener('click', function (e) {
                 e.preventDefault();
                 const tagText = this.textContent;
-                
+
                 // Find and click the corresponding category button
                 const categoryButtons = document.querySelectorAll('.category-btn');
                 categoryButtons.forEach(btn => {
@@ -1350,7 +1235,7 @@
 
         // Recent Posts Click
         document.querySelectorAll('.recent-post-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 const postTitle = this.textContent;
                 alert(`Loading recent post: "${postTitle}"\n\nIn a real implementation, this would navigate to the blog post detail page.`);
@@ -1358,4 +1243,5 @@
         });
     </script>
 </body>
+
 </html>

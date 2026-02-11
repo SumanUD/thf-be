@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -196,8 +197,15 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
@@ -257,8 +265,15 @@
         }
 
         @keyframes cardFloatUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* RECIPES HEADER */
@@ -628,8 +643,15 @@
         }
 
         @keyframes modalSlideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .modal-close {
@@ -709,7 +731,8 @@
             }
         }
 
-        .ingredients-section, .instructions-section {
+        .ingredients-section,
+        .instructions-section {
             background: rgba(20, 20, 20, 0.5);
             padding: 30px;
             border-radius: 15px;
@@ -823,7 +846,8 @@
             gap: 20px;
         }
 
-        .print-btn, .share-btn {
+        .print-btn,
+        .share-btn {
             padding: 12px 28px;
             border-radius: 12px;
             border: none;
@@ -847,7 +871,8 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        .print-btn:hover, .share-btn:hover {
+        .print-btn:hover,
+        .share-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
         }
@@ -950,11 +975,11 @@
             .menu-left {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .recipe-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
-            
+
             .modal-meta-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1050,13 +1075,15 @@
                 align-items: stretch;
             }
 
-            .print-btn, .share-btn {
+            .print-btn,
+            .share-btn {
                 width: 100%;
                 justify-content: center;
             }
         }
     </style>
 </head>
+
 <body>
     @include('shop::partials.thf-header')
 
@@ -1064,7 +1091,8 @@
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-title">Sweet Recipes</div>
-            <div class="hero-sub">Create magical moments in your kitchen with our curated collection of premium dessert recipes. From traditional sweets to modern treats, inspired by The HazleNut Factory.</div>
+            <div class="hero-sub">Create magical moments in your kitchen with our curated collection of premium dessert
+                recipes. From traditional sweets to modern treats, inspired by The HazleNut Factory.</div>
         </div>
     </div>
 
@@ -1074,7 +1102,8 @@
             <!-- Recipes Header -->
             <div class="recipes-header">
                 <h1>Premium Dessert Recipes</h1>
-                <p>Discover recipes that bring the taste of THF to your home. Each recipe features our signature ingredients and techniques.</p>
+                <p>Discover recipes that bring the taste of THF to your home. Each recipe features our signature
+                    ingredients and techniques.</p>
             </div>
 
             <!-- Recipe Categories -->
@@ -1092,13 +1121,16 @@
             <div class="featured-recipe" data-category="traditional">
                 <div class="featured-content">
                     <div class="featured-image">
-                        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800" alt="Premium Baklava">
+                        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800"
+                            alt="Premium Baklava">
                     </div>
                     <div class="featured-text">
                         <span class="featured-badge">Chef's Special</span>
                         <h2 class="featured-title">THF Signature Baklava</h2>
-                        <p class="featured-description">Our master confectioner reveals the secrets to making restaurant-quality baklava at home. This recipe uses premium Iranian pistachios and 40 layers of hand-stretched phyllo dough.</p>
-                        
+                        <p class="featured-description">Our master confectioner reveals the secrets to making
+                            restaurant-quality baklava at home. This recipe uses premium Iranian pistachios and 40
+                            layers of hand-stretched phyllo dough.</p>
+
                         <div class="recipe-meta">
                             <div class="meta-item">
                                 <div class="meta-icon">
@@ -1129,7 +1161,7 @@
                                 <div class="meta-value">Advanced</div>
                             </div>
                         </div>
-                        
+
                         <button class="view-recipe-btn" data-recipe="baklava">
                             <i class="fas fa-utensils"></i> View Full Recipe
                         </button>
@@ -1142,13 +1174,15 @@
                 <!-- Recipe 1 -->
                 <div class="recipe-card" data-category="modern">
                     <div class="recipe-card-image">
-                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800" alt="Date & Nut Truffles">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800"
+                            alt="Date & Nut Truffles">
                         <span class="recipe-card-badge">No Bake</span>
                     </div>
                     <div class="recipe-card-content">
                         <h3 class="recipe-card-title">Date & Nut Energy Truffles</h3>
-                        <p class="recipe-card-description">Healthy, no-bake energy balls made with premium dates, nuts, and a hint of cardamom. Perfect for quick energy boosts.</p>
-                        
+                        <p class="recipe-card-description">Healthy, no-bake energy balls made with premium dates, nuts,
+                            and a hint of cardamom. Perfect for quick energy boosts.</p>
+
                         <div class="recipe-card-meta">
                             <div class="card-meta-item">
                                 <i class="far fa-clock"></i>
@@ -1167,7 +1201,7 @@
                                 <span>Easy</span>
                             </div>
                         </div>
-                        
+
                         <div class="recipe-card-footer">
                             <button class="recipe-card-link" data-recipe="date-truffles">
                                 View Recipe <i class="fas fa-arrow-right"></i>
@@ -1180,13 +1214,15 @@
                 <!-- Recipe 2 -->
                 <div class="recipe-card" data-category="festive">
                     <div class="recipe-card-image">
-                        <img src="https://images.unsplash.com/photo-1605105526819-bf0d67b86a20?w=800" alt="Diwali Dry Fruit Ladoo">
+                        <img src="https://images.unsplash.com/photo-1605105526819-bf0d67b86a20?w=800"
+                            alt="Diwali Dry Fruit Ladoo">
                         <span class="recipe-card-badge">Festive</span>
                     </div>
                     <div class="recipe-card-content">
                         <h3 class="recipe-card-title">Diwali Dry Fruit Ladoo</h3>
-                        <p class="recipe-card-description">Celebrate Diwali with these rich, nutritious ladoos made with 7 types of nuts, dates, and a touch of ghee.</p>
-                        
+                        <p class="recipe-card-description">Celebrate Diwali with these rich, nutritious ladoos made with
+                            7 types of nuts, dates, and a touch of ghee.</p>
+
                         <div class="recipe-card-meta">
                             <div class="card-meta-item">
                                 <i class="far fa-clock"></i>
@@ -1205,7 +1241,7 @@
                                 <span>Medium</span>
                             </div>
                         </div>
-                        
+
                         <div class="recipe-card-footer">
                             <button class="recipe-card-link" data-recipe="diwali-ladoo">
                                 View Recipe <i class="fas fa-arrow-right"></i>
@@ -1218,13 +1254,15 @@
                 <!-- Recipe 3 -->
                 <div class="recipe-card" data-category="healthy">
                     <div class="recipe-card-image">
-                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Jaggery & Nut Barfi">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800"
+                            alt="Jaggery & Nut Barfi">
                         <span class="recipe-card-badge">Sugar-Free</span>
                     </div>
                     <div class="recipe-card-content">
                         <h3 class="recipe-card-title">Jaggery & Mixed Nut Barfi</h3>
-                        <p class="recipe-card-description">A healthier version of traditional barfi using organic jaggery instead of sugar, packed with nuts and seeds.</p>
-                        
+                        <p class="recipe-card-description">A healthier version of traditional barfi using organic
+                            jaggery instead of sugar, packed with nuts and seeds.</p>
+
                         <div class="recipe-card-meta">
                             <div class="card-meta-item">
                                 <i class="far fa-clock"></i>
@@ -1243,7 +1281,7 @@
                                 <span>Medium</span>
                             </div>
                         </div>
-                        
+
                         <div class="recipe-card-footer">
                             <button class="recipe-card-link" data-recipe="jaggery-barfi">
                                 View Recipe <i class="fas fa-arrow-right"></i>
@@ -1256,13 +1294,15 @@
                 <!-- Recipe 4 -->
                 <div class="recipe-card" data-category="quick">
                     <div class="recipe-card-image">
-                        <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=800" alt="Rose & Pistachio Shrikhand">
+                        <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=800"
+                            alt="Rose & Pistachio Shrikhand">
                         <span class="recipe-card-badge">Quick Dessert</span>
                     </div>
                     <div class="recipe-card-content">
                         <h3 class="recipe-card-title">Rose & Pistachio Shrikhand</h3>
-                        <p class="recipe-card-description">Elegant dessert ready in 15 minutes. Greek yogurt infused with rose water and topped with crushed pistachios.</p>
-                        
+                        <p class="recipe-card-description">Elegant dessert ready in 15 minutes. Greek yogurt infused
+                            with rose water and topped with crushed pistachios.</p>
+
                         <div class="recipe-card-meta">
                             <div class="card-meta-item">
                                 <i class="far fa-clock"></i>
@@ -1281,7 +1321,7 @@
                                 <span>Easy</span>
                             </div>
                         </div>
-                        
+
                         <div class="recipe-card-footer">
                             <button class="recipe-card-link" data-recipe="rose-shrikhand">
                                 View Recipe <i class="fas fa-arrow-right"></i>
@@ -1294,13 +1334,15 @@
                 <!-- Recipe 5 -->
                 <div class="recipe-card" data-category="traditional">
                     <div class="recipe-card-image">
-                        <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=800" alt="Premium Besan Ladoo">
+                        <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=800"
+                            alt="Premium Besan Ladoo">
                         <span class="recipe-card-badge">Classic</span>
                     </div>
                     <div class="recipe-card-content">
                         <h3 class="recipe-card-title">Premium Besan Ladoo with Saffron</h3>
-                        <p class="recipe-card-description">Elevate the traditional besan ladoo with premium ingredients like aged gram flour and Kashmiri saffron.</p>
-                        
+                        <p class="recipe-card-description">Elevate the traditional besan ladoo with premium ingredients
+                            like aged gram flour and Kashmiri saffron.</p>
+
                         <div class="recipe-card-meta">
                             <div class="card-meta-item">
                                 <i class="far fa-clock"></i>
@@ -1319,7 +1361,7 @@
                                 <span>Advanced</span>
                             </div>
                         </div>
-                        
+
                         <div class="recipe-card-footer">
                             <button class="recipe-card-link" data-recipe="besan-ladoo">
                                 View Recipe <i class="fas fa-arrow-right"></i>
@@ -1332,13 +1374,15 @@
                 <!-- Recipe 6 -->
                 <div class="recipe-card" data-category="modern">
                     <div class="recipe-card-image">
-                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800" alt="Chocolate Date Cake">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800"
+                            alt="Chocolate Date Cake">
                         <span class="recipe-card-badge">Baking</span>
                     </div>
                     <div class="recipe-card-content">
                         <h3 class="recipe-card-title">Flourless Chocolate Date Cake</h3>
-                        <p class="recipe-card-description">Rich, moist chocolate cake sweetened naturally with dates. Gluten-free and surprisingly healthy.</p>
-                        
+                        <p class="recipe-card-description">Rich, moist chocolate cake sweetened naturally with dates.
+                            Gluten-free and surprisingly healthy.</p>
+
                         <div class="recipe-card-meta">
                             <div class="card-meta-item">
                                 <i class="far fa-clock"></i>
@@ -1357,7 +1401,7 @@
                                 <span>Medium</span>
                             </div>
                         </div>
-                        
+
                         <div class="recipe-card-footer">
                             <button class="recipe-card-link" data-recipe="chocolate-cake">
                                 View Recipe <i class="fas fa-arrow-right"></i>
@@ -1376,18 +1420,20 @@
                         View All Seasonal Recipes <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                
+
                 <div class="recipe-grid">
                     <!-- Seasonal Recipe 1 -->
                     <div class="recipe-card" data-category="seasonal">
                         <div class="recipe-card-image">
-                            <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800" alt="Premium Gajar Halwa">
+                            <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800"
+                                alt="Premium Gajar Halwa">
                             <span class="recipe-card-badge">Winter Special</span>
                         </div>
                         <div class="recipe-card-content">
                             <h3 class="recipe-card-title">Red Carrot Halwa with Dry Fruits</h3>
-                            <p class="recipe-card-description">Winter's favorite dessert made with red carrots, reduced milk, and topped with silver leaf.</p>
-                            
+                            <p class="recipe-card-description">Winter's favorite dessert made with red carrots, reduced
+                                milk, and topped with silver leaf.</p>
+
                             <div class="recipe-card-meta">
                                 <div class="card-meta-item">
                                     <i class="far fa-clock"></i>
@@ -1406,7 +1452,7 @@
                                     <span>Medium</span>
                                 </div>
                             </div>
-                            
+
                             <div class="recipe-card-footer">
                                 <button class="recipe-card-link" data-recipe="gajar-halwa">
                                     View Recipe <i class="fas fa-arrow-right"></i>
@@ -1419,13 +1465,15 @@
                     <!-- Seasonal Recipe 2 -->
                     <div class="recipe-card" data-category="seasonal">
                         <div class="recipe-card-image">
-                            <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?w=800" alt="Saffron Almond Milk">
+                            <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?w=800"
+                                alt="Saffron Almond Milk">
                             <span class="recipe-card-badge">Warm Drink</span>
                         </div>
                         <div class="recipe-card-content">
                             <h3 class="recipe-card-title">Saffron Almond Milk with Dates</h3>
-                            <p class="recipe-card-description">Warm, comforting drink perfect for winter evenings. Packed with nutrition and flavor.</p>
-                            
+                            <p class="recipe-card-description">Warm, comforting drink perfect for winter evenings.
+                                Packed with nutrition and flavor.</p>
+
                             <div class="recipe-card-meta">
                                 <div class="card-meta-item">
                                     <i class="far fa-clock"></i>
@@ -1444,7 +1492,7 @@
                                     <span>Easy</span>
                                 </div>
                             </div>
-                            
+
                             <div class="recipe-card-footer">
                                 <button class="recipe-card-link" data-recipe="badam-milk">
                                     View Recipe <i class="fas fa-arrow-right"></i>
@@ -1464,31 +1512,31 @@
             <button class="modal-close" id="modalClose">
                 <i class="fas fa-times"></i>
             </button>
-            
+
             <div class="modal-header">
                 <img id="modalImage" src="" alt="Recipe Image">
             </div>
-            
+
             <div class="modal-body">
                 <h2 id="modalTitle" class="modal-title"></h2>
-                
+
                 <div class="modal-meta-grid" id="modalMeta"></div>
-                
+
                 <p id="modalDescription" class="modal-description"></p>
-                
+
                 <div class="recipe-content">
                     <div class="ingredients-section">
                         <h3 class="section-title">Ingredients</h3>
                         <ul class="ingredients-list" id="ingredientsList"></ul>
                     </div>
-                    
+
                     <div class="instructions-section">
                         <h3 class="section-title">Instructions</h3>
                         <ol class="instructions-list" id="instructionsList"></ol>
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal-footer">
                 <button class="print-btn" id="printRecipe">
                     <i class="fas fa-print"></i> Print Recipe
@@ -1504,27 +1552,9 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
+        // Menu Toggle - handled by header.js
 
-        menuToggle.addEventListener('click', () => {
-            megaMenu.classList.toggle('active');
-        });
 
-        // Close menu on clicking outside
-        document.addEventListener('click', (e) => {
-            if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
-
-        // Close menu on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
 
         // Recipe Category Filtering
         document.querySelectorAll('.category-btn').forEach(button => {
@@ -1538,7 +1568,7 @@
                 // Filter recipes
                 const category = button.getAttribute('data-category');
                 const allRecipes = document.querySelectorAll('.recipe-card, .featured-recipe');
-                
+
                 allRecipes.forEach(recipe => {
                     if (category === 'all' || recipe.getAttribute('data-category') === category) {
                         recipe.style.display = 'flex';
@@ -1669,16 +1699,16 @@
 
         // Open Recipe Modal
         document.querySelectorAll('.view-recipe-btn, .recipe-card-link').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const recipeId = this.getAttribute('data-recipe');
                 const recipe = recipes[recipeId] || recipes['baklava'];
-                
+
                 // Update modal content
                 document.getElementById('modalTitle').textContent = recipe.title;
                 document.getElementById('modalImage').src = recipe.image;
                 document.getElementById('modalImage').alt = recipe.title;
                 document.getElementById('modalDescription').textContent = recipe.description;
-                
+
                 // Update meta grid
                 const metaGrid = document.getElementById('modalMeta');
                 metaGrid.innerHTML = `
@@ -1703,7 +1733,7 @@
                         <div class="meta-value">${recipe.difficulty}</div>
                     </div>
                 `;
-                
+
                 // Update ingredients
                 const ingredientsList = document.getElementById('ingredientsList');
                 ingredientsList.innerHTML = '';
@@ -1715,7 +1745,7 @@
                     `;
                     ingredientsList.appendChild(li);
                 });
-                
+
                 // Update instructions
                 const instructionsList = document.getElementById('instructionsList');
                 instructionsList.innerHTML = '';
@@ -1724,7 +1754,7 @@
                     li.textContent = instruction;
                     instructionsList.appendChild(li);
                 });
-                
+
                 // Show modal
                 document.getElementById('recipeModal').classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -1733,39 +1763,39 @@
 
         // Close Modal
         document.getElementById('modalClose').addEventListener('click', closeModal);
-        
+
         // Close modal on outside click
-        document.getElementById('recipeModal').addEventListener('click', function(e) {
+        document.getElementById('recipeModal').addEventListener('click', function (e) {
             if (e.target === this) closeModal();
         });
-        
+
         // Close modal on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && document.getElementById('recipeModal').classList.contains('active')) {
                 closeModal();
             }
         });
-        
+
         function closeModal() {
             document.getElementById('recipeModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
         // Ingredient Checklist
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target.classList.contains('ingredient-checkbox')) {
                 e.target.classList.toggle('checked');
             }
         });
 
         // Print Recipe
-        document.getElementById('printRecipe').addEventListener('click', function() {
+        document.getElementById('printRecipe').addEventListener('click', function () {
             const recipeTitle = document.getElementById('modalTitle').textContent;
             alert(`Printing recipe: ${recipeTitle}\n\nIn a real implementation, this would open the print dialog with formatted recipe.`);
         });
 
         // Share Recipe
-        document.getElementById('shareRecipe').addEventListener('click', function() {
+        document.getElementById('shareRecipe').addEventListener('click', function () {
             const recipeTitle = document.getElementById('modalTitle').textContent;
             if (navigator.share) {
                 navigator.share({
@@ -1779,11 +1809,12 @@
         });
 
         // View All Seasonal Recipes
-        document.querySelector('.view-all-btn').addEventListener('click', function(e) {
+        document.querySelector('.view-all-btn').addEventListener('click', function (e) {
             e.preventDefault();
             const seasonalBtn = document.querySelector('[data-category="seasonal"]');
             seasonalBtn.click();
         });
     </script>
 </body>
+
 </html>

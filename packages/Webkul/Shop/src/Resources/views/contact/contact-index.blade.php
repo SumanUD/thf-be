@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,8 +196,15 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
@@ -256,8 +264,15 @@
         }
 
         @keyframes cardFloatUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* CONTACT HEADER */
@@ -725,6 +740,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Header -->
     <header class="header">
@@ -821,7 +837,8 @@
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-title">Get In Touch</div>
-            <div class="hero-sub">We're here to help with any questions about our products, orders, or services. Reach out to us through any of the channels below.</div>
+            <div class="hero-sub">We're here to help with any questions about our products, orders, or services. Reach
+                out to us through any of the channels below.</div>
         </div>
     </div>
 
@@ -831,7 +848,8 @@
             <!-- Contact Header -->
             <div class="contact-header">
                 <h1>Contact The HazleNut Factory</h1>
-                <p>Whether you have questions about our sweets, need assistance with an order, or want to discuss corporate gifting, we're here to help.</p>
+                <p>Whether you have questions about our sweets, need assistance with an order, or want to discuss
+                    corporate gifting, we're here to help.</p>
             </div>
 
             <!-- Contact Layout -->
@@ -871,7 +889,8 @@
 
                         <div class="form-group">
                             <label for="message">Your Message *</label>
-                            <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+                            <textarea id="message" name="message" required
+                                placeholder="How can we help you?"></textarea>
                         </div>
 
                         <button type="submit" class="submit-btn">
@@ -883,7 +902,7 @@
                 <!-- Contact Information -->
                 <div class="contact-info-section">
                     <h2>Contact Information</h2>
-                    
+
                     <div class="contact-cards">
                         <!-- Phone Card -->
                         <div class="contact-card">
@@ -911,9 +930,13 @@
                             </div>
                             <div class="contact-card-content">
                                 <p>General: <a href="mailto:info@hazlenutfactory.com">info@hazlenutfactory.com</a></p>
-                                <p>Orders: <a href="mailto:orders@hazlenutfactory.com">orders@hazlenutfactory.com</a></p>
-                                <p>Corporate: <a href="mailto:corporate@hazlenutfactory.com">corporate@hazlenutfactory.com</a></p>
-                                <p>Support: <a href="mailto:support@hazlenutfactory.com">support@hazlenutfactory.com</a></p>
+                                <p>Orders: <a href="mailto:orders@hazlenutfactory.com">orders@hazlenutfactory.com</a>
+                                </p>
+                                <p>Corporate: <a
+                                        href="mailto:corporate@hazlenutfactory.com">corporate@hazlenutfactory.com</a>
+                                </p>
+                                <p>Support: <a href="mailto:support@hazlenutfactory.com">support@hazlenutfactory.com</a>
+                                </p>
                             </div>
                         </div>
 
@@ -981,32 +1004,14 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
+        // Menu Toggle - handled by header.js
 
-        menuToggle.addEventListener('click', () => {
-            megaMenu.classList.toggle('active');
-        });
 
-        // Close menu on clicking outside
-        document.addEventListener('click', (e) => {
-            if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
-
-        // Close menu on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                megaMenu.classList.remove('active');
-            }
-        });
 
         // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(this);
             const formObject = {};
@@ -1022,11 +1027,11 @@
 
         // Location buttons functionality
         document.querySelectorAll('.location-btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const action = this.textContent.trim();
                 const locationCard = this.closest('.location-card');
                 const locationName = locationCard.querySelector('h3').textContent;
-                
+
                 if (action.includes('Directions')) {
                     alert(`Getting directions to ${locationName}...`);
                     // In real implementation, this would open Google Maps
@@ -1043,7 +1048,7 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
@@ -1055,4 +1060,5 @@
         });
     </script>
 </body>
+
 </html>

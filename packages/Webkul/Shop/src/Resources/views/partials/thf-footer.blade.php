@@ -157,6 +157,5 @@
 </footer>
 
 <!-- Global Header JavaScript - Load after page content -->
-@pushOnce('scripts')
 <script src="{{ asset('thf-assets/js/header.js') }}"></script>
-@endPushOnce
+

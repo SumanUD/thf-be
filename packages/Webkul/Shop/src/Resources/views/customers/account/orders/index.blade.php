@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -315,6 +316,7 @@
         }
     </style>
 </head>
+
 <body>
     @include('shop::partials.thf-header')
 
@@ -336,18 +338,19 @@
                             </a>
                         </li>
                         <li class="profile-nav-item">
-                            <a href="{{ route('shop.customers.account.orders.index') }}" class="profile-nav-link active">
+                            <a href="{{ route('shop.customers.account.orders.index') }}"
+                                class="profile-nav-link active">
                                 <i class="fas fa-shopping-bag"></i>
                                 <span>My Orders</span>
                             </a>
                         </li>
                         @if (core()->getConfigData('customer.settings.wishlist.wishlist_option'))
-                        <li class="profile-nav-item">
-                            <a href="{{ route('shop.customers.account.wishlist.index') }}" class="profile-nav-link">
-                                <i class="fas fa-heart"></i>
-                                <span>Wishlist</span>
-                            </a>
-                        </li>
+                            <li class="profile-nav-item">
+                                <a href="{{ route('shop.customers.account.wishlist.index') }}" class="profile-nav-link">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Wishlist</span>
+                                </a>
+                            </li>
                         @endif
                         <li class="profile-nav-item">
                             <a href="{{ route('shop.customers.account.addresses.index') }}" class="profile-nav-link">
@@ -356,7 +359,9 @@
                             </a>
                         </li>
                         <li class="profile-nav-item">
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('customerLogout').submit();" class="profile-nav-link">
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('customerLogout').submit();"
+                                class="profile-nav-link">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
                             </a>
@@ -364,7 +369,8 @@
                     </ul>
                 </nav>
 
-                <form id="customerLogout" method="POST" action="{{ route('shop.customer.session.destroy') }}" style="display: none;">
+                <form id="customerLogout" method="POST" action="{{ route('shop.customer.session.destroy') }}"
+                    style="display: none;">
                     @csrf
                     @method('DELETE')
                 </form>
@@ -388,27 +394,9 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
+        // Menu Toggle - handled by header.js
 
-        if (menuToggle && megaMenu) {
-            menuToggle.addEventListener('click', () => {
-                megaMenu.classList.toggle('active');
-            });
 
-            document.addEventListener('click', (e) => {
-                if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                    megaMenu.classList.remove('active');
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                    megaMenu.classList.remove('active');
-                }
-            });
-        }
 
         // Fetch Orders
         fetch('{{ route("shop.customers.account.orders.index") }}', {
@@ -417,13 +405,13 @@
                 'Accept': 'application/json'
             }
         })
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('ordersContainer');
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('ordersContainer');
 
-            if (data.records && data.records.length > 0) {
-                container.innerHTML = '<div class="orders-grid">' +
-                    data.records.map(order => `
+                if (data.records && data.records.length > 0) {
+                    container.innerHTML = '<div class="orders-grid">' +
+                        data.records.map(order => `
                         <a href="${order.actions && order.actions[0] ? order.actions[0].url : '#'}" style="text-decoration: none;">
                             <div class="order-card">
                                 <div class="order-header">
@@ -448,9 +436,9 @@
                             </div>
                         </a>
                     `).join('') +
-                    '</div>';
-            } else {
-                container.innerHTML = `
+                        '</div>';
+                } else {
+                    container.innerHTML = `
                     <div class="empty-state">
                         <i class="fas fa-shopping-bag"></i>
                         <h3>No orders yet</h3>
@@ -461,18 +449,18 @@
                         </a>
                     </div>
                 `;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching orders:', error);
-            document.getElementById('ordersContainer').innerHTML = `
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching orders:', error);
+                document.getElementById('ordersContainer').innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-exclamation-triangle"></i>
                     <h3>Unable to load orders</h3>
                     <p>Please refresh the page to try again</p>
                 </div>
             `;
-        });
+            });
 
         function getStatusClass(status) {
             if (!status) return 'status-pending';
@@ -489,4 +477,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -383,6 +384,7 @@
         }
     </style>
 </head>
+
 <body>
     @include('shop::partials.thf-header')
 
@@ -401,7 +403,8 @@
                 <nav>
                     <ul class="profile-nav-list">
                         <li class="profile-nav-item">
-                            <a href="{{ route('shop.customers.account.profile.index') }}" class="profile-nav-link active">
+                            <a href="{{ route('shop.customers.account.profile.index') }}"
+                                class="profile-nav-link active">
                                 <i class="fas fa-user"></i>
                                 <span>My Profile</span>
                             </a>
@@ -413,12 +416,12 @@
                             </a>
                         </li>
                         @if (core()->getConfigData('customer.settings.wishlist.wishlist_option'))
-                        <li class="profile-nav-item">
-                            <a href="{{ route('shop.customers.account.wishlist.index') }}" class="profile-nav-link">
-                                <i class="fas fa-heart"></i>
-                                <span>Wishlist</span>
-                            </a>
-                        </li>
+                            <li class="profile-nav-item">
+                                <a href="{{ route('shop.customers.account.wishlist.index') }}" class="profile-nav-link">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Wishlist</span>
+                                </a>
+                            </li>
                         @endif
                         <li class="profile-nav-item">
                             <a href="{{ route('shop.customers.account.addresses.index') }}" class="profile-nav-link">
@@ -427,7 +430,9 @@
                             </a>
                         </li>
                         <li class="profile-nav-item">
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('customerLogout').submit();" class="profile-nav-link">
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('customerLogout').submit();"
+                                class="profile-nav-link">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
                             </a>
@@ -435,7 +440,8 @@
                     </ul>
                 </nav>
 
-                <form id="customerLogout" method="POST" action="{{ route('shop.customer.session.destroy') }}" style="display: none;">
+                <form id="customerLogout" method="POST" action="{{ route('shop.customer.session.destroy') }}"
+                    style="display: none;">
                     @csrf
                     @method('DELETE')
                 </form>
@@ -509,7 +515,8 @@
                         <input type="password" id="password" name="password" placeholder="Your password" required>
                     </div>
                     <p style="color: rgba(220, 53, 69, 0.8); font-size: 0.95rem; margin-top: 15px;">
-                        <i class="fas fa-exclamation-circle"></i> This action cannot be undone. All your data will be permanently deleted.
+                        <i class="fas fa-exclamation-circle"></i> This action cannot be undone. All your data will be
+                        permanently deleted.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -523,29 +530,9 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const megaMenu = document.querySelector('.mega-menu');
+        // Menu Toggle - handled by header.js
 
-        if (menuToggle && megaMenu) {
-            menuToggle.addEventListener('click', () => {
-                megaMenu.classList.toggle('active');
-            });
 
-            // Close menu on clicking outside
-            document.addEventListener('click', (e) => {
-                if (!megaMenu.contains(e.target) && !menuToggle.contains(e.target) && megaMenu.classList.contains('active')) {
-                    megaMenu.classList.remove('active');
-                }
-            });
-
-            // Close menu on Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-                    megaMenu.classList.remove('active');
-                }
-            });
-        }
 
         // Delete Modal Functions
         function openDeleteModal() {
@@ -558,18 +545,19 @@
         }
 
         // Close modal on overlay click
-        document.getElementById('deleteModal').addEventListener('click', function(e) {
+        document.getElementById('deleteModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeDeleteModal();
             }
         });
 
         // Close modal on Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && document.getElementById('deleteModal').classList.contains('active')) {
                 closeDeleteModal();
             }
         });
     </script>
 </body>
+
 </html>
