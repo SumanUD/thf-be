@@ -1,0 +1,341 @@
+/* THF Product Card Redesign - Dark Theme with Gold Accents */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.product-card {
+    background: rgba(18, 18, 18, 0.95);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* Card Image Section */
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: rgba(30, 30, 30, 0.9);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .card-image img {
+    transform: scale(1.15);
+}
+
+/* Price Badge */
+.price-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.95), rgba(180, 150, 50, 0.95));
+    color: #0a0a0a;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .price-badge {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+}
+
+/* NEW/SALE Badge */
+.status-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(220, 53, 69, 0.95);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.status-badge.new {
+    background: rgba(76, 175, 80, 0.95);
+}
+
+.status-badge.bestseller {
+    background: rgba(255, 193, 7, 0.95);
+    color: #0a0a0a;
+}
+
+/* Hover Actions Overlay */
+.hover-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+    padding: 30px 20px 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+}
+
+.product-card:hover .hover-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hover-actions button {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(180, 150, 50, 0.9));
+    color: #0a0a0a;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Forum", serif;
+}
+
+.hover-actions button:hover {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 1), rgba(180, 150, 50, 1));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+}
+
+.hover-actions button:nth-child(2) {
+    background: transparent;
+    border: 2px solid rgba(212, 175, 55, 0.7);
+    color: #d4af37;
+    padding: 10px 20px;
+}
+
+.hover-actions button:nth-child(2):hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: #d4af37;
+}
+
+/* Card Info Section */
+.card-info {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.product-card:hover .card-info h3 {
+    color: #d4af37;
+}
+
+.card-info p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+/* Rating Stars */
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.stars {
+    display: flex;
+    gap: 3px;
+    color: #d4af37;
+    font-size: 0.9rem;
+}
+
+.rating-count {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+}
+
+/* Quick View Indicator */
+.quick-view-hint {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 4;
+}
+
+.product-card:hover .quick-view-hint {
+    opacity: 1;
+}
+
+/* Out of Stock Overlay */
+.out-of-stock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.out-of-stock-text {
+    background: rgba(220, 53, 69, 0.95);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .card-image {
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 30px 0;
+    }
+
+    .card-image {
+        height: 220px;
+    }
+
+    .card-info {
+        padding: 18px;
+    }
+
+    .card-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-info p {
+        font-size: 0.85rem;
+    }
+
+    .price-badge {
+        font-size: 1rem;
+        padding: 8px 16px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .hover-actions {
+        padding: 20px 15px 15px;
+    }
+
+    .hover-actions button {
+        font-size: 0.85rem;
+        padding: 10px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-image {
+        height: 280px;
+    }
+}
+
+/* Loading State */
+.product-card.loading {
+    pointer-events: none;
+}
+
+.product-card.loading .card-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(212, 175, 55, 0.2),
+        transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    to {
+        left: 100%;
+    }
+}

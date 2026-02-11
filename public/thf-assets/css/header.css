@@ -683,6 +683,11 @@
         height: 60px;
     }
 
+    /* Hide center logo on mobile */
+    .nav-center {
+        display: none !important;
+    }
+
     .logo img {
         width: 200px;
     }
