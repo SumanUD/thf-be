@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/category.css') }}">
+    <style>
+        a.product-card { text-decoration: none; color: inherit; display: block; cursor: pointer; }
+        a.product-card:hover { text-decoration: none; }
+    </style>
 </head>
 <body>
     @include('shop::partials.thf-header')
@@ -35,50 +39,50 @@
         </div>
 
         <div class="product-grid">
-            <div class="product-card" data-product-id="1">
+            <a href="{{ url('/assorted-collection-delight-box') }}" class="product-card" data-product-id="27">
                 <div class="card-image">
                     <img src="{{ asset('thf-assets/images/best_seller/THF Assorted Collection Delight Box.jpg') }}" alt="Assorted Collection Delight Box">
                     <div class="price-badge">₹599</div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(1)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(1)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="event.preventDefault(); addToCart(27)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="event.preventDefault(); addToWishlist(27)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
                     <h3>Assorted Collection Delight Box</h3>
                     <p>Our signature assorted collection brings together premium ingredients and fine craftsmanship.</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="product-card" data-product-id="2">
+            <a href="{{ url('/classic-assorted-selection') }}" class="product-card" data-product-id="28">
                 <div class="card-image">
                     <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Classic Assorted Collection">
                     <div class="price-badge">₹749</div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(2)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(2)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="event.preventDefault(); addToCart(28)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="event.preventDefault(); addToWishlist(28)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
                     <h3>Classic Assorted Collection Selection</h3>
                     <p>Traditional assorted crafted with layers of phyllo, nuts, and aromatic honey syrup.</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="product-card" data-product-id="3">
+            <a href="{{ url('/premium-assorted-assortment') }}" class="product-card" data-product-id="29">
                 <div class="card-image">
                     <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Premium Assorted Collection">
                     <div class="price-badge">₹899</div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(3)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(3)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="event.preventDefault(); addToCart(29)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="event.preventDefault(); addToWishlist(29)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
                     <h3>Premium Assorted Collection Assortment</h3>
                     <p>A luxurious creation featuring our finest assorted varieties in an elegant gift box.</p>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
