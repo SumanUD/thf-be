@@ -51,7 +51,11 @@
             @guest('customer')
                 <a href="#" class="nav-link">SIGN IN</a>
             @else
-                <a href="#" class="nav-link">{{ strtoupper(auth()->guard('customer')->user()->first_name) }}</a>
+                @php
+                    $firstName = auth()->guard('customer')->user()->first_name;
+                    $displayName = strlen($firstName) > 10 ? substr($firstName, 0, 10) . '...' : $firstName;
+                @endphp
+                <a href="#" class="nav-link">{{ strtoupper($displayName) }}</a>
             @endguest
 
             <div class="dropdown-content">
