@@ -155,3 +155,8 @@
         <p>&copy; {{ date('Y') }} THF Corporate Gifting. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </div>
 </footer>
+
+<!-- Global Header JavaScript - Load after page content -->
+@pushOnce('scripts')
+<script src="{{ asset('thf-assets/js/header.js') }}"></script>
+@endPushOnce

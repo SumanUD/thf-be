@@ -203,6 +203,3 @@
         </div>
     </div>
 </nav>
-
-<!-- Global Header JavaScript -->
-<script src="{{ asset('thf-assets/js/header.js') }}"></script>
