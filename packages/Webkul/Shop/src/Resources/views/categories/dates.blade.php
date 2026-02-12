@@ -12,6 +12,26 @@
     <style>
         a.product-card { text-decoration: none; color: inherit; display: block; cursor: pointer; }
         a.product-card:hover { text-decoration: none; }
+
+        /* Fix product card sizing */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
