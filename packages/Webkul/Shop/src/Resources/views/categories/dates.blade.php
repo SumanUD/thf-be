@@ -42,22 +42,50 @@
             <p style="color: rgba(255,255,255,0.7); max-width: 800px; margin: 20px auto;">Handcrafted dates made with premium ingredients and fine craftsmanship for a perfectly balanced bite.</p>
         </div>
 
-        <div class="product-grid">
-            @php
-                $categoryRepository = app('Webkul\Category\Repositories\CategoryRepository');
-                $category = $categoryRepository->find(4); // ID 4 is Dates
-                $products = $category ? $category->products : collect();
-            @endphp
-
-            @forelse($products as $product)
-                <x-shop::products.card :product="$product" />
-            @empty
-                <p style="text-align: center; grid-column: 1/-1;">No products found in this collection.</p>
-            @endforelse
-        </div>
+        <v-dates-products></v-labon-products>
     </section>
     
     @include('shop::partials.thf-footer')
+
+    @pushOnce('scripts')
+    <script type="text/x-template" id="v-dates-products-template">
+        <div class="product-grid">
+            <template v-if="products.length">
+                <x-shop::products.card
+                    v-for="product in products"
+                    ::product="product"
+                    ::key="product.id"
+                />
+            </template>
+            <template v-else>
+                <p style="text-align: center; grid-column: 1/-1;">Loading products...</p>
+            </template>
+        </div>
+    </script>
+
+    <script type="module">
+        app.component('v-dates-products', {
+            template: '#v-dates-products-template',
+            data() {
+                return {
+                    products: []
+                }
+            },
+            mounted() {
+                this.getProducts();
+            },
+            methods: {
+                getProducts() {
+                    this.$axios.get("{{ route('shop.api.products.index', ['category_id' => 4]) }}")
+                        .then(response => {
+                            this.products = response.data.data;
+                        })
+                        .catch(error => console.log(error));
+                }
+            }
+        });
+    </script>
+    @endpushOnce
     
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
