@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="base-url" content="{{ url()->to('/') }}">
+    <meta name="currency" content="{{ core()->getCurrentCurrency()->toJson() }}">
     <title>Mewabite | The HazleNut Factory</title>
+    
+    @bagistoVite(['src/Resources/assets/css/app.css', 'src/Resources/assets/js/app.js'])
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/category.css') }}">
@@ -21,6 +26,7 @@
     </style>
 </head>
 <body class="thf-dark-theme">
+    <div id="app">
     @include('shop::partials.thf-header')
     
     <section class="video-banner">
@@ -46,6 +52,7 @@
     </section>
     
     @include('shop::partials.thf-footer')
+    </div>
 
     @pushOnce('scripts')
     <script type="text/x-template" id="v-mewabite-products-template">
@@ -93,5 +100,11 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="{{ asset('thf-assets/js/home.js') }}"></script>
     <script src="{{ asset('thf-assets/js/category.js') }}"></script>
+    
+    <script>
+        window.addEventListener("load", function() {
+            app.mount("#app");
+        });
+    </script>
 </body>
 </html>
