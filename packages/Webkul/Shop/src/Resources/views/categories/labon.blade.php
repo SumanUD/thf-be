@@ -42,50 +42,64 @@
             <p style="color: rgba(255,255,255,0.7); max-width: 800px; margin: 20px auto;">THF LABON®, an innovative twist of the traditional Indian laddoo and delectable French Bon Bon.</p>
         </div>
 
-        <v-labon-products></v-labon-products>
+        <div id="product-app">
+            <div class="product-grid" v-if="products.length">
+                <div class="product-card" v-for="product in products" :key="product.id">
+                    <a :href="productUrl(product)" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="card-image">
+                            <img :src="imageUrl(product)" :alt="product.name" loading="lazy">
+                            <span class="price-badge" v-text="getPrice(product)"></span>
+                        </div>
+                        <div class="card-content">
+                            <h3 v-text="product.name"></h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div v-else-if="loading" style="text-align: center; padding: 60px 20px;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem;">Loading products...</p>
+            </div>
+            <div v-else style="text-align: center; padding: 60px 20px;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem;">No products found.</p>
+            </div>
+        </div>
     </section>
     
     @include('shop::partials.thf-footer')
 
-    @pushOnce('scripts')
-    <script type="text/x-template" id="v-labon-products-template">
-        <div class="product-grid">
-            <template v-if="products.length">
-                <x-shop::products.card
-                    v-for="product in products"
-                    ::product="product"
-                    ::key="product.id"
-                />
-            </template>
-            <template v-else>
-                <p style="text-align: center; grid-column: 1/-1;">Loading products...</p>
-            </template>
-        </div>
-    </script>
-
-    <script type="module">
-        app.component('v-labon-products', {
-            template: '#v-labon-products-template',
-            data() {
-                return {
-                    products: []
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const { createApp } = Vue;
+            createApp({
+                data() {
+                    return { products: [], loading: true }
+                },
+                mounted() {
+                    this.fetchProducts();
+                },
+                methods: {
+                    fetchProducts() {
+                        fetch("{{ route('shop.api.products.index', ['category_id' => 3]) }}")
+                            .then(r => r.json())
+                            .then(d => { this.products = d.data; this.loading = false; })
+                            .catch(e => { console.error('Error loading products:', e); this.loading = false; });
+                    },
+                    productUrl(p) { return '/' + p.url_key; },
+                    imageUrl(p) {
+                        let u = p.base_image?.medium_image_url || '';
+                        if (u.includes('localhost')) u = u.replace(/https?:\/\/localhost(:\d+)?/, location.origin);
+                        return u;
+                    },
+                    getPrice(p) {
+                        if (p.prices?.final?.formatted_price) return p.prices.final.formatted_price;
+                        if (p.prices?.regular?.formatted_price) return p.prices.regular.formatted_price;
+                        return p.formatted_price || '';
+                    }
                 }
-            },
-            mounted() {
-                this.getProducts();
-            },
-            methods: {
-                getProducts() {
-                    this.$axios.get("{{ route('shop.api.products.index', ['category_id' => 3]) }}")
-                        .then(response => {
-                            this.products = response.data.data;
-                        })
-                        .catch(error => console.log(error));
-                }
-            }
+            }).mount('#product-app');
         });
     </script>
-    @endpushOnce
     
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
