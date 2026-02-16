@@ -15,8 +15,8 @@
                 />
             @else
                 <img
-                    class="w-max" 
-                    src="{{ bagisto_asset('images/logo.svg') }}"
+                    class="w-max"
+                    src="{{ asset('thf-assets/images/logo-transparent-white.png') }}"
                     alt="{{ config('app.name') }}"
                 />
             @endif
@@ -71,11 +71,8 @@
             </div>
 
             <!-- Powered By -->
-            <div class="text-sm font-normal">
-                @lang('admin::app.users.forget-password.create.powered-by-description', [
-                    'bagisto' => '<a class="text-blue-600 hover:underline" href="https://bagisto.com/en/">Bagisto</a>',
-                    'webkul' => '<a class="text-blue-600 hover:underline" href="https://webkul.com/">Webkul</a>',
-                ])
+            <div class="text-sm font-normal text-gray-600">
+                &copy; {{ date('Y') }} The Hazlenut Factory. All rights reserved.
             </div>
         </div>
     </div>

@@ -23,7 +23,7 @@
                             />
                         @else
                             <img
-                                src="{{ bagisto_asset('images/logo.svg', 'admin') }}"
+                                src="{{ asset('thf-assets/images/logo-transparent-white.png') }}"
                                 alt="{{ config('app.name') }}"
                                 style="width: 156px;height: 40px;"
                             />

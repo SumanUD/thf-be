@@ -33,9 +33,9 @@
         name="currency"
         content="{{ core()->getBaseCurrency()->toJson() }}"
     >
-    <meta 
-        name="generator" 
-        content="Bagisto"
+    <meta
+        name="generator"
+        content="The Hazlenut Factory"
     >
 
     @stack('meta')
@@ -55,7 +55,7 @@
     <link
         rel="preload"
         as="image"
-        href="{{ url('cache/logo/bagisto.png') }}"
+        href="{{ asset('thf-assets/images/logo-transparent-white.png') }}"
     >
 
     @if ($favicon = core()->getConfigData('general.design.admin_logo.favicon'))
@@ -68,7 +68,7 @@
     @else
         <link
             type="image/x-icon"
-            href="{{ bagisto_asset('images/favicon.ico') }}"
+            href="{{ asset('thf-assets/images/logo-transparent-white.png') }}"
             rel="shortcut icon"
             sizes="16x16"
         />
@@ -86,7 +86,7 @@
 <body class="h-full dark:bg-gray-950">
     {!! view_render_event('bagisto.admin.layout.body.before') !!}
 
-    <!-- Built With Bagisto -->
+    <!-- The Hazlenut Factory Admin -->
     <div
         id="app"
         class="h-full"
@@ -129,11 +129,8 @@
 
                 <!-- Powered By -->
                 <div class="mt-auto">
-                    <div class="border-t bg-white py-2 text-center text-xs sm:text-sm dark:border-gray-800 dark:bg-gray-900 dark:text-white">
-                        @lang('admin::app.components.layouts.powered-by.description', [
-                            'bagisto' => '<a class="text-blue-600 hover:underline dark:text-darkBlue" href="https://bagisto.com/en/">Bagisto</a>',
-                            'webkul' => '<a class="text-blue-600 hover:underline dark:text-darkBlue" href="https://webkul.com/">Webkul</a>',
-                        ])
+                    <div class="border-t bg-white py-2 text-center text-xs text-gray-600 sm:text-sm dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400">
+                        &copy; {{ date('Y') }} The Hazlenut Factory. All rights reserved.
                     </div>
                 </div>
             </div>

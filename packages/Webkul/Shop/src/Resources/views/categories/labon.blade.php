@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('thf-assets/css/category.css') }}">
+    <style>
+        /* Make product cards clickable */
+        a.product-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+        a.product-card:hover {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     @include('shop::partials.thf-header')
@@ -30,48 +42,48 @@
             <p>THF LABON®, an innovative twist of the traditional Indian laddoo and delectable French Bon Bon.</p>
         </div>
         <div class="product-grid">
-            <div class="product-card">
+            <a href="{{ url('/labon-delight-box') }}" class="product-card" data-product-id="18">
                 <div class="card-image">
                     <img src="{{ asset('thf-assets/images/best_seller/Labon Delight Box.jpg') }}" alt="Labon Delight">
                     <div class="price-badge">₹649</div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(4)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(4)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="event.preventDefault(); addToCart(18)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="event.preventDefault(); addToWishlist(18)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
                     <h3>Labon Delight Box</h3>
                     <p>Our signature Labon® collection featuring premium flavors in an elegant presentation.</p>
                 </div>
-            </div>
-            <div class="product-card">
+            </a>
+            <a href="{{ url('/premium-labon®-assortment') }}" class="product-card" data-product-id="19">
                 <div class="card-image">
                     <img src="{{ asset('thf-assets/images/360640 Labon.jpg') }}" alt="Classic Labon">
                     <div class="price-badge">₹799</div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(5)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(5)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="event.preventDefault(); addToCart(19)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="event.preventDefault(); addToWishlist(19)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
                     <h3>Premium Labon® Assortment</h3>
                     <p>A curated selection of our finest Labon® varieties in multiple flavors.</p>
                 </div>
-            </div>
-            <div class="product-card">
+            </a>
+            <a href="{{ url('/royal-labon®-collection') }}" class="product-card" data-product-id="20">
                 <div class="card-image">
                     <img src="{{ asset('thf-assets/images/19201080Labon.jpg') }}" alt="Labon Royal">
                     <div class="price-badge">₹999</div>
                     <div class="hover-actions">
-                        <button onclick="addToCart(6)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="addToWishlist(6)"><i class="fas fa-heart"></i> Wishlist</button>
+                        <button onclick="event.preventDefault(); addToCart(20)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button onclick="event.preventDefault(); addToWishlist(20)"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="card-content">
                     <h3>Royal Labon® Collection</h3>
                     <p>The ultimate Labon® experience with exotic flavors and premium packaging.</p>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
     

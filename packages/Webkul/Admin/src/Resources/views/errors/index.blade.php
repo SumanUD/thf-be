@@ -9,9 +9,9 @@
         <div class="flex max-w-[745px] items-center gap-5">
             <div class="w-full">
                 @php
-                    $logoUrl = core()->getConfigData('general.design.admin_logo.logo_image') 
-                                ? Storage::url(core()->getConfigData('general.design.admin_logo.logo_image')) 
-                                : bagisto_asset('images/logo.svg');
+                    $logoUrl = core()->getConfigData('general.design.admin_logo.logo_image')
+                                ? Storage::url(core()->getConfigData('general.design.admin_logo.logo_image'))
+                                : asset('thf-assets/images/logo-transparent-white.png');
                 @endphp
 
                 <img
