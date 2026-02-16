@@ -18,6 +18,18 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+        .card-actions { padding: 0 20px 20px; display: flex; gap: 10px; align-items: center; }
+        .btn-add-cart { flex: 1; background: rgba(212,175,55,0.9); color: #000; border: none; border-radius: 30px; padding: 12px 20px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'Forum', serif; letter-spacing: 0.5px; transition: all 0.3s ease; }
+        .btn-add-cart:hover { background: #d4af37; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(212,175,55,0.4); }
+        .btn-add-cart:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .btn-wishlist { width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3); background: transparent; color: #d4af37; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; }
+        .btn-wishlist:hover { background: rgba(212,175,55,0.1); }
+        .card-price { padding: 0 20px 5px; font-size: 1.2rem; color: #d4af37; font-weight: 600; }
+        .card-name { padding: 15px 20px 5px; font-size: 1.1rem; color: #fff; }
+        .flash-msg { position: fixed; top: 20px; right: 20px; padding: 15px 25px; border-radius: 10px; color: #fff; font-family: 'Forum', serif; z-index: 9999; animation: fadeInOut 3s forwards; }
+        .flash-success { background: rgba(34,139,34,0.9); }
+        .flash-error { background: rgba(220,53,69,0.9); }
+        @keyframes fadeInOut { 0% { opacity:0; transform:translateY(-10px); } 10% { opacity:1; transform:translateY(0); } 80% { opacity:1; } 100% { opacity:0; } }
     </style>
 </head>
 <body class="thf-dark-theme">
@@ -48,12 +60,20 @@
                     <a :href="productUrl(product)" style="text-decoration: none; color: inherit; display: block;">
                         <div class="card-image">
                             <img :src="imageUrl(product)" :alt="product.name" loading="lazy">
-                            <span class="price-badge" v-text="getPrice(product)"></span>
-                        </div>
-                        <div class="card-content">
-                            <h3 v-text="product.name"></h3>
+                            <span class="price-badge" v-html="getPrice(product)"></span>
                         </div>
                     </a>
+                    <div class="card-name" v-text="product.name"></div>
+                    <div class="card-price" v-html="product.price_html"></div>
+                    <div class="card-actions">
+                        <button class="btn-add-cart" @click="addToCart(product)" :disabled="!product.is_saleable || product.adding">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span v-text="product.adding ? 'Adding...' : 'Add to Cart'"></span>
+                        </button>
+                        <button class="btn-wishlist" @click="addToWishlist(product)" :title="product.is_wishlist ? 'Remove from Wishlist' : 'Add to Wishlist'">
+                            <i :class="product.is_wishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div v-else-if="loading" style="text-align: center; padding: 60px 20px;">
@@ -62,6 +82,7 @@
             <div v-else style="text-align: center; padding: 60px 20px;">
                 <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem;">No products found.</p>
             </div>
+            <div v-if="flashMsg" :class="'flash-msg ' + flashType" v-text="flashMsg"></div>
         </div>
     </section>
     
@@ -71,9 +92,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const { createApp } = Vue;
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
             createApp({
                 data() {
-                    return { products: [], loading: true }
+                    return { products: [], loading: true, flashMsg: '', flashType: 'flash-success' }
                 },
                 mounted() {
                     this.fetchProducts();
@@ -82,7 +104,10 @@
                     fetchProducts() {
                         fetch("{{ route('shop.api.products.index', ['category_id' => 4]) }}")
                             .then(r => r.json())
-                            .then(d => { this.products = d.data; this.loading = false; })
+                            .then(d => {
+                                this.products = d.data.map(p => ({ ...p, adding: false }));
+                                this.loading = false;
+                            })
                             .catch(e => { console.error('Error loading products:', e); this.loading = false; });
                     },
                     productUrl(p) { return '/' + p.url_key; },
@@ -95,6 +120,43 @@
                         if (p.prices?.final?.formatted_price) return p.prices.final.formatted_price;
                         if (p.prices?.regular?.formatted_price) return p.prices.regular.formatted_price;
                         return p.formatted_price || '';
+                    },
+                    showFlash(msg, type) {
+                        this.flashMsg = msg;
+                        this.flashType = type || 'flash-success';
+                        setTimeout(() => this.flashMsg = '', 3000);
+                    },
+                    addToCart(product) {
+                        product.adding = true;
+                        fetch("{{ route('shop.api.checkout.cart.store') }}", {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
+                            body: JSON.stringify({ product_id: product.id, quantity: 1 })
+                        })
+                        .then(r => r.json())
+                        .then(d => {
+                            this.showFlash(d.message || 'Added to cart!', 'flash-success');
+                            product.adding = false;
+                        })
+                        .catch(e => {
+                            this.showFlash('Could not add to cart', 'flash-error');
+                            product.adding = false;
+                        });
+                    },
+                    addToWishlist(product) {
+                        fetch("{{ route('shop.api.customers.account.wishlist.store') }}", {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
+                            body: JSON.stringify({ product_id: product.id })
+                        })
+                        .then(r => r.json())
+                        .then(d => {
+                            product.is_wishlist = !product.is_wishlist;
+                            this.showFlash(d.data?.message || d.message || 'Wishlist updated!', 'flash-success');
+                        })
+                        .catch(e => {
+                            window.location.href = "{{ route('shop.customer.session.index') }}";
+                        });
                     }
                 }
             }).mount('#product-app');
