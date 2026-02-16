@@ -1,131 +1,265 @@
-<!-- Page Layout -->
-<x-shop::layouts>
-    <!-- Page Title -->
-    <x-slot:title>
-        @lang('shop::app.home.contact.title')
-    </x-slot>
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Contact Us | The HazleNut Factory</title>
 
-    <div class="container mt-8 max-1180:px-5 max-md:mt-6 max-md:px-4">
-        <!-- Form Container -->
-		<div class="m-auto w-full max-w-[870px] rounded-xl border border-zinc-200 p-16 px-[90px] max-md:px-8 max-md:py-8 max-sm:border-none max-sm:p-0">
-			<h1 class="font-dmserif text-4xl max-md:text-3xl max-sm:text-xl">
-                @lang('shop::app.home.contact.title')
-            </h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">
+    <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
+    
+    <style>
+        /* Base styles matching THF Theme */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #000;
+            color: white;
+            font-family: 'Forum', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-			<p class="mt-4 text-xl text-zinc-500 max-sm:mt-1 max-sm:text-sm">
-                @lang('shop::app.home.contact.about')
-            </p>
+        .contact-main {
+            flex: 1;
+            padding: 140px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
-            <div class="mt-14 rounded max-sm:mt-8">
-                <!-- Contact Form -->
-                <x-shop::form :action="route('shop.home.contact_us.send_mail')">
-                    <!-- Name -->
-                    <x-shop::form.control-group>
-                        <x-shop::form.control-group.label class="required">
-                            @lang('shop::app.home.contact.name')
-                        </x-shop::form.control-group.label>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
 
-                        <x-shop::form.control-group.control
-                            type="text"
-                            class="px-6 py-5 max-md:py-3 max-sm:py-3.5"
-                            name="name"
-                            rules="required"
-                            :value="old('name')"
-                            :label="trans('shop::app.home.contact.name')"
-                            :placeholder="trans('shop::app.home.contact.name')"
-                            :aria-label="trans('shop::app.home.contact.name')"
-                            aria-required="true"
-                        />
+        .contact-info h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
 
-                        <x-shop::form.control-group.error control-name="name" />
-                    </x-shop::form.control-group>
+        .contact-info h1 span { color: #d4af37; }
 
-                    <!-- Email -->
-                    <x-shop::form.control-group>
-                        <x-shop::form.control-group.label class="required">
-                            @lang('shop::app.home.contact.email')
-                        </x-shop::form.control-group.label>
+        .contact-info p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-family: sans-serif;
+        }
 
-                        <x-shop::form.control-group.control
-                            type="email"
-                            class="px-6 py-5 max-md:py-3 max-sm:py-3.5"
-                            name="email"
-                            rules="required|email"
-                            :value="old('email')"
-                            :label="trans('shop::app.home.contact.email')"
-                            :placeholder="trans('shop::app.home.contact.email')"
-                            :aria-label="trans('shop::app.home.contact.email')"
-                            aria-required="true"
-                        />
+        .info-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
 
-                        <x-shop::form.control-group.error control-name="email" />
-                    </x-shop::form.control-group>
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
 
-                    <!-- Contact -->
-                    <x-shop::form.control-group>
-                        <x-shop::form.control-group.label>
-                            @lang('shop::app.home.contact.phone-number')
-                        </x-shop::form.control-group.label>
+        .info-text h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
 
-                        <x-shop::form.control-group.control
-                            type="text"
-                            class="px-6 py-5 max-md:py-3 max-sm:py-3.5"
-                            name="contact"
-                            rules="phone"
-                            :value="old('contact')"
-                            :label="trans('shop::app.home.contact.phone-number')"
-                            :placeholder="trans('shop::app.home.contact.phone-number')"
-                            :aria-label="trans('shop::app.home.contact.phone-number')"
-                        />
+        .info-text p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0;
+        }
 
-                        <x-shop::form.control-group.error control-name="contact" />
-                    </x-shop::form.control-group>
+        /* Form Styling */
+        .contact-form-container {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
 
-                    <!-- Message -->
-                    <x-shop::form.control-group>
-                        <x-shop::form.control-group.label class="required">
-                            @lang('shop::app.home.contact.desc')
-                        </x-shop::form.control-group.label>
+        .form-group {
+            margin-bottom: 25px;
+        }
 
-                        <x-shop::form.control-group.control
-                            type="textarea"
-                            class="px-6 py-5 max-md:py-3 max-sm:py-3.5"
-                            name="message"
-                            rules="required"
-                            :label="trans('shop::app.home.contact.message')"
-                            :placeholder="trans('shop::app.home.contact.describe-here')"
-                            :aria-label="trans('shop::app.home.contact.message')"
-                            aria-required="true"
-                            rows="10"
-                        />
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
 
-                        <x-shop::form.control-group.error control-name="message" />
-                    </x-shop::form.control-group>
+        .form-control {
+            width: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Forum', serif;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
 
-                    <!-- Captcha -->
-                    @if (core()->getConfigData('customer.captcha.credentials.status'))
-                        <x-shop::form.control-group class="mt-5">
-                            {!! \Webkul\Customer\Facades\Captcha::render() !!}
+        .form-control:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
 
-                            <x-shop::form.control-group.error control-name="g-recaptcha-response" />
-                        </x-shop::form.control-group>
-                    @endif
+        textarea.form-control {
+            height: 150px;
+            resize: none;
+        }
 
-                    <!-- Submit Button -->
-                    <div class="mt-8 flex flex-wrap items-center gap-9 max-sm:justify-center max-sm:text-center">
-                        <button
-                            class="primary-button m-0 mx-auto block w-full max-w-[374px] rounded-2xl px-11 py-4 text-center text-base max-md:max-w-full max-md:rounded-lg max-md:py-3 max-sm:py-1.5 ltr:ml-0 rtl:mr-0"
-                            type="submit"
-                        >
-                            @lang('shop::app.home.contact.submit')
-                        </button>
+        .btn-submit {
+            width: 100%;
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-family: 'Forum', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #c9a033;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+            .contact-main { padding-top: 120px; }
+        }
+
+        @media (max-width: 768px) {
+            .contact-info h1 { font-size: 2.8rem; }
+            .contact-form-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body class="thf-dark-theme">
+    @include('shop::partials.thf-header')
+
+    <main class="contact-main">
+        <div class="contact-grid">
+            <!-- Left Side: Info -->
+            <div class="contact-info">
+                <h1>Get in <span>Touch</span></h1>
+                <p>Have questions about our artisanal collection or corporate gifting? We'd love to hear from you. Our masters are ready to assist you.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-text">
+                        <h3>Our Factory</h3>
+                        <p>Corporate Office, Mumbai, India</p>
                     </div>
-                </x-shop::form>
-            </div>
-		</div>
-    </div>
+                </div>
 
-    @push('scripts')
-        {!! \Webkul\Customer\Facades\Captcha::renderJS() !!}
-    @endpush
-</x-shop::layouts>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div class="info-text">
+                        <h3>Phone</h3>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-text">
+                        <h3>Email</h3>
+                        <p>concierge@thf.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-text">
+                        <h3>Service Hours</h3>
+                        <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="contact-form-container">
+                <form action="{{ route('shop.home.contact_us.send_mail') }}" method="POST">
+                    @csrf
+                    
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" name="name" class="form-control" required placeholder="Ex: Rahul Sharma">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" name="email" class="form-control" required placeholder="rahul@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" name="contact" class="form-control" placeholder="+91 00000 00000">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea name="message" class="form-control" required placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    @include('shop::partials.thf-footer')
+
+    @if (session()->has('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                showToast("{{ session('success') }}", 'success');
+            });
+
+            function showToast(msg, type) {
+                const toast = document.createElement('div');
+                toast.style.cssText = `position:fixed; bottom:30px; right:30px; background:#1a1a1a; color:#fff; padding:15px 25px; border-radius:8px; border-left:4px solid ${type==='success'?'#d4af37':'#ff4d4d'}; box-shadow:0 10px 30px rgba(0,0,0,0.5); z-index:10000; font-family:sans-serif; transition:0.3s; transform:translateY(100px); opacity:0;`;
+                toast.textContent = msg;
+                document.body.appendChild(toast);
+                setTimeout(() => { toast.style.transform = 'translateY(0)'; toast.style.opacity = '1'; }, 10);
+                setTimeout(() => { toast.style.transform = 'translateY(100px)'; toast.style.opacity = '0'; setTimeout(()=>toast.remove(), 300); }, 4000);
+            }
+        </script>
+    @endif
+</body>
+</html>

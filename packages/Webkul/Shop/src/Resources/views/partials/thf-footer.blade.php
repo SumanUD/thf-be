@@ -124,6 +124,7 @@
             <h3>Quick Links</h3>
             <div class="thf-footer-links">
                 <a href="{{ route('shop.corporate.index') }}">Get a Quote</a>
+                <a href="{{ route('shop.home.contact_us') }}">Contact Us</a>
                 <a href="{{ route('shop.corporate.index') }}">Why Choose Us</a>
                 <a href="{{ route('shop.corporate.index') }}">Corporate Catalog</a>
                 <a href="{{ route('shop.store-locator.index') }}">Store Locator</a>

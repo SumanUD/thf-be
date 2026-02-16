@@ -75,6 +75,7 @@
                     </div>
                     <a href="{{ route('shop.customers.account.profile.index') }}" class="dropdown-link">My Profile</a>
                     <a href="{{ route('shop.customers.account.orders.index') }}" class="dropdown-link">My Orders</a>
+                    <a href="{{ route('shop.home.contact_us') }}" class="dropdown-link">Contact Us</a>
                     @if (core()->getConfigData('customer.settings.wishlist.wishlist_option'))
                         <a href="{{ route('shop.customers.account.wishlist.index') }}" class="dropdown-link">Wishlist</a>
                     @endif
