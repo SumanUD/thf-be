@@ -1,9 +1,3 @@
-<?php
-require 'vendor/autoload.php';
-$app = require_once 'bootstrap/app.php';
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-$kernel->handle(Illuminate\Http\Request::capture());
-
 use Illuminate\Support\Facades\DB;
 
 $categories = DB::table('categories')
@@ -15,8 +9,7 @@ $categories = DB::table('categories')
     ->get();
 
 foreach ($categories as $cat) {
-    printf("ID: %d | Parent: %s | Status: %d | Name: %s
-", 
+    printf("ID: %d | Parent: %s | Status: %d | Name: %s\n", 
         $cat->id, 
         $cat->parent_id ?? 'NULL', 
         $cat->status, 
