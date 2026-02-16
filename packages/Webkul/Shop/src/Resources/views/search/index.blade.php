@@ -51,11 +51,112 @@
             font-family: sans-serif;
         }
 
-        /* Product Grid */
+        /* Product Grid - Fixed Card Sizing */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 350px)); /* Fixed max-width for cards */
             gap: 40px;
+            justify-content: center; /* Centers cards if there are few */
+        }
+
+        /* THF Product Card Redesign - Internal Layout */
+        .product-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            padding-top: 100%;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .card-image-wrapper img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .card-image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #fff;
+            height: 3rem;
+            overflow: hidden;
+            line-height: 1.2;
+        }
+
+        .card-content .price {
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-add-to-cart {
+            flex: 1;
+            background: #d4af37;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: 'Forum', serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+        }
+
+        .btn-add-to-cart:hover {
+            background: #c9a033;
+        }
+
+        .btn-wishlist {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: #d4af37;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
         }
 
         .no-results {
@@ -69,7 +170,7 @@
         @media (max-width: 768px) {
             .search-main { padding-top: 100px; }
             .search-title { font-size: 2.5rem; }
-            .product-grid { grid-template-columns: 1fr; gap: 25px; }
+            .product-grid { grid-template-columns: 1fr; gap: 25px; max-width: 400px; margin: 0 auto; }
         }
     </style>
 </head>
@@ -111,30 +212,22 @@
                     return;
                 }
 
-                // Use the standardized card layout in JS for consistency
                 container.innerHTML = products.map(product => `
-                    <div class="group relative flex flex-col w-full rounded-[20px] bg-[#141414cc] border border-[rgba(255,255,255,0.05)] overflow-hidden transition-all duration-400 hover:-translate-y-[15px] hover:shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:border-[rgba(212,175,55,0.2)]">
-                        <div class="relative overflow-hidden" style="padding-top: 100%;">
-                            <a href="${product.url_key ? '/' + product.url_key : '/product/' + product.id}" style="position:absolute; top:0; left:0; width:100%; height:100%;">
-                                <img src="${product.base_image?.medium_image_url || '{{ asset("thf-assets/images/placeholder.jpg") }}'}" 
-                                     style="width:100%; height:100%; object-fit:cover; transition:0.3s;" 
-                                     class="hover:scale-105">
-                            </a>
-                        </div>
-                        <div class="flex flex-col flex-grow p-4 bg-transparent" style="padding: 20px;">
-                            <p style="font-size: 1.25rem; font-family: 'Forum', serif; color: white; margin-bottom: 10px; line-clamp: 2; height: 3rem; overflow: hidden;">
-                                ${product.name}
-                            </p>
-                            <div style="font-size: 1.5rem; font-weight: 600; color: #d4af37; font-family: 'Forum', serif; margin-bottom: 15px;">
-                                ${product.price_html ? extractPrice(product.price_html) : '₹' + product.price}
+                    <div class="product-card">
+                        <a href="${product.url_key ? '/' + product.url_key : '/product/' + product.id}" style="text-decoration:none; color:inherit;">
+                            <div class="card-image-wrapper">
+                                <img src="${product.base_image?.medium_image_url || '{{ asset("thf-assets/images/placeholder.jpg") }}'}" alt="${product.name}">
                             </div>
-                            <div style="margin-top: auto; display: flex; gap: 12px; align-items: center;">
-                                <button onclick="addToCart(${product.id})" style="flex-grow: 1; background: #d4af37; color: #000; border: none; border-radius: 8px; padding: 12px; font-family: 'Forum', serif; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                    <span class="icon-cart" style="font-size: 1.2rem;"></span>
-                                    ADD TO CART
+                        </a>
+                        <div class="card-content">
+                            <h3>${product.name}</h3>
+                            <div class="price">${product.price_html ? extractPrice(product.price_html) : '₹' + product.price}</div>
+                            <div class="card-actions">
+                                <button class="btn-add-to-cart" onclick="addToCart(${product.id})">
+                                    <i class="fas fa-shopping-bag"></i> ADD TO CART
                                 </button>
-                                <button onclick="addToWishlist(${product.id})" style="width: 45px; height: 45px; border: 1px solid rgba(212, 175, 55, 0.3); background: transparent; border-radius: 8px; color: #d4af37; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                                    <span class="icon-heart" style="font-size: 1.5rem;"></span>
+                                <button class="btn-wishlist" onclick="addToWishlist(${product.id})" title="Add to Wishlist">
+                                    <i class="far fa-heart"></i>
                                 </button>
                             </div>
                         </div>

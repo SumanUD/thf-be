@@ -46,6 +46,7 @@
             @php
                 $categoryRepository = app('Webkul\Category\Repositories\CategoryRepository');
                 $category = $categoryRepository->findBySlug('assorted-collection');
+                if (!$category) $category = $categoryRepository->find(6); // Typical ID
                 $products = $category ? $category->products : collect();
             @endphp
 
@@ -62,5 +63,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="{{ asset('thf-assets/js/home.js') }}"></script>
+    <script src="{{ asset('thf-assets/js/category.js') }}"></script>
 </body>
 </html>
