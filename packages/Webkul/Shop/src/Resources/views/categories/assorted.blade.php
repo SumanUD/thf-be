@@ -45,8 +45,7 @@
         <div class="product-grid">
             @php
                 $categoryRepository = app('Webkul\Category\Repositories\CategoryRepository');
-                $category = $categoryRepository->findBySlug('assorted-collection');
-                if (!$category) $category = $categoryRepository->find(6); // Typical ID
+                $category = $categoryRepository->find(6); // ID 6 is Assorted
                 $products = $category ? $category->products : collect();
             @endphp
 

@@ -45,8 +45,7 @@
         <div class="product-grid">
             @php
                 $categoryRepository = app('Webkul\Category\Repositories\CategoryRepository');
-                $category = $categoryRepository->findBySlug('baklava');
-                if (!$category) $category = $categoryRepository->find(3); // Typical ID
+                $category = $categoryRepository->find(2); // ID 2 is Baklava
                 $products = $category ? $category->products : collect();
             @endphp
 

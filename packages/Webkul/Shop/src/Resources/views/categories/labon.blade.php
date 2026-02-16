@@ -45,10 +45,7 @@
         <div class="product-grid">
             @php
                 $categoryRepository = app('Webkul\Category\Repositories\CategoryRepository');
-                // Trying common slugs or fallback to IDs if found
-                $category = $categoryRepository->findBySlug('labon');
-                if (!$category) $category = $categoryRepository->find(2); // Typical ID from earlier logs
-                
+                $category = $categoryRepository->find(3); // ID 3 is Labon
                 $products = $category ? $category->products : collect();
             @endphp
 
