@@ -4,6 +4,7 @@ namespace Webkul\Shop\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
 use Webkul\Category\Repositories\CategoryRepository;
+use Webkul\Core\Repositories\ContactSubmissionRepository;
 use Webkul\Shop\Http\Requests\ContactRequest;
 use Webkul\Shop\Http\Resources\CategoryTreeResource;
 use Webkul\Shop\Mail\ContactUs;
@@ -21,7 +22,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(protected ThemeCustomizationRepository $themeCustomizationRepository, protected CategoryRepository $categoryRepository) {}
+    public function __construct(
+        protected ThemeCustomizationRepository $themeCustomizationRepository, 
+        protected CategoryRepository $categoryRepository,
+        protected ContactSubmissionRepository $contactSubmissionRepository
+    ) {}
 
     /**
      * Loads the home page for the storefront.
@@ -73,12 +78,16 @@ class HomeController extends Controller
     public function sendContactUsMail(ContactRequest $contactRequest)
     {
         try {
-            Mail::queue(new ContactUs($contactRequest->only([
+            $data = $contactRequest->only([
                 'name',
                 'email',
                 'contact',
                 'message',
-            ])));
+            ]);
+
+            $this->contactSubmissionRepository->create($data);
+
+            Mail::queue(new ContactUs($data));
 
             session()->flash('success', trans('shop::app.home.thanks-for-contact'));
         } catch (\Exception $e) {

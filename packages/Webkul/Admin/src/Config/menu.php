@@ -351,13 +351,24 @@ return [
     ],
 
     /**
+     * Contact Submissions.
+     */
+    [
+        'key'        => 'contacts',
+        'name'       => 'Contact Submissions',
+        'route'      => 'admin.contacts.index',
+        'sort'       => 9,
+        'icon'       => 'icon-customer-2',
+    ],
+
+    /**
      * Configuration.
      */
     [
         'key'        => 'configuration',
         'name'       => 'admin::app.components.layouts.sidebar.configure',
         'route'      => 'admin.configuration.index',
-        'sort'       => 9,
+        'sort'       => 10,
         'icon'       => 'icon-configuration',
     ],
 ];

@@ -11,6 +11,7 @@ class ModuleServiceProvider extends CoreModuleServiceProvider
      */
     protected $models = [
         \Webkul\Core\Models\Channel::class,
+        \Webkul\Core\Models\ContactSubmission::class,
         \Webkul\Core\Models\CoreConfig::class,
         \Webkul\Core\Models\Country::class,
         \Webkul\Core\Models\CountryState::class,
