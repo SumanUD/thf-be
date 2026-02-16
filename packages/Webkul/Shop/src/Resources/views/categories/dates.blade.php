@@ -42,7 +42,7 @@
             <p style="color: rgba(255,255,255,0.7); max-width: 800px; margin: 20px auto;">Handcrafted dates made with premium ingredients and fine craftsmanship for a perfectly balanced bite.</p>
         </div>
 
-        <v-dates-products></v-labon-products>
+        <v-dates-products></v-dates-products>
     </section>
     
     @include('shop::partials.thf-footer')
