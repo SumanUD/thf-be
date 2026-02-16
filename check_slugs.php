@@ -1,6 +1,5 @@
 <?php
 use Webkul\Category\Models\Category;
 foreach(Category::all() as $cat) {
-    echo "ID: " . $cat->id . " | Slug: " . $cat->slug . "
-";
+    echo "ID: " . $cat->id . " | Slug: " . $cat->slug . " | Products: " . $cat->products()->count() . "\n";
 }
