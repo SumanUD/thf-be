@@ -1,19 +1,19 @@
 @props(['count' => 0])
 
 @for ($i = 0;  $i < $count; $i++)
-    <div class="grid gap-2.5 relative w-full max-w-[291px] max-sm:grid-cols-1 {{ $attributes["class"] }}">
-        <div class="shimmer relative w-full rounded max-sm:!rounded-lg">
+    <div class="flex flex-col relative w-full rounded-[20px] bg-[#141414cc] border border-[rgba(255,255,255,0.05)] p-4 {{ $attributes["class"] }}">
+        <div class="shimmer relative w-full rounded-xl overflow-hidden">
             <div class="after:content-[' '] relative after:block after:pb-[calc(100%+9px)]"></div>
         </div>
 
-        <div class="grid content-start gap-2.5 max-sm:gap-1">
-            <p class="shimmer h-4 w-3/4"></p>
-            <p class="shimmer h-4 w-[55%]"></p>
+        <div class="flex flex-col gap-3 mt-4">
+            <p class="shimmer h-6 w-3/4 rounded"></p>
+            <p class="shimmer h-6 w-[40%] rounded"></p>
+            <p class="shimmer h-4 w-[20%] rounded"></p>
 
-            <!-- Needs to implement that in future -->
-            <div class="mt-3 flex hidden gap-4">
-                <span class="shimmer block h-[30px] w-[30px] rounded-full"></span>
-                <span class="shimmer block h-[30px] w-[30px] rounded-full"></span>
+            <div class="mt-auto pt-4 flex gap-3">
+                <div class="shimmer h-11 flex-grow rounded-lg"></div>
+                <div class="shimmer h-11 w-11 rounded-lg"></div>
             </div>
         </div>
     </div>
