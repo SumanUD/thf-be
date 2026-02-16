@@ -59,50 +59,19 @@
         </div>
 
         <div class="product-grid">
-            <a href="{{ url('/assorted-collection-delight-box') }}" class="product-card" data-product-id="27">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/best_seller/THF Assorted Collection Delight Box.jpg') }}" alt="Assorted Collection Delight Box">
-                    <div class="price-badge">₹599</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(27)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(27)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Assorted Collection Delight Box</h3>
-                    <p>Our signature assorted collection brings together premium ingredients and fine craftsmanship.</p>
-                </div>
-            </a>
+            @php
+                $assortedProducts = [27, 28, 29];
+                $productRepository = app('Webkul\Product\Repositories\ProductRepository');
+            @endphp
 
-            <a href="{{ url('/classic-assorted-selection') }}" class="product-card" data-product-id="28">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Classic Assorted Collection">
-                    <div class="price-badge">₹749</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(28)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(28)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Classic Assorted Collection Selection</h3>
-                    <p>Traditional assorted crafted with layers of phyllo, nuts, and aromatic honey syrup.</p>
-                </div>
-            </a>
-
-            <a href="{{ url('/premium-assorted-assortment') }}" class="product-card" data-product-id="29">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Premium Assorted Collection">
-                    <div class="price-badge">₹899</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(29)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(29)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Premium Assorted Collection Assortment</h3>
-                    <p>A luxurious creation featuring our finest assorted varieties in an elegant gift box.</p>
-                </div>
-            </a>
+            @foreach($assortedProducts as $productId)
+                @php
+                    $product = $productRepository->find($productId);
+                @endphp
+                @if($product)
+                    <x-shop::products.card :product="$product" />
+                @endif
+            @endforeach
         </div>
     </section>
 

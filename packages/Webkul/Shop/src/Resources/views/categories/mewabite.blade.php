@@ -59,50 +59,19 @@
         </div>
 
         <div class="product-grid">
-            <a href="{{ url('/mewabite-delight-box') }}" class="product-card" data-product-id="24">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/best_seller/THF Mewabite Delight Box.jpg') }}" alt="Mewabite Delight Box">
-                    <div class="price-badge">₹599</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(24)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(24)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Mewabite Delight Box</h3>
-                    <p>Our signature mewabite collection brings together premium ingredients and fine craftsmanship.</p>
-                </div>
-            </a>
+            @php
+                $mewabiteProducts = [24, 25, 26];
+                $productRepository = app('Webkul\Product\Repositories\ProductRepository');
+            @endphp
 
-            <a href="{{ url('/classic-mewabite-selection') }}" class="product-card" data-product-id="25">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Classic Mewabite">
-                    <div class="price-badge">₹749</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(25)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(25)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Classic Mewabite Selection</h3>
-                    <p>Traditional mewabite crafted with layers of phyllo, nuts, and aromatic honey syrup.</p>
-                </div>
-            </a>
-
-            <a href="{{ url('/premium-mewabite-assortment') }}" class="product-card" data-product-id="26">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Premium Mewabite">
-                    <div class="price-badge">₹899</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(26)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(26)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Premium Mewabite Assortment</h3>
-                    <p>A luxurious creation featuring our finest mewabite varieties in an elegant gift box.</p>
-                </div>
-            </a>
+            @foreach($mewabiteProducts as $productId)
+                @php
+                    $product = $productRepository->find($productId);
+                @endphp
+                @if($product)
+                    <x-shop::products.card :product="$product" />
+                @endif
+            @endforeach
         </div>
     </section>
 

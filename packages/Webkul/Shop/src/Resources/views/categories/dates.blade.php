@@ -59,50 +59,19 @@
         </div>
 
         <div class="product-grid">
-            <a href="{{ url('/dates-delight-box') }}" class="product-card" data-product-id="21">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/best_seller/THF Dates Delight Box.jpg') }}" alt="Dates Delight Box">
-                    <div class="price-badge">₹599</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(21)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(21)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Dates Delight Box</h3>
-                    <p>Our signature dates collection brings together premium ingredients and fine craftsmanship.</p>
-                </div>
-            </a>
+            @php
+                $datesProducts = [21, 22, 23];
+                $productRepository = app('Webkul\Product\Repositories\ProductRepository');
+            @endphp
 
-            <a href="{{ url('/classic-dates-selection') }}" class="product-card" data-product-id="22">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Classic Dates">
-                    <div class="price-badge">₹749</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(22)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(22)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Classic Dates Selection</h3>
-                    <p>Traditional dates crafted with layers of phyllo, nuts, and aromatic honey syrup.</p>
-                </div>
-            </a>
-
-            <a href="{{ url('/premium-dates-assortment') }}" class="product-card" data-product-id="23">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Premium Dates">
-                    <div class="price-badge">₹899</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(23)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(23)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Premium Dates Assortment</h3>
-                    <p>A luxurious creation featuring our finest dates varieties in an elegant gift box.</p>
-                </div>
-            </a>
+            @foreach($datesProducts as $productId)
+                @php
+                    $product = $productRepository->find($productId);
+                @endphp
+                @if($product)
+                    <x-shop::products.card :product="$product" />
+                @endif
+            @endforeach
         </div>
     </section>
 

@@ -47,50 +47,19 @@
         </div>
 
         <div class="product-grid">
-            <a href="{{ url('/baklava-delight-box') }}" class="product-card" data-product-id="15">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/best_seller/THF Baklava Delight Box.jpg') }}" alt="Baklava Delight Box">
-                    <div class="price-badge">₹599</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(15)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(15)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Baklava Delight Box</h3>
-                    <p>Our signature baklava collection brings together premium ingredients and fine craftsmanship.</p>
-                </div>
-            </a>
+            @php
+                $baklavaProducts = [15, 16, 17];
+                $productRepository = app('Webkul\Product\Repositories\ProductRepository');
+            @endphp
 
-            <a href="{{ url('/classic-baklava-selection') }}" class="product-card" data-product-id="16">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.2.jpg') }}" alt="Classic Baklava">
-                    <div class="price-badge">₹749</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(16)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(16)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Classic Baklava Selection</h3>
-                    <p>Traditional baklava crafted with layers of phyllo, nuts, and aromatic honey syrup.</p>
-                </div>
-            </a>
-
-            <a href="{{ url('/premium-baklava-assortment') }}" class="product-card" data-product-id="17">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/THF Box 3.1.jpg') }}" alt="Premium Baklava">
-                    <div class="price-badge">₹899</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(17)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(17)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Premium Baklava Assortment</h3>
-                    <p>A luxurious creation featuring our finest baklava varieties in an elegant gift box.</p>
-                </div>
-            </a>
+            @foreach($baklavaProducts as $productId)
+                @php
+                    $product = $productRepository->find($productId);
+                @endphp
+                @if($product)
+                    <x-shop::products.card :product="$product" />
+                @endif
+            @endforeach
         </div>
     </section>
 

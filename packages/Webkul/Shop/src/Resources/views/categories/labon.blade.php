@@ -42,48 +42,19 @@
             <p>THF LABON®, an innovative twist of the traditional Indian laddoo and delectable French Bon Bon.</p>
         </div>
         <div class="product-grid">
-            <a href="{{ url('/labon-delight-box') }}" class="product-card" data-product-id="18">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/best_seller/Labon Delight Box.jpg') }}" alt="Labon Delight">
-                    <div class="price-badge">₹649</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(18)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(18)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Labon Delight Box</h3>
-                    <p>Our signature Labon® collection featuring premium flavors in an elegant presentation.</p>
-                </div>
-            </a>
-            <a href="{{ url('/premium-labon®-assortment') }}" class="product-card" data-product-id="19">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/360640 Labon.jpg') }}" alt="Classic Labon">
-                    <div class="price-badge">₹799</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(19)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(19)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Premium Labon® Assortment</h3>
-                    <p>A curated selection of our finest Labon® varieties in multiple flavors.</p>
-                </div>
-            </a>
-            <a href="{{ url('/royal-labon®-collection') }}" class="product-card" data-product-id="20">
-                <div class="card-image">
-                    <img src="{{ asset('thf-assets/images/19201080Labon.jpg') }}" alt="Labon Royal">
-                    <div class="price-badge">₹999</div>
-                    <div class="hover-actions">
-                        <button onclick="event.preventDefault(); addToCart(20)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button onclick="event.preventDefault(); addToWishlist(20)"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Royal Labon® Collection</h3>
-                    <p>The ultimate Labon® experience with exotic flavors and premium packaging.</p>
-                </div>
-            </a>
+            @php
+                $labonProducts = [18, 19, 20];
+                $productRepository = app('Webkul\Product\Repositories\ProductRepository');
+            @endphp
+
+            @foreach($labonProducts as $productId)
+                @php
+                    $product = $productRepository->find($productId);
+                @endphp
+                @if($product)
+                    <x-shop::products.card :product="$product" />
+                @endif
+            @endforeach
         </div>
     </section>
     
