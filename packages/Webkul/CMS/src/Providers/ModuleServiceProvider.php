@@ -14,5 +14,7 @@ class ModuleServiceProvider extends CoreModuleServiceProvider
     protected $models = [
         \Webkul\CMS\Models\Page::class,
         \Webkul\CMS\Models\PageTranslation::class,
+        \Webkul\CMS\Models\Blog::class,
+        \Webkul\CMS\Models\Recipe::class,
     ];
 }

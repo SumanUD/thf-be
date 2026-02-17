@@ -138,6 +138,24 @@ return [
         'route'      => 'admin.cms.index',
         'sort'       => 5,
         'icon'       => 'icon-cms',
+    ], [
+        'key'        => 'cms.pages',
+        'name'       => 'admin::app.cms.index.title',
+        'route'      => 'admin.cms.index',
+        'sort'       => 1,
+        'icon'       => '',
+    ], [
+        'key'        => 'cms.blogs',
+        'name'       => 'Blogs',
+        'route'      => 'admin.cms.blogs.index',
+        'sort'       => 2,
+        'icon'       => '',
+    ], [
+        'key'        => 'cms.recipes',
+        'name'       => 'Recipes',
+        'route'      => 'admin.cms.recipes.index',
+        'sort'       => 3,
+        'icon'       => '',
     ],
 
     /**
