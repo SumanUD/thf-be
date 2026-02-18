@@ -3,6 +3,7 @@
 namespace Webkul\Admin\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use Spatie\ResponseCache\Facades\ResponseCache;
 use Webkul\Admin\DataGrids\CMS\BlogDataGrid;
 use Webkul\CMS\Repositories\BlogRepository;
 
@@ -56,6 +57,8 @@ class BlogController extends Controller
 
         $this->blogRepository->create($data);
 
+        ResponseCache::clear();
+
         session()->flash('success', 'Blog created successfully.');
 
         return redirect()->route('admin.cms.blogs.index');
@@ -92,6 +95,8 @@ class BlogController extends Controller
 
         $this->blogRepository->update($data, $id);
 
+        ResponseCache::clear();
+
         session()->flash('success', 'Blog updated successfully.');
 
         return redirect()->route('admin.cms.blogs.index');
@@ -107,6 +112,8 @@ class BlogController extends Controller
     {
         try {
             $this->blogRepository->delete($id);
+
+            ResponseCache::clear();
 
             return new JsonResponse([
                 'message' => 'Blog deleted successfully.',

@@ -74,11 +74,19 @@ Route::get('blogs', [HomeController::class, 'blogs'])
     ->name('shop.insights.blogs')
     ->middleware('cache.response');
 
+Route::get('blogs/{slug}', [HomeController::class, 'blogView'])
+    ->name('shop.insights.blog_view')
+    ->middleware('cache.response');
+
 /**
  * Recepie page.
  */
 Route::get('recepie', [HomeController::class, 'recepie'])
     ->name('shop.insights.recepie')
+    ->middleware('cache.response');
+
+Route::get('recepie/{slug}', [HomeController::class, 'recipeView'])
+    ->name('shop.insights.recipe_view')
     ->middleware('cache.response');
 
 

@@ -3,6 +3,7 @@
 namespace Webkul\Admin\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use Spatie\ResponseCache\Facades\ResponseCache;
 use Webkul\Admin\DataGrids\CMS\RecipeDataGrid;
 use Webkul\CMS\Repositories\RecipeRepository;
 
@@ -55,16 +56,16 @@ class RecipeController extends Controller
 
         // Convert strings to arrays if they are provided as such from the form
         if (is_string($data['ingredients'] ?? null)) {
-            $data['ingredients'] = array_filter(explode("
-", str_replace("", "", $data['ingredients'])));
+            $data['ingredients'] = array_filter(explode("\n", str_replace("\r", "", $data['ingredients'])));
         }
 
         if (is_string($data['instructions'] ?? null)) {
-            $data['instructions'] = array_filter(explode("
-", str_replace("", "", $data['instructions'])));
+            $data['instructions'] = array_filter(explode("\n", str_replace("\r", "", $data['instructions'])));
         }
 
         $this->recipeRepository->create($data);
+
+        ResponseCache::clear();
 
         session()->flash('success', 'Recipe created successfully.');
 
@@ -100,16 +101,16 @@ class RecipeController extends Controller
         $data = request()->all();
 
         if (is_string($data['ingredients'] ?? null)) {
-            $data['ingredients'] = array_filter(explode("
-", str_replace("", "", $data['ingredients'])));
+            $data['ingredients'] = array_filter(explode("\n", str_replace("\r", "", $data['ingredients'])));
         }
 
         if (is_string($data['instructions'] ?? null)) {
-            $data['instructions'] = array_filter(explode("
-", str_replace("", "", $data['instructions'])));
+            $data['instructions'] = array_filter(explode("\n", str_replace("\r", "", $data['instructions'])));
         }
 
         $this->recipeRepository->update($data, $id);
+
+        ResponseCache::clear();
 
         session()->flash('success', 'Recipe updated successfully.');
 
@@ -126,6 +127,8 @@ class RecipeController extends Controller
     {
         try {
             $this->recipeRepository->delete($id);
+
+            ResponseCache::clear();
 
             return new JsonResponse([
                 'message' => 'Recipe deleted successfully.',

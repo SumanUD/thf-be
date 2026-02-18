@@ -5,6 +5,8 @@ namespace Webkul\Shop\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use Webkul\Category\Repositories\CategoryRepository;
 use Webkul\Core\Repositories\ContactSubmissionRepository;
+use Webkul\CMS\Repositories\BlogRepository;
+use Webkul\CMS\Repositories\RecipeRepository;
 use Webkul\Shop\Http\Requests\ContactRequest;
 use Webkul\Shop\Http\Resources\CategoryTreeResource;
 use Webkul\Shop\Mail\ContactUs;
@@ -25,7 +27,9 @@ class HomeController extends Controller
     public function __construct(
         protected ThemeCustomizationRepository $themeCustomizationRepository, 
         protected CategoryRepository $categoryRepository,
-        protected ContactSubmissionRepository $contactSubmissionRepository
+        protected ContactSubmissionRepository $contactSubmissionRepository,
+        protected BlogRepository $blogRepository,
+        protected RecipeRepository $recipeRepository
     ) {}
 
     /**
@@ -152,6 +156,22 @@ class HomeController extends Controller
     }
 
     /**
+     * Single Blog page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function blogView($slug)
+    {
+        $blog = $this->blogRepository->findOneByField('slug', $slug);
+
+        if (! $blog) {
+            abort(404);
+        }
+
+        return view('shop::insights.blog-view', compact('blog'));
+    }
+
+    /**
  * Recepie page.
  *
  * @return \Illuminate\View\View
@@ -159,6 +179,22 @@ class HomeController extends Controller
     public function recepie()
     {
         return view('shop::insights.recepie');
+    }
+
+    /**
+     * Single Recipe page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function recipeView($slug)
+    {
+        $recipe = $this->recipeRepository->findOneByField('slug', $slug);
+
+        if (! $recipe) {
+            abort(404);
+        }
+
+        return view('shop::insights.recipe-view', compact('recipe'));
     }
 
 

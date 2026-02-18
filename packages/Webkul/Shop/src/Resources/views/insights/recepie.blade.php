@@ -1,6 +1,6 @@
 @php
     $recipeRepository = app('Webkul\CMS\Repositories\RecipeRepository');
-    $recipes = $recipeRepository->where('status', 1)->get();
+    $recipes = $recipeRepository->get();
 @endphp
 
 <!DOCTYPE html>

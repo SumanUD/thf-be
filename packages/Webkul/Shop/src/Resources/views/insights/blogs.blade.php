@@ -70,17 +70,21 @@
             <div class="blog-grid">
                 @forelse($blogs as $blog)
                     <article class="blog-card">
-                        <div class="blog-card-image">
+                        <a href="{{ route('shop.insights.blog_view', $blog->slug) }}" class="blog-card-image">
                             <img src="{{ $blog->image }}" alt="{{ $blog->title }}">
-                        </div>
+                        </a>
                         <div class="blog-card-content">
                             <div style="color:#d4af37; font-size:0.9rem; margin-bottom:10px;">
                                 <i class="far fa-folder"></i> {{ $blog->category }}
                             </div>
-                            <h3 class="blog-card-title">{{ $blog->title }}</h3>
+                            <h3 class="blog-card-title">
+                                <a href="{{ route('shop.insights.blog_view', $blog->slug) }}" style="color: inherit; text-decoration: none;">
+                                    {{ $blog->title }}
+                                </a>
+                            </h3>
                             <p class="blog-card-excerpt">{{ $blog->short_description }}</p>
                             <div class="blog-card-footer">
-                                <a href="#" class="blog-card-link">Read More <i class="fas fa-arrow-right"></i></a>
+                                <a href="{{ route('shop.insights.blog_view', $blog->slug) }}" class="blog-card-link">Read More <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </article>
