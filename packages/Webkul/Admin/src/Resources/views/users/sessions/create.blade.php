@@ -15,7 +15,7 @@
                 />
             @else
                 <img
-                    class="w-max"
+                    style="width: 200px; height: auto;"
                     src="{{ asset('thf-assets/images/logo-transparent-white.png') }}"
                     alt="{{ config('app.name') }}"
                 />
