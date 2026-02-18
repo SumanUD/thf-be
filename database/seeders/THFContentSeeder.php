@@ -32,8 +32,8 @@ $blogs = [
         'slug'              => 'diwali-delights',
         'category'          => 'Seasonal',
         'image'             => 'https://images.unsplash.com/photo-1604861979844-fe5f17c52ef6?w=800',
-        'short_description' => 'A journey through regional Diwali sweet traditions and how we're reimagining them for modern celebrations.',
-        'content'           => 'A journey through regional Diwali sweet traditions and how we're reimagining them for modern celebrations.',
+        'short_description' => 'A journey through regional Diwali sweet traditions and how we reimagining them for modern celebrations.',
+        'content'           => 'A journey through regional Diwali sweet traditions and how we reimagining them for modern celebrations.',
         'author'            => 'Cultural Desk',
         'reading_time'      => 6,
         'status'            => 1,
@@ -80,5 +80,4 @@ foreach ($recipes as $recipeData) {
     Recipe::updateOrCreate(['slug' => $recipeData['slug']], $recipeData);
 }
 
-echo "Seeding completed successfully!
-";
+echo "Seeding completed successfully!\n";
