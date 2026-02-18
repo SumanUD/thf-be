@@ -79,12 +79,13 @@
                         </x-admin::form.control-group.label>
 
                         <x-admin::form.control-group.control
-                            type="tinymce"
+                            type="textarea"
                             name="content"
                             :value="old('content') ?: $blog->content"
                             rules="required"
                             label="Content"
                             placeholder="Content"
+                            :tinymce="true"
                         />
 
                         <x-admin::form.control-group.error control-name="content" />
