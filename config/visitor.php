@@ -34,4 +34,18 @@ return [
         'jenssegers' => \Shetabit\Visitor\Drivers\JenssegersAgent::class,
         'UAParser'   => \Shetabit\Visitor\Drivers\UAParser::class,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | GeoIP Resolver
+    |--------------------------------------------------------------------------
+    |
+    | Required by shetabit/visitor. Set to 'null' to disable geo enrichment.
+    |
+    */
+    'geoip'    => false,
+    'resolver' => 'null',
+    'resolvers' => [
+        'null' => \Shetabit\Visitor\Resolvers\GeoIp\NullResolver::class,
+    ],
 ];
