@@ -11,18 +11,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Contact Us | The HazleNut Factory</title>
 
+    <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">
 
     <style>
-        @font-face {
-            font-family: "Forum";
-            src: url("{{ asset('thf-assets/fonts/forum/Forum-Regular.ttf') }}") format("truetype");
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -38,8 +31,6 @@
             -moz-osx-font-smoothing: grayscale;
             line-height: 1.6;
         }
-
-        /* Navigation Header - uses shared header.css */
 
         /* HERO BANNER */
         .hero-banner {
@@ -71,7 +62,6 @@
                 opacity: 0;
                 transform: translateY(40px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -139,7 +129,6 @@
                 opacity: 0;
                 transform: translateY(60px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -555,11 +544,9 @@
             .locations-grid {
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
-
         }
 
         @media (max-width: 768px) {
-
             .container {
                 padding: 0 20px;
                 margin-top: -60px;
@@ -587,7 +574,6 @@
         }
 
         @media (max-width: 576px) {
-
             .location-actions {
                 flex-direction: column;
             }
@@ -596,96 +582,7 @@
 </head>
 
 <body>
-    <!-- Navigation Header -->
-    <header class="header">
-        <div class="header-left">
-            <a href="{{ route('shop.home.index') }}" class="logo">
-                <img src="{{ asset('thf-assets/images/logo-transparent-white.png') }}" alt="THF Logo">
-            </a>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-
-        <div class="header-center">
-            <a href="{{ route('shop.home.index') }}">
-                <img src="{{ asset('thf-assets/images/name-logo.png') }}" alt="The Hazlenut Factory">
-            </a>
-        </div>
-
-        <div class="header-right">
-            <a href="{{ route('shop.search.index') }}" class="nav-link">SHOP</a>
-            <a href="{{ route('shop.store-locator.index') }}" class="nav-link">STORE LOCATOR</a>
-
-            @guest('customer')
-                <a href="{{ route('shop.customer.session.create') }}" class="nav-link">SIGN IN</a>
-            @else
-                <a href="{{ route('shop.customers.account.profile.index') }}" class="nav-link">MY ACCOUNT</a>
-            @endguest
-        </div>
-    </header>
-
-    <!-- Mega Menu -->
-    <nav class="mega-menu">
-        <div class="mega-panel">
-            <div class="menu-left">
-                <div class="links-col">
-                    <div class="col-title">Sweets</div>
-                    <ul>
-                        <li><a href="{{ route('shop.collection.index') }}">Baklava</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Labon</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Dates</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Mewabite</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Assorted Collection</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Collections</div>
-                    <ul>
-                        <li><a href="{{ route('shop.collection.index') }}">Luxury Gifting</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Premium Coffee</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Merchandise</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Corporate Gifting</a></li>
-                        <li><a href="#">Gifting Brochures</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Seasonal</div>
-                    <ul>
-                        <li><a href="{{ route('shop.collection.index') }}">Festive Hampers</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Diwali Specials</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Eid Collection</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">Christmas Treats</a></li>
-                        <li><a href="{{ route('shop.collection.index') }}">New Year Gifting</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Corporate</div>
-                    <ul>
-                        <li><a href="{{ route('shop.corporate.index') }}">Bulk Orders</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Custom Branding</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Employee Gifting</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Client Appreciation</a></li>
-                        <li><a href="{{ route('shop.corporate.index') }}">Corporate Catalog</a></li>
-                    </ul>
-                </div>
-
-                <div class="links-col">
-                    <div class="col-title">Services & Info</div>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Facilities</a></li>
-                        <li><a href="#">Catering</a></li>
-                        <li><a href="#">JalGhar</a></li>
-                        <li><a href="{{ route('shop.contact.contact-index') }}">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('shop::partials.thf-header')
 
     <!-- HERO BANNER -->
     <div class="hero-banner">
@@ -837,7 +734,71 @@
                 </div>
             </div>
 
+            <!-- Locations Section -->
+            <div class="locations-section">
+                <h2>Our Locations</h2>
+                <div class="locations-grid">
+                    <!-- Delhi Location -->
+                    <div class="location-card">
+                        <div class="location-header">
+                            <div class="location-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h3>Delhi Flagship Store</h3>
+                        </div>
+                        <div class="location-details">
+                            <p><i class="fas fa-map-marker-alt"></i> G-12, Connaught Place, New Delhi - 110001</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+911123456789">+91 11 2345 6789</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:delhi@hazlenutfactory.com">delhi@hazlenutfactory.com</a></p>
+                            <p><i class="far fa-clock"></i> Mon-Sun: 10:00 AM - 9:00 PM</p>
+                        </div>
+                        <div class="location-actions">
+                            <button class="location-btn"><i class="fas fa-directions"></i> Directions</button>
+                            <button class="location-btn"><i class="fas fa-phone"></i> Call</button>
+                        </div>
+                    </div>
 
+                    <!-- Mumbai Location -->
+                    <div class="location-card">
+                        <div class="location-header">
+                            <div class="location-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h3>Mumbai Boutique</h3>
+                        </div>
+                        <div class="location-details">
+                            <p><i class="fas fa-map-marker-alt"></i> Shop 45, Maker Chamber VI, Nariman Point, Mumbai - 400021</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+912223456789">+91 22 2345 6789</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:mumbai@hazlenutfactory.com">mumbai@hazlenutfactory.com</a></p>
+                            <p><i class="far fa-clock"></i> Mon-Sat: 11:00 AM - 8:30 PM</p>
+                        </div>
+                        <div class="location-actions">
+                            <button class="location-btn"><i class="fas fa-directions"></i> Directions</button>
+                            <button class="location-btn"><i class="fas fa-phone"></i> Call</button>
+                        </div>
+                    </div>
+
+                    <!-- Bangalore Location -->
+                    <div class="location-card">
+                        <div class="location-header">
+                            <div class="location-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h3>Bangalore Experience Center</h3>
+                        </div>
+                        <div class="location-details">
+                            <p><i class="fas fa-map-marker-alt"></i> Unit 101, UB City, Vittal Mallya Road, Bangalore - 560001</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+918023456789">+91 80 2345 6789</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:bangalore@hazlenutfactory.com">bangalore@hazlenutfactory.com</a></p>
+                            <p><i class="far fa-clock"></i> Mon-Sun: 10:30 AM - 9:00 PM</p>
+                        </div>
+                        <div class="location-actions">
+                            <button class="location-btn"><i class="fas fa-directions"></i> Directions</button>
+                            <button class="location-btn"><i class="fas fa-phone"></i> Call</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Map Section -->
             <div class="map-section">
@@ -858,10 +819,6 @@
     @include("shop::partials.thf-footer")
 
     <script>
-        // Menu Toggle - handled by header.js
-
-
-
         // Contact Form Submission
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();

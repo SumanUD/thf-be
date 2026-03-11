@@ -238,52 +238,9 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>THF Corporate Gifting</h3>
-                <p>Premium handcrafted sweets and treats for discerning corporate clients. Elevating relationships through thoughtful gifting since 2010.</p>
-                <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
+    @include("shop::partials.thf-footer")
 
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="#contact-form">Get a Quote</a>
-                <a href="#why-choose">Why Choose Us</a>
-                <a href="#">Corporate Catalog</a>
-                <a href="#">Bulk Order Terms</a>
-                <a href="#">Delivery Information</a>
-            </div>
-
-            <div class="footer-section">
-                <h3>Our Products</h3>
-                <a href="{{ route('shop.search.index') }}">Festive Hampers</a>
-                <a href="{{ route('shop.search.index') }}">Client Gifting</a>
-                <a href="{{ route('shop.search.index') }}">Employee Rewards</a>
-                <a href="{{ route('shop.search.index') }}">Custom Branding</a>
-                <a href="{{ route('shop.search.index') }}">Seasonal Specials</a>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Corporate Office: 123 Business District, Mumbai, India</p>
-                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                <p><i class="fas fa-envelope"></i> corporate@thf.com</p>
-                <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 7PM</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; {{ date('Y') }} THF Corporate Gifting. All rights reserved. | Privacy Policy | Terms of Service</p>
-        </div>
-    </footer>
 
     <script src="{{ asset('thf-assets/js/corporate.js') }}"></script>
 </body>
