@@ -110,7 +110,12 @@ class HomeController extends Controller
      */
     public function storeLocator()
     {
-        return view('shop::store-locator.index');
+        return view('shop::team.index');
+    }
+
+    public function team()
+    {
+        return view('shop::team.index');
     }
 
     /**
@@ -297,4 +302,7 @@ class HomeController extends Controller
     {
         return view('shop::pages.brand-story');
     }
+
+
+
 }

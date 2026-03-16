@@ -46,12 +46,22 @@ Route::get('store-locator', [HomeController::class, 'storeLocator'])
     ->name('shop.store-locator.index')
     ->middleware('cache.response');
 
+    
+/**
+ * Team locator page.
+ */
+Route::get('our-team', [HomeController::class, 'team'])
+    ->name('shop.team.index')
+    ->middleware('cache.response');
+
 /**
  * FAQ page.
  */
 Route::get('faq', [HomeController::class, 'faq'])
     ->name('shop.faq.faq-index')
     ->middleware('cache.response');
+
+
 
 /**
  * Contact page.
