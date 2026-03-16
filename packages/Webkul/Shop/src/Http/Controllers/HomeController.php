@@ -118,6 +118,11 @@ class HomeController extends Controller
         return view('shop::team.index');
     }
 
+        public function pressandawards()
+    {
+        return view('shop::awardsandpress.index');
+    }
+
     /**
      * FAQ page.
      *

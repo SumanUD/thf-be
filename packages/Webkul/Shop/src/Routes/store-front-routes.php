@@ -70,6 +70,14 @@ Route::get('contact', [HomeController::class, 'contact'])
     ->name('shop.contact.contact-index')
     ->middleware('cache.response');
 
+
+    /**
+ * pressandawards page.
+ */
+Route::get('press-and-awards', [HomeController::class, 'pressandawards'])
+    ->name('shop.pressandawards.index')
+    ->middleware('cache.response');
+
 /**
  * Career page.
  */

@@ -20,7 +20,7 @@
 
         body {
             font-family: 'Work Sans', sans-serif;
-            background-color: #fefcf8;
+            background-color: #fefcf8; /* keeping the original warm off-white background */
             color: #2c241e;
             line-height: 1.5;
         }
@@ -31,7 +31,7 @@
             padding: 2rem 2rem 4rem;
         }
 
-        /* ---------- hero banner (refined, lighter) ---------- */
+        /* ---------- hero banner (original colors from store locator) ---------- */
         .hero-banner {
             background: linear-gradient(117deg, #f3ebe2 0%, #faf3ec 100%);
             padding: 5rem 2rem;
@@ -64,9 +64,9 @@
             padding-top: 1.5rem;
         }
 
-        /* ---------- narrative section (airy, elegant) ---------- */
+        /* ---------- narrative section (original bg retained) ---------- */
         .story-block {
-            background: #ffffff;
+            background: #fcf6f0;  /* original warm background from the narrative card */
             padding: 3.5rem 4rem;
             border-radius: 40px;
             box-shadow: 0 20px 40px -12px rgba(85, 55, 30, 0.08);
@@ -162,13 +162,13 @@
             letter-spacing: 0.5px;
         }
 
-        /* ---------- team row (left image / right content) ---------- */
+        /* ---------- team row (left image / right content) - original bg retained ---------- */
         .team-row {
             display: flex;
             gap: 4rem;
             margin-bottom: 6rem;
             align-items: center;
-            background: #ffffff;
+            background: #ffffff;  /* cards remain white for contrast */
             border-radius: 48px;
             padding: 2rem 2rem 2rem 2rem;
             box-shadow: 0 25px 45px -18px rgba(65, 43, 30, 0.12);
@@ -255,7 +255,7 @@
         }
 
         .highlight-quote {
-            background: #fcf5ef;
+            background: #fcf5ef;  /* matching original narrative tone */
             padding: 1.6rem 2rem;
             border-radius: 30px;
             margin: 1.5rem 0 1.8rem;
@@ -323,17 +323,14 @@
             color: #a7622b;
         }
 
-        /* second row reverse order? we keep left image right content, both same direction (consistent) */
-        /* but we can alternate subtle background? not needed, it's already clean */
-
-        /* final note */
+        /* closing note with original warm tones */
         .closing-note {
             text-align: center;
             margin-top: 4rem;
             font-size: 1.3rem;
             font-family: 'Forum', serif;
             color: #6f523b;
-            background: #f5ece3;
+            background: #f5ece3;  /* warm background matching the palette */
             padding: 2rem;
             border-radius: 100px 100px 40px 40px;
             border: 1px solid #e1cbb8;
@@ -367,7 +364,7 @@
 <body>
     @include('shop::partials.thf-header')
 
-    <!-- HERO BANNER (refined, minimalist) -->
+    <!-- HERO BANNER (original warm gradient) -->
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-title">The storytellers</div>
@@ -376,7 +373,7 @@
     </div>
 
     <div class="container">
-        <!-- STORY NARRATIVE (improved, elegant card) -->
+        <!-- STORY NARRATIVE (original warm #fcf6f0 background) -->
         <div class="story-block">
             <div class="story-text">
                 <p>Every creation at The Hazelnut Factory reflects the vision of two dreamers who believed that Indian sweets could tell a new story — one of innovation, authenticity, and joy. What began as a small idea in Lucknow has today grown into a celebrated brand of artisanal indulgence, led with heart and guided by craft.</p>
@@ -399,7 +396,7 @@
             <div class="team-image-col">
                 <div class="team-image-wrap">
                     <!-- actual image path; fallback for demo -->
-                    <img src="{{ asset('thf-assets/images/team-ankit.jpg') }}" alt="Ankit Sahni" onerror="this.src='https://placehold.co/600x700/efdccf/7b5f4a?text=Ankit+Sahni'">
+                    <img src="https://cdn.shopify.com/s/files/1/0780/1759/3645/files/Ankit_bhaiya_500x700_4d78bfd1-5382-4b21-96d4-ef98cea7a9d9.png?v=1688639858" alt="Ankit Sahni" onerror="this.src='https://placehold.co/600x700/efdccf/7b5f4a?text=Ankit+Sahni'">
                 </div>
             </div>
             <div class="team-content-col">
@@ -421,11 +418,11 @@
             </div>
         </div>
 
-        <!-- TEAM MEMBER 2: BADAL SAHNI (same left/right order — keeps harmony) -->
+        <!-- TEAM MEMBER 2: BADAL SAHNI (same left/right order) -->
         <div class="team-row">
             <div class="team-image-col">
                 <div class="team-image-wrap">
-                    <img src="{{ asset('thf-assets/images/team-badal.jpg') }}" alt="Badal Sahni" onerror="this.src='https://placehold.co/600x700/efdccf/7b5f4a?text=Badal+Sahni'">
+                    <img src="https://cdn.shopify.com/s/files/1/0780/1759/3645/files/Badal_bhaiya_500x700_3239a2f9-bd48-40a6-bf95-aa7a72b847a5.png?v=1689335830" alt="Badal Sahni" onerror="this.src='https://placehold.co/600x700/efdccf/7b5f4a?text=Badal+Sahni'">
                 </div>
             </div>
             <div class="team-content-col">
@@ -447,7 +444,7 @@
             </div>
         </div>
 
-        <!-- CLOSING ELEMENT (like a seal) -->
+        <!-- CLOSING ELEMENT with original warm tone -->
         <div class="closing-note">
             <i class="fas fa-wheat-alt"></i> Handcrafted with heritage · every recipe tells a story <i class="fas fa-wheat-alt"></i>
         </div>
@@ -456,10 +453,6 @@
     <!-- FOOTER -->
     @include("shop::partials.thf-footer")
 
-    <!-- very light script for visual effect (optional) -->
-    <script>
-        // just a tiny hover detail (no functionality needed)
-        console.log('team page — designed with rows and elegance');
-    </script>
+
 </body>
 </html>
