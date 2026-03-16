@@ -118,10 +118,22 @@ class HomeController extends Controller
         return view('shop::team.index');
     }
 
-        public function pressandawards()
+    public function pressandawards()
     {
         return view('shop::awardsandpress.index');
     }
+
+    public function wedding()
+    {
+        return view('shop::wedding.index');
+    }
+
+
+    public function feedbackpage()
+    {
+        return view('shop::feedbackpage.index');
+    }
+
 
     /**
      * FAQ page.

@@ -77,6 +77,23 @@ Route::get('contact', [HomeController::class, 'contact'])
 Route::get('press-and-awards', [HomeController::class, 'pressandawards'])
     ->name('shop.pressandawards.index')
     ->middleware('cache.response');
+    
+    
+/**
+ * wedding page.
+ */
+Route::get('wedding', [HomeController::class, 'wedding'])
+    ->name('shop.wedding.index')
+    ->middleware('cache.response');
+
+
+/**
+ * feedback page.
+ */
+Route::get('feedback', [HomeController::class, 'feedbackpage'])
+    ->name('shop.feedbackpage.index')
+    ->middleware('cache.response');
+
 
 /**
  * Career page.
