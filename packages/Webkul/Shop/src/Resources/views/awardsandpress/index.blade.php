@@ -22,8 +22,8 @@
 
         body {
             font-family: 'Work Sans', sans-serif;
-            background-color: #fefcf8;
-            color: #2c241e;
+            background-color: #0b0b0b;
+            color: #fefcf8;
             line-height: 1.5;
         }
 
@@ -78,7 +78,7 @@
             font-family: 'Forum', serif;
             font-size: 2.8rem;
             font-weight: 400;
-            color: #3f2e21;
+            color: #dbb594;
             letter-spacing: 1px;
             position: relative;
         }

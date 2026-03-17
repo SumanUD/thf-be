@@ -346,49 +346,6 @@
             text-decoration: underline;
         }
 
-        /* BUSINESS HOURS */
-        .business-hours {
-            background: rgba(20, 20, 20, 0.7);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 20px;
-        }
-
-        .business-hours h3 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #fff;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .hour-item {
-            padding: 12px 15px;
-            background: rgba(10, 10, 10, 0.5);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .day {
-            color: #d4af37;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .time {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
-
         /* LOCATIONS SECTION */
         .locations-section {
             margin-top: 60px;
@@ -564,10 +521,6 @@
                 font-size: 2.5rem;
             }
 
-            .hours-grid {
-                grid-template-columns: 1fr;
-            }
-
             .locations-grid {
                 grid-template-columns: 1fr;
             }
@@ -664,10 +617,7 @@
                                 <h3>Call Us</h3>
                             </div>
                             <div class="contact-card-content">
-                                <p>General Inquiries: <a href="tel:+911800123456">1800-123-456</a></p>
-                                <p>Corporate Orders: <a href="tel:+911800789012">1800-789-012</a></p>
-                                <p>International: <a href="tel:+911234567890">+91 12345 67890</a></p>
-                                <p><small>Available Mon-Sat: 9 AM - 8 PM</small></p>
+                                <p>Phone: <a href="tel:+917084400400">7084400400</a></p>
                             </div>
                         </div>
 
@@ -680,14 +630,7 @@
                                 <h3>Email Us</h3>
                             </div>
                             <div class="contact-card-content">
-                                <p>General: <a href="mailto:info@hazlenutfactory.com">info@hazlenutfactory.com</a></p>
-                                <p>Orders: <a href="mailto:orders@hazlenutfactory.com">orders@hazlenutfactory.com</a>
-                                </p>
-                                <p>Corporate: <a
-                                        href="mailto:corporate@hazlenutfactory.com">corporate@hazlenutfactory.com</a>
-                                </p>
-                                <p>Support: <a href="mailto:support@hazlenutfactory.com">support@hazlenutfactory.com</a>
-                                </p>
+                                <p>Feedback: <a href="mailto:Feedback@thehazelnutfactory.com">Feedback@thehazelnutfactory.com</a></p>
                             </div>
                         </div>
 
@@ -697,37 +640,12 @@
                                 <div class="contact-icon">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
-                                <h3>Visit Us</h3>
+                                <h3>Office Address</h3>
                             </div>
                             <div class="contact-card-content">
-                                <p><strong>Head Office:</strong></p>
-                                <p>The HazleNut Factory Pvt. Ltd.</p>
-                                <p>123 Gourmet Street, Connaught Place</p>
-                                <p>New Delhi, Delhi 110001</p>
-                                <p>India</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Business Hours -->
-                    <div class="business-hours">
-                        <h3><i class="far fa-clock"></i> Business Hours</h3>
-                        <div class="hours-grid">
-                            <div class="hour-item">
-                                <div class="day">Monday - Friday</div>
-                                <div class="time">9:00 AM - 8:00 PM</div>
-                            </div>
-                            <div class="hour-item">
-                                <div class="day">Saturday</div>
-                                <div class="time">9:00 AM - 6:00 PM</div>
-                            </div>
-                            <div class="hour-item">
-                                <div class="day">Sunday</div>
-                                <div class="time">10:00 AM - 5:00 PM</div>
-                            </div>
-                            <div class="hour-item">
-                                <div class="day">Festive Season</div>
-                                <div class="time">9:00 AM - 9:00 PM</div>
+                                <p>D 10 & D 12, Vivekanandapuri Hydel Colony,</p>
+                                <p>Nirala Nagar, Lucknow,</p>
+                                <p>Uttar Pradesh 226020</p>
                             </div>
                         </div>
                     </div>
@@ -736,61 +654,20 @@
 
             <!-- Locations Section -->
             <div class="locations-section">
-                <h2>Our Locations</h2>
+                <h2>Our Location</h2>
                 <div class="locations-grid">
-                    <!-- Delhi Location -->
+                    <!-- Lucknow Head Office -->
                     <div class="location-card">
                         <div class="location-header">
                             <div class="location-icon">
                                 <i class="fas fa-store"></i>
                             </div>
-                            <h3>Delhi Flagship Store</h3>
+                            <h3>Lucknow Head Office</h3>
                         </div>
                         <div class="location-details">
-                            <p><i class="fas fa-map-marker-alt"></i> G-12, Connaught Place, New Delhi - 110001</p>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+911123456789">+91 11 2345 6789</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:delhi@hazlenutfactory.com">delhi@hazlenutfactory.com</a></p>
-                            <p><i class="far fa-clock"></i> Mon-Sun: 10:00 AM - 9:00 PM</p>
-                        </div>
-                        <div class="location-actions">
-                            <button class="location-btn"><i class="fas fa-directions"></i> Directions</button>
-                            <button class="location-btn"><i class="fas fa-phone"></i> Call</button>
-                        </div>
-                    </div>
-
-                    <!-- Mumbai Location -->
-                    <div class="location-card">
-                        <div class="location-header">
-                            <div class="location-icon">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            <h3>Mumbai Boutique</h3>
-                        </div>
-                        <div class="location-details">
-                            <p><i class="fas fa-map-marker-alt"></i> Shop 45, Maker Chamber VI, Nariman Point, Mumbai - 400021</p>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+912223456789">+91 22 2345 6789</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:mumbai@hazlenutfactory.com">mumbai@hazlenutfactory.com</a></p>
-                            <p><i class="far fa-clock"></i> Mon-Sat: 11:00 AM - 8:30 PM</p>
-                        </div>
-                        <div class="location-actions">
-                            <button class="location-btn"><i class="fas fa-directions"></i> Directions</button>
-                            <button class="location-btn"><i class="fas fa-phone"></i> Call</button>
-                        </div>
-                    </div>
-
-                    <!-- Bangalore Location -->
-                    <div class="location-card">
-                        <div class="location-header">
-                            <div class="location-icon">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            <h3>Bangalore Experience Center</h3>
-                        </div>
-                        <div class="location-details">
-                            <p><i class="fas fa-map-marker-alt"></i> Unit 101, UB City, Vittal Mallya Road, Bangalore - 560001</p>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+918023456789">+91 80 2345 6789</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:bangalore@hazlenutfactory.com">bangalore@hazlenutfactory.com</a></p>
-                            <p><i class="far fa-clock"></i> Mon-Sun: 10:30 AM - 9:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> D 10 & D 12, Vivekanandapuri Hydel Colony, Nirala Nagar, Lucknow - 226020</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+917084400400">7084400400</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:Feedback@thehazelnutfactory.com">Feedback@thehazelnutfactory.com</a></p>
                         </div>
                         <div class="location-actions">
                             <button class="location-btn"><i class="fas fa-directions"></i> Directions</button>
@@ -807,8 +684,8 @@
                     <div class="map-placeholder">
                         <i class="fas fa-map-marked-alt"></i>
                         <h3>Interactive Map</h3>
-                        <p>Our store locations are displayed on an interactive map.</p>
-                        <p>Zoom in to find the store nearest to you.</p>
+                        <p>Our office is located in Nirala Nagar, Lucknow.</p>
+                        <p>Click on Directions to get the route to our location.</p>
                     </div>
                 </div>
             </div>
@@ -844,11 +721,11 @@
                 const locationName = locationCard.querySelector('h3').textContent;
 
                 if (action.includes('Directions')) {
-                    alert(`Getting directions to ${locationName}...`);
-                    // In real implementation, this would open Google Maps
+                    // Open Google Maps with the Lucknow address
+                    const address = "D 10 & D 12, Vivekanandapuri Hydel Colony, Nirala Nagar, Lucknow, Uttar Pradesh 226020";
+                    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
                 } else if (action.includes('Call')) {
-                    const phoneNumber = locationCard.querySelector('a[href^="tel:"]').href;
-                    window.location.href = phoneNumber;
+                    window.location.href = 'tel:+917084400400';
                 }
             });
         });

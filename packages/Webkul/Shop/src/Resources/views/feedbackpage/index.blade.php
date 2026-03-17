@@ -30,7 +30,7 @@
         }
 
         body {
-            background-color: #fefcf8;
+            background-color: #0b0b0b;
             font-family: 'Work Sans', sans-serif;
         }
 
@@ -70,7 +70,7 @@
 
         /* Floating Card - signature website element */
         .feedback-card {
-            background: #ffffff;
+            background: #181818;
             border-radius: 32px;
             padding: 3rem;
             box-shadow: 0 25px 50px -12px rgba(85, 55, 30, 0.15);
@@ -101,12 +101,12 @@
 
         .feedback-header-text h1 {
             font-size: 2.5rem;
-            color: #4f3b2c;
+            color: #fcf6f0;
             margin-bottom: 0.3rem;
         }
 
         .feedback-header-text p {
-            color: #7b5a44;
+            color: #fcf6f0;
             font-size: 1rem;
         }
 
