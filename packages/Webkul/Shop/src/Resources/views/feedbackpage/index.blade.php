@@ -18,46 +18,152 @@
     <link rel="stylesheet" href="{{ asset('thf-assets/css/store-locator.css') }}">
     
     <style>
-        /* Feedback page specific styles - maintaining website's design language */
+        @font-face {
+            font-family: "Forum";
+            src: url("{{ asset('thf-assets/fonts/forum/Forum-Regular.ttf') }}") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --primary-brown: #4f3b2c;
-            --secondary-brown: #7b5a44;
-            --accent-gold: #b28056;
-            --light-cream: #fcf6f0;
-            --border-color: #f2dfd0;
-            --text-dark: #2c241e;
-            --text-light: #5f4e41;
+            --primary-gold: #D4AF37;
+            --text-dark: #FFFFFF;
+            --text-light: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(30, 30, 30, 0.8);
+            --bg-dark: #0a0a0a;
+            --bg-darker: #111111;
+            --bg-medium: #1A1A1A;
+            --border-gold: rgba(212, 175, 55, 0.1);
+            --border-gold-hover: rgba(212, 175, 55, 0.3);
         }
 
         body {
-            background-color: #0b0b0b;
             font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4, .forum-font {
-            font-family: 'Forum', serif;
+            font-family: "Forum", serif;
+            font-weight: 300;
         }
 
-        /* Hero Banner - Matching website style */
-        .feedback-hero {
-            background: linear-gradient(117deg, #f3ebe2 0%, #faf3ec 100%);
-            border-bottom: 1px solid #eedbcb;
+        /* Hero Banner - Dark Theme */
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, #111111 0%, #1A1A1A 50%, #222222 100%);
             padding: 5rem 2rem;
             text-align: center;
+            border-bottom: 1px solid var(--border-gold);
+            margin-top: 80px;
+            overflow: hidden;
         }
 
-        .feedback-hero .hero-title {
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
             font-family: 'Forum', serif;
             font-size: 4rem;
-            color: #4f3b2c;
-            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
         }
 
-        .feedback-hero .hero-sub {
+        .hero-title span {
+            color: var(--primary-gold);
+        }
+
+        .hero-sub {
             font-size: 1.25rem;
-            color: #7b5a44;
+            font-weight: 300;
+            color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
+            border-top: 2px solid var(--border-gold-hover);
+            padding-top: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Feedback Hero - Dark overrides */
+        .feedback-hero .hero-title {
+            color: #fff;
+        }
+
+        .feedback-hero .hero-title span {
+            color: var(--primary-gold);
+        }
+
+        /* Floating Elements */
+        .hero-decoration {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            opacity: 0.05;
+            animation: float 6s ease-in-out infinite;
+            background: var(--primary-gold);
+        }
+
+        .deco-1 {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .deco-2 {
+            top: 60%;
+            right: 8%;
+            animation-delay: 2s;
+        }
+
+        .deco-3 {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.1);
+            }
         }
 
         /* Main container */
@@ -68,13 +174,14 @@
             z-index: 10;
         }
 
-        /* Floating Card - signature website element */
+        /* Floating Card - Dark Theme */
         .feedback-card {
-            background: #181818;
+            background: var(--card-bg);
             border-radius: 32px;
             padding: 3rem;
-            box-shadow: 0 25px 50px -12px rgba(85, 55, 30, 0.15);
-            border: 1px solid #f2dfd0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
         }
 
         /* Header with icon */
@@ -84,44 +191,48 @@
             gap: 1rem;
             margin-bottom: 2rem;
             padding-bottom: 1.5rem;
-            border-bottom: 2px solid #f2dfd0;
+            border-bottom: 2px solid var(--border-gold);
         }
 
         .feedback-header-icon {
             width: 60px;
             height: 60px;
-            background: #fcf6f0;
+            background: rgba(212, 175, 55, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            color: #b28056;
+            color: var(--primary-gold);
+            border: 1px solid var(--border-gold);
         }
 
         .feedback-header-text h1 {
             font-size: 2.5rem;
-            color: #fcf6f0;
+            color: #fff;
             margin-bottom: 0.3rem;
+            font-weight: 300;
         }
 
         .feedback-header-text p {
-            color: #fcf6f0;
+            color: var(--text-light);
             font-size: 1rem;
         }
 
-        /* Quote box */
+        /* Quote box - Dark Theme */
         .quote-box {
-            background: #fcf6f0;
-            border-left: 4px solid #b28056;
+            background: rgba(20, 20, 20, 0.6);
+            border-left: 4px solid var(--primary-gold);
             padding: 2rem;
             margin: 2rem 0 3rem;
             border-radius: 0 20px 20px 0;
+            border: 1px solid var(--border-gold);
+            border-left-width: 4px;
         }
 
         .quote-box p {
             font-size: 1.1rem;
-            color: #4f3b2c;
+            color: #fff;
             font-style: italic;
             margin-bottom: 1rem;
             line-height: 1.7;
@@ -129,16 +240,17 @@
 
         .quote-author {
             font-weight: 500;
-            color: #b28056;
+            color: var(--primary-gold);
             font-size: 1rem;
         }
 
-        /* Section titles */
+        /* Section titles - Dark Theme */
         .section-title {
             font-size: 1.8rem;
-            color: #4f3b2c;
+            color: #fff;
             margin: 2.5rem 0 1.5rem;
             position: relative;
+            font-weight: 300;
         }
 
         .section-title::after {
@@ -146,11 +258,11 @@
             display: block;
             width: 60px;
             height: 3px;
-            background: #dbb594;
+            background: var(--primary-gold);
             margin-top: 0.5rem;
         }
 
-        /* Form styles - matching website inputs */
+        /* Form styles - Dark Theme */
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -169,13 +281,13 @@
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #4f3b2c;
+            color: #fff;
             font-weight: 500;
             font-size: 0.95rem;
         }
 
         .form-label .required {
-            color: #b45f3a;
+            color: var(--primary-gold);
             margin-left: 0.2rem;
         }
 
@@ -184,20 +296,32 @@
         .form-textarea {
             width: 100%;
             padding: 1rem 1.2rem;
-            border: 1px solid #f2dfd0;
+            border: 1px solid var(--border-gold);
             border-radius: 16px;
             font-size: 0.95rem;
             font-family: 'Work Sans', sans-serif;
-            transition: all 0.2s ease;
-            background: #ffffff;
+            transition: all 0.3s ease;
+            background: rgba(20, 20, 20, 0.6);
+            color: #fff;
         }
 
         .form-input:focus,
         .form-select:focus,
         .form-textarea:focus {
             outline: none;
-            border-color: #b28056;
-            box-shadow: 0 0 0 3px rgba(178, 128, 86, 0.1);
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            background: rgba(30, 30, 30, 0.8);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-select option {
+            background: #1a1a1a;
+            color: #fff;
         }
 
         .form-textarea {
@@ -205,14 +329,15 @@
             min-height: 150px;
         }
 
-        /* Conditional section - order details */
+        /* Conditional section - order details - Dark Theme */
         .conditional-section {
-            background: #fcf6f0;
+            background: rgba(20, 20, 20, 0.6);
             border-radius: 24px;
             padding: 2rem;
             margin: 2rem 0;
-            border: 1px solid #f2dfd0;
+            border: 1px solid var(--border-gold);
             display: none;
+            backdrop-filter: blur(10px);
         }
 
         .conditional-section.active {
@@ -222,78 +347,82 @@
 
         .conditional-section h3 {
             font-size: 1.4rem;
-            color: #4f3b2c;
+            color: #fff;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            font-weight: 300;
         }
 
         .conditional-section h3 i {
-            color: #b28056;
+            color: var(--primary-gold);
         }
 
-        /* Upload section */
+        /* Upload section - Dark Theme */
         .upload-section {
-            background: #fcf6f0;
+            background: rgba(20, 20, 20, 0.6);
             border-radius: 24px;
             padding: 2rem;
             margin: 2rem 0;
-            border: 1px solid #f2dfd0;
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
         }
 
         .upload-zone {
-            border: 2px dashed #dbb594;
+            border: 2px dashed var(--border-gold);
             border-radius: 20px;
             padding: 3rem 2rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s ease;
-            background: #ffffff;
+            transition: all 0.3s ease;
+            background: rgba(10, 10, 10, 0.4);
         }
 
         .upload-zone:hover {
-            border-color: #b28056;
-            background: #fcf6f0;
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.05);
         }
 
         .upload-zone.dragover {
-            border-color: #b28056;
-            background: #fcf6f0;
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.1);
         }
 
         .upload-icon {
             font-size: 3rem;
-            color: #b28056;
+            color: var(--primary-gold);
             margin-bottom: 1rem;
         }
 
         .upload-text {
-            color: #4f3b2c;
+            color: #fff;
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
 
         .upload-subtext {
-            color: #7b5a44;
+            color: var(--text-light);
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
 
         .upload-btn {
-            background: #b28056;
-            color: white;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #C19A2E 100%);
+            color: #000;
             padding: 0.8rem 2rem;
             border-radius: 50px;
             font-size: 0.95rem;
             cursor: pointer;
             display: inline-block;
-            transition: background 0.2s ease;
-            border: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            font-weight: 500;
         }
 
         .upload-btn:hover {
-            background: #9f6e46;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
 
         .file-input {
@@ -304,6 +433,12 @@
             margin-top: 2rem;
         }
 
+        .file-preview h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
         .preview-list {
             display: flex;
             flex-wrap: wrap;
@@ -312,15 +447,16 @@
         }
 
         .preview-item {
-            background: #ffffff;
+            background: rgba(20, 20, 20, 0.8);
             border-radius: 12px;
             padding: 1rem;
-            border: 1px solid #f2dfd0;
+            border: 1px solid var(--border-gold);
             display: flex;
             align-items: center;
             gap: 1rem;
             flex: 1 1 auto;
             min-width: 250px;
+            backdrop-filter: blur(10px);
         }
 
         .preview-icon {
@@ -333,38 +469,40 @@
 
         .preview-name {
             font-weight: 500;
-            color: #4f3b2c;
+            color: #fff;
             font-size: 0.9rem;
             margin-bottom: 0.2rem;
         }
 
         .preview-size {
             font-size: 0.8rem;
-            color: #7b5a44;
+            color: var(--text-light);
         }
 
         .remove-file {
-            color: #b45f3a;
+            color: var(--primary-gold);
             background: none;
             border: none;
             cursor: pointer;
             font-size: 1.2rem;
             padding: 0.2rem 0.5rem;
             border-radius: 50%;
+            transition: all 0.2s ease;
         }
 
         .remove-file:hover {
-            background: #fcf6f0;
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        /* Support panel - matching website cards */
+        /* Support panel - Dark Theme */
         .support-panel {
-            background: #ffffff;
+            background: rgba(20, 20, 20, 0.6);
             border-radius: 24px;
             padding: 2.5rem;
             margin: 3rem 0;
-            border: 1px solid #f2dfd0;
-            box-shadow: 0 15px 30px -12px rgba(85, 55, 30, 0.08);
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
         }
 
         .support-header {
@@ -376,13 +514,14 @@
 
         .support-header i {
             font-size: 2rem;
-            color: #b28056;
+            color: var(--primary-gold);
         }
 
         .support-header h3 {
             font-size: 1.8rem;
-            color: #4f3b2c;
+            color: #fff;
             margin: 0;
+            font-weight: 300;
         }
 
         .support-grid {
@@ -392,80 +531,86 @@
         }
 
         .support-channel {
-            background: #fcf6f0;
+            background: rgba(10, 10, 10, 0.6);
             border-radius: 20px;
             padding: 1.8rem 1.5rem;
             text-align: center;
-            transition: transform 0.2s ease;
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
         }
 
         .support-channel:hover {
             transform: translateY(-5px);
+            border-color: var(--border-gold-hover);
+            box-shadow: 0 15px 30px -8px rgba(212, 175, 55, 0.15);
         }
 
         .channel-icon {
             font-size: 2rem;
-            color: #b28056;
+            color: var(--primary-gold);
             margin-bottom: 1rem;
         }
 
         .support-channel h4 {
             font-size: 1.2rem;
-            color: #4f3b2c;
+            color: #fff;
             margin-bottom: 0.5rem;
+            font-weight: 400;
         }
 
         .support-channel p {
-            color: #7b5a44;
+            color: var(--text-light);
             font-size: 0.9rem;
             margin-bottom: 1.2rem;
             line-height: 1.5;
         }
 
         .channel-link {
-            color: #b28056;
+            color: var(--primary-gold);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: gap 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .channel-link:hover {
             gap: 0.8rem;
+            color: #fff;
         }
 
-        /* Submit button */
+        /* Submit button - Dark Theme */
         .submit-section {
             text-align: center;
             margin: 3rem 0 1rem;
         }
 
         .btn-submit {
-            background: #b28056;
-            color: white;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #C19A2E 100%);
+            color: #000;
             padding: 1.2rem 3.5rem;
             font-size: 1.1rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.2s ease;
-            box-shadow: 0 8px 20px rgba(178, 128, 86, 0.3);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .btn-submit:hover {
-            background: #9f6e46;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(178, 128, 86, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
         }
 
-        /* Success page */
+        /* Success page - Dark Theme */
         .success-page {
             display: none;
             text-align: center;
@@ -479,19 +624,20 @@
 
         .success-icon {
             font-size: 4rem;
-            color: #4CAF50;
+            color: var(--primary-gold);
             margin-bottom: 2rem;
         }
 
         .success-page h2 {
             font-family: 'Forum', serif;
             font-size: 2.5rem;
-            color: #4f3b2c;
+            color: #fff;
             margin-bottom: 1rem;
+            font-weight: 300;
         }
 
         .success-page p {
-            color: #7b5a44;
+            color: var(--text-light);
             font-size: 1.1rem;
             margin-bottom: 2rem;
             line-height: 1.7;
@@ -502,49 +648,54 @@
             gap: 1rem;
             justify-content: center;
             margin-top: 2.5rem;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
-            background: #b28056;
-            color: white;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #C19A2E 100%);
+            color: #000;
             padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
-            transition: background 0.2s ease;
+            transition: all 0.4s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .btn-primary:hover {
-            background: #9f6e46;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #b28056;
+            color: #fff;
             padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
-            border: 2px solid #b28056;
-            transition: all 0.2s ease;
+            border: 2px solid var(--border-gold);
+            transition: all 0.4s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .btn-secondary:hover {
-            background: #b28056;
-            color: white;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-gold);
+            transform: translateY(-2px);
+            border-color: var(--primary-gold);
         }
 
-        /* Footer styling to match website */
+        /* Footer */
         .feedback-footer {
             margin-top: 4rem;
-            background: #fcf6f0;
-            border-top: 1px solid #f2dfd0;
+            background: var(--bg-darker);
+            border-top: 1px solid var(--border-gold);
         }
 
         @keyframes fadeIn {
@@ -553,12 +704,79 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .support-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .feedback-card { padding: 2rem; }
-            .form-grid { grid-template-columns: 1fr; }
-            .support-grid { grid-template-columns: 1fr; }
-            .success-actions { flex-direction: column; }
-            .feedback-hero .hero-title { font-size: 2.8rem; }
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            .hero-banner {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-sub {
+                font-size: 1.1rem;
+            }
+
+            .feedback-card { 
+                padding: 2rem; 
+            }
+            
+            .form-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .support-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .success-actions { 
+                flex-direction: column; 
+            }
+            
+            .feedback-hero .hero-title { 
+                font-size: 2.5rem; 
+            }
+
+            .feedback-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .feedback-header-text h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .support-channel {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -566,16 +784,21 @@
 <body>
     @include('shop::partials.thf-header')
 
-    <!-- Hero Banner - matching website style -->
-    <div class="feedback-hero">
+    <!-- Floating decoration elements -->
+    <div class="hero-decoration deco-1"></div>
+    <div class="hero-decoration deco-2"></div>
+    <div class="hero-decoration deco-3"></div>
+
+    <!-- Hero Banner - Dark Theme -->
+    <div class="hero-banner feedback-hero">
         <div class="hero-content">
-            <div class="hero-title">Share Your Feedback</div>
+            <div class="hero-title">Share Your <span>Feedback</span></div>
             <div class="hero-sub">Your voice helps us create sweeter experiences for everyone</div>
         </div>
     </div>
 
     <div class="feedback-container">
-        <!-- Main floating card - signature website element -->
+        <!-- Main floating card -->
         <div class="feedback-card">
             <!-- Header with icon -->
             <div class="feedback-header">
@@ -672,10 +895,10 @@
                     </div>
                     
                     <div class="file-preview" id="filePreview" style="display: none;">
-                        <h4 style="color: #4f3b2c; margin-bottom: 1rem;">Selected Files:</h4>
+                        <h4>Selected Files:</h4>
                         <div class="preview-list" id="previewList"></div>
                     </div>
-                    <p style="color: #7b5a44; font-size: 0.85rem; margin-top: 1rem;">
+                    <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1rem;">
                         <i class="fas fa-info-circle"></i> Max file size: 10MB each. Supported: Images, Videos
                     </p>
                 </div>

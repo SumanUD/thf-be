@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Awards & Press | The HazleNut Factory</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css.all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Work+Sans:wght@300;400;500;600&display=swap">
     
     <!-- Swiper CSS for sliders -->
@@ -14,56 +14,150 @@
 
     <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
     <style>
+        @font-face {
+            font-family: "Forum";
+            src: url("{{ asset('thf-assets/fonts/forum/Forum-Regular.ttf') }}") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-gold: #D4AF37;
+            --text-dark: #FFFFFF;
+            --text-light: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(30, 30, 30, 0.8);
+            --bg-dark: #0a0a0a;
+            --bg-darker: #111111;
+            --bg-medium: #1A1A1A;
+            --border-gold: rgba(212, 175, 55, 0.1);
+            --border-gold-hover: rgba(212, 175, 55, 0.3);
+        }
+
         body {
             font-family: 'Work Sans', sans-serif;
-            background-color: #0b0b0b;
-            color: #fefcf8;
+            color: var(--text-dark);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Forum", serif;
+            font-weight: 300;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 2rem 2rem 4rem;
+            background-color: transparent;
         }
 
         /* Hero Banner */
         .hero-banner {
-            background: linear-gradient(117deg, #f3ebe2 0%, #faf3ec 100%);
+            position: relative;
+            background: linear-gradient(135deg, #111111 0%, #1A1A1A 50%, #222222 100%);
             padding: 5rem 2rem;
             text-align: center;
-            border-bottom: 1px solid #eedbcb;
+            border-bottom: 1px solid var(--border-gold);
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .hero-content {
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-title {
             font-family: 'Forum', serif;
             font-size: 4rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            color: #4f3b2c;
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: #fff;
             margin-bottom: 1.2rem;
             line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: var(--primary-gold);
         }
 
         .hero-sub {
             font-size: 1.25rem;
             font-weight: 300;
-            color: #5f4e41;
-            max-width: 650px;
+            color: var(--text-light);
+            max-width: 700px;
             margin: 0 auto;
-            border-top: 2px solid #dbb594;
+            border-top: 2px solid var(--border-gold-hover);
             padding-top: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Floating Elements */
+        .hero-decoration {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            opacity: 0.05;
+            animation: float 6s ease-in-out infinite;
+            background: var(--primary-gold);
+        }
+
+        .deco-1 {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .deco-2 {
+            top: 60%;
+            right: 8%;
+            animation-delay: 2s;
+        }
+
+        .deco-3 {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.1);
+            }
         }
 
         /* Section Headers */
@@ -72,13 +166,15 @@
             align-items: baseline;
             justify-content: space-between;
             margin: 4rem 0 2rem;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .section-header h2 {
             font-family: 'Forum', serif;
             font-size: 2.8rem;
-            font-weight: 400;
-            color: #dbb594;
+            font-weight: 300;
+            color: #fff;
             letter-spacing: 1px;
             position: relative;
         }
@@ -88,17 +184,18 @@
             display: block;
             width: 80px;
             height: 3px;
-            background: #dbb594;
+            background: var(--primary-gold);
             margin-top: 0.6rem;
         }
 
         .section-header span {
             font-size: 1rem;
-            background: #f0e4d9;
+            background: rgba(212, 175, 55, 0.1);
             padding: 0.5rem 1.5rem;
             border-radius: 40px;
-            color: #5f3f2c;
+            color: var(--primary-gold);
             font-weight: 500;
+            border: 1px solid var(--border-gold);
         }
 
         /* Slider Navigation */
@@ -111,26 +208,29 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid #e5cdb6;
-            color: #a0785c;
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            color: var(--primary-gold);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(10px);
         }
 
         .slider-nav button:hover {
-            background: #dbb594;
-            color: #ffffff;
-            border-color: #dbb594;
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--primary-gold);
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         .slider-nav button.swiper-button-disabled {
-            opacity: 0.5;
+            opacity: 0.3;
             cursor: not-allowed;
+            pointer-events: none;
         }
 
         /* Swiper Containers */
@@ -145,20 +245,22 @@
 
         /* Award Card */
         .award-card {
-            background: #ffffff;
+            background: var(--card-bg);
             border-radius: 32px;
             padding: 2rem 1.8rem;
             height: 100%;
-            border: 1px solid #f2dfd0;
-            box-shadow: 0 15px 30px -12px rgba(65, 43, 30, 0.08);
-            transition: transform 0.3s ease;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(10px);
         }
 
         .award-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 40px -15px #a57b5d40;
+            transform: translateY(-8px);
+            border-color: var(--border-gold-hover);
+            box-shadow: 0 25px 40px -15px rgba(212, 175, 55, 0.15);
         }
 
         .award-image {
@@ -167,18 +269,22 @@
             object-fit: contain;
             margin-bottom: 1.5rem;
             padding: 0.5rem;
+            filter: brightness(0.9) contrast(1.1);
+            background: rgba(20, 20, 20, 0.4);
+            border-radius: 16px;
         }
 
         .award-heading {
             font-family: 'Forum', serif;
             font-size: 1.8rem;
-            color: #2b1e14;
+            color: #fff;
             margin-bottom: 0.8rem;
             line-height: 1.2;
+            font-weight: 300;
         }
 
         .award-description {
-            color: #5a4a3d;
+            color: var(--text-light);
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1rem;
@@ -187,43 +293,45 @@
 
         /* Press Card */
         .press-card {
-            background: #fcf6f0;
+            background: var(--card-bg);
             border-radius: 32px;
             padding: 2rem 1.8rem;
             height: 100%;
-            border: 1px solid #f2dfd0;
-            box-shadow: 0 15px 30px -12px rgba(65, 43, 30, 0.08);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             cursor: pointer;
             text-decoration: none;
             color: inherit;
+            backdrop-filter: blur(10px);
         }
 
         .press-card:hover {
-            background: #ffffff;
-            transform: translateY(-6px);
-            box-shadow: 0 25px 40px -12px #a0785c;
-            border-color: #dbb594;
+            background: rgba(40, 40, 40, 0.9);
+            transform: translateY(-8px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 25px 40px -12px rgba(212, 175, 55, 0.2);
         }
 
         .press-icon {
             font-size: 2.5rem;
-            color: #b28056;
+            color: var(--primary-gold);
             margin-bottom: 1.2rem;
         }
 
         .press-heading {
             font-family: 'Forum', serif;
             font-size: 1.6rem;
-            color: #2b1e14;
+            color: #fff;
             margin-bottom: 1rem;
             line-height: 1.3;
+            font-weight: 300;
         }
 
         .press-description {
-            color: #5a4a3d;
+            color: var(--text-light);
             font-size: 0.95rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
@@ -232,7 +340,7 @@
 
         .press-source {
             font-size: 0.9rem;
-            color: #b28056;
+            color: var(--primary-gold);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
@@ -243,6 +351,7 @@
 
         .press-source i {
             font-size: 1rem;
+            color: var(--primary-gold);
         }
 
         /* Closing Note */
@@ -251,32 +360,92 @@
             margin-top: 4rem;
             font-size: 1.3rem;
             font-family: 'Forum', serif;
-            color: #6f523b;
-            background: #f5ece3;
+            color: #fff;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 100px 100px 40px 40px;
-            border: 1px solid #e1cbb8;
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
         }
 
         .closing-note i {
             margin: 0 8px;
-            color: #b2652a;
+            color: var(--primary-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .section-header { flex-direction: column; gap: 1rem; }
-            .slider-nav { align-self: flex-end; }
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            .hero-banner {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-sub {
+                font-size: 1.1rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .slider-nav {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+
+            .award-heading {
+                font-size: 1.5rem;
+            }
+
+            .press-heading {
+                font-size: 1.4rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
     @include('shop::partials.thf-header')
 
+    <!-- Floating decoration elements -->
+    <div class="hero-decoration deco-1"></div>
+    <div class="hero-decoration deco-2"></div>
+    <div class="hero-decoration deco-3"></div>
+
     <!-- HERO BANNER -->
     <div class="hero-banner">
         <div class="hero-content">
-            <div class="hero-title">Recognition & Features</div>
+            <div class="hero-title">Recognition <span>& Features</span></div>
             <div class="hero-sub">Celebrating the journey of excellence through awards and media coverage</div>
         </div>
     </div>
@@ -294,7 +463,7 @@
                 <!-- Award 1 -->
                 <div class="swiper-slide">
                     <div class="award-card">
-                        <img src="https://placehold.co/600x400/efdccf/7b5f4a?text=Best+Artisanal+Sweet+Brand" class="award-image" alt="Award">
+                        <img src="https://placehold.co/600x400/2a2a2a/d4af37?text=Best+Artisanal+Sweet+Brand" class="award-image" alt="Award">
                         <div class="award-heading">Best Artisanal Sweet Brand</div>
                         <div class="award-description">Recognized for excellence in reimagining traditional Indian sweets with a modern, gourmet approach at the Food Excellence Awards 2024.</div>
                     </div>
@@ -302,7 +471,7 @@
                 <!-- Award 2 -->
                 <div class="swiper-slide">
                     <div class="award-card">
-                        <img src="https://placehold.co/600x400/efdccf/7b5f4a?text=Innovation+in+Gifting" class="award-image" alt="Award">
+                        <img src="https://placehold.co/600x400/2a2a2a/d4af37?text=Innovation+in+Gifting" class="award-image" alt="Award">
                         <div class="award-heading">Innovation in Gifting</div>
                         <div class="award-description">Awarded for revolutionary gourmet hampers that blend tradition with contemporary luxury at the Indian Retail Awards.</div>
                     </div>
@@ -310,7 +479,7 @@
                 <!-- Award 3 -->
                 <div class="swiper-slide">
                     <div class="award-card">
-                        <img src="https://placehold.co/600x400/efdccf/7b5f4a?text=Emerging+Café+Chain" class="award-image" alt="Award">
+                        <img src="https://placehold.co/600x400/2a2a2a/d4af37?text=Emerging+Café+Chain" class="award-image" alt="Award">
                         <div class="award-heading">Emerging Café Chain</div>
                         <div class="award-description">Honored as one of the most promising café concepts for creating a unique vegetarian-gourmet experience.</div>
                     </div>
@@ -318,7 +487,7 @@
                 <!-- Award 4 -->
                 <div class="swiper-slide">
                     <div class="award-card">
-                        <img src="https://placehold.co/600x400/efdccf/7b5f4a?text=Packaging+Design" class="award-image" alt="Award">
+                        <img src="https://placehold.co/600x400/2a2a2a/d4af37?text=Packaging+Design" class="award-image" alt="Award">
                         <div class="award-heading">Excellence in Packaging</div>
                         <div class="award-description">Celebrated for elegant, sustainable packaging that enhances the gifting experience at the Design & Retail Summit.</div>
                     </div>
@@ -326,7 +495,7 @@
                 <!-- Award 5 -->
                 <div class="swiper-slide">
                     <div class="award-card">
-                        <img src="https://placehold.co/600x400/efdccf/7b5f4a?text=People's+Choice" class="award-image" alt="Award">
+                        <img src="https://placehold.co/600x400/2a2a2a/d4af37?text=People's+Choice" class="award-image" alt="Award">
                         <div class="award-heading">People's Choice Award</div>
                         <div class="award-description">Voted by customers as the favorite destination for premium sweets and café experience in North India.</div>
                     </div>
@@ -492,14 +661,11 @@
             },
         });
 
-        // Handle PDF link (the SpiceJet one) - ensure it opens correctly
+        // Handle PDF links
         document.querySelectorAll('.press-card[href$=".pdf"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // Let it open normally, but we can add target="_blank" behavior
-                if (!link.hasAttribute('target')) {
-                    link.setAttribute('target', '_blank');
-                }
-            });
+            if (!link.hasAttribute('target')) {
+                link.setAttribute('target', '_blank');
+            }
         });
     </script>
 </body>

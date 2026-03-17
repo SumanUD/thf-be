@@ -12,446 +12,563 @@
     <link rel="stylesheet" href="{{ asset('thf-assets/css/header.css') }}">
 
 <style>
-/* ---------- global / reset ---------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        @font-face {
+            font-family: "Forum";
+            src: url("{{ asset('thf-assets/fonts/forum/Forum-Regular.ttf') }}") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
 
-body {
-    font-family: 'Work Sans', sans-serif;
-    background-color: #0b0b0b !important; /* deep black background */
-    color: #fefcf8; /* warm dark brown text */
-    line-height: 1.5;
-    min-height: 100vh;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem 2rem 4rem;
-    background-color: transparent; /* ensure container doesn't override body */
-}
+        :root {
+            --primary-gold: #D4AF37;
+            --text-dark: #FFFFFF;
+            --text-light: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(30, 30, 30, 0.8);
+            --bg-dark: #0a0a0a;
+            --bg-darker: #111111;
+            --bg-medium: #1A1A1A;
+            --border-gold: rgba(212, 175, 55, 0.1);
+            --border-gold-hover: rgba(212, 175, 55, 0.3);
+        }
 
-/* ---------- hero banner (warm gradient) ---------- */
-.hero-banner {
-    background: linear-gradient(117deg, #f3ebe2 0%, #faf3ec 100%) !important;
-    padding: 5rem 2rem;
-    text-align: center;
-    border-bottom: 1px solid #eedbcb;
-    margin-top: 80px; /* for fixed header */
-}
+        body {
+            font-family: "Work Sans", sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
 
-.hero-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
+        h1, h2, h3, h4 {
+            font-family: "Forum", serif;
+            font-weight: 300;
+        }
 
-.hero-title {
-    font-family: 'Forum', serif;
-    font-size: 4rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: #4f3b2c; /* rich brown */
-    margin-bottom: 1.2rem;
-    line-height: 1.1;
-}
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+            background-color: transparent;
+        }
 
-.hero-sub {
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: #5f4e41; /* medium brown */
-    max-width: 650px;
-    margin: 0 auto;
-    border-top: 2px solid #dbb594; /* warm gold */
-    padding-top: 1.5rem;
-}
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, #111111 0%, #1A1A1A 50%, #222222 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-gold);
+            margin-top: 80px;
+            overflow: hidden;
+        }
 
-/* ---------- narrative section ---------- */
-.story-block {
-    background: #fcf6f0 !important; /* warm cream */
-    padding: 3.5rem 4rem;
-    border-radius: 40px;
-    box-shadow: 0 20px 40px -12px rgba(85, 55, 30, 0.08);
-    margin-bottom: 5rem;
-    border: 1px solid #f0e3d8; /* soft peach */
-    position: relative;
-}
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-.story-block::before {
-    content: "“";
-    font-family: 'Forum', serif;
-    font-size: 8rem;
-    color: #e5cdb6; /* light tan */
-    position: absolute;
-    top: -20px;
-    left: 30px;
-    opacity: 0.4;
-    pointer-events: none;
-}
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
 
-.story-text {
-    font-size: 1.18rem;
-    line-height: 1.8;
-    color: #3e332b; /* warm dark brown */
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
+        .hero-title {
+            font-family: 'Forum', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
 
-.story-text p {
-    margin-bottom: 1.8rem;
-}
+        .hero-title span {
+            color: var(--primary-gold);
+        }
 
-.story-text p:first-child {
-    font-weight: 500;
-    font-size: 1.3rem;
-    color: #6f4e37; /* coffee brown */
-}
+        .hero-sub {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            border-top: 2px solid var(--border-gold-hover);
+            padding-top: 1.5rem;
+            line-height: 1.6;
+        }
 
-.story-text p:last-child {
-    margin-bottom: 0;
-}
+        /* Floating Elements */
+        .hero-decoration {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            opacity: 0.05;
+            animation: float 6s ease-in-out infinite;
+            background: var(--primary-gold);
+        }
 
-.signature-line {
-    margin-top: 2rem;
-    font-family: 'Forum', serif;
-    font-size: 1.4rem;
-    color: #a0785c; /* warm medium brown */
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
+        .deco-1 {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
 
-.signature-line i {
-    font-size: 2rem;
-    color: #c29a73; /* golden tan */
-}
+        .deco-2 {
+            top: 60%;
+            right: 8%;
+            animation-delay: 2s;
+        }
 
-/* ---------- team section header ---------- */
-.team-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+        .deco-3 {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 4s;
+        }
 
-.team-header h2 {
-    font-family: 'Forum', serif;
-    font-size: 3rem;
-    font-weight: 400;
-    color: #dbb594; /* deep brown */
-    letter-spacing: 1px;
-    position: relative;
-}
+        @keyframes float {
 
-.team-header h2:after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 3px;
-    background: #dbb594; /* warm gold */
-    margin-top: 0.6rem;
-}
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
 
-.team-header span {
-    font-size: 1.1rem;
-    background: #f0e4d9 !important; /* light peach */
-    padding: 0.5rem 1.8rem;
-    border-radius: 40px;
-    color: #5f3f2c; /* medium brown */
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
+            50% {
+                transform: translateY(-30px) scale(1.1);
+            }
+        }
 
-/* ---------- team row (cards) ---------- */
-.team-row {
-    display: flex;
-    gap: 4rem;
-    margin-bottom: 6rem;
-    align-items: center;
-    background: #ffffff !important; /* white cards for contrast */
-    border-radius: 48px;
-    padding: 2rem 2rem 2rem 2rem;
-    box-shadow: 0 25px 45px -18px rgba(65, 43, 30, 0.12);
-    border: 1px solid #f2dfd0; /* soft peach */
-    transition: all 0.3s ease;
-}
+        /* Narrative Section */
+        .story-block {
+            background: var(--card-bg);
+            padding: 3.5rem 4rem;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 5rem;
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
 
-.team-row:hover {
-    transform: scale(1.01);
-    box-shadow: 0 30px 50px -18px rgba(165, 123, 93, 0.25);
-}
+        .story-block::before {
+            content: "“";
+            font-family: 'Forum', serif;
+            font-size: 8rem;
+            color: var(--primary-gold);
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            opacity: 0.15;
+            pointer-events: none;
+        }
 
-/* image column */
-.team-image-col {
-    flex: 0 0 340px;
-}
+        .story-text {
+            font-size: 1.18rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
 
-.team-image-wrap {
-    width: 100%;
-    border-radius: 32px;
-    overflow: hidden;
-    box-shadow: 0 12px 28px -8px rgba(60, 40, 20, 0.2);
-    border: 3px solid #fff6ed; /* cream */
-    aspect-ratio: 1 / 1.1;
-}
+        .story-text p {
+            margin-bottom: 1.8rem;
+        }
 
-.team-image-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
+        .story-text p:first-child {
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: #fff;
+        }
 
-.team-row:hover .team-image-wrap img {
-    transform: scale(1.03);
-}
+        .story-text p:last-child {
+            margin-bottom: 0;
+        }
 
-/* content column */
-.team-content-col {
-    flex: 1;
-    padding-right: 1rem;
-}
+        .signature-line {
+            margin-top: 2rem;
+            font-family: 'Forum', serif;
+            font-size: 1.4rem;
+            color: var(--primary-gold);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-.member-name {
-    font-family: 'Forum', serif;
-    font-size: 3rem;
-    font-weight: 400;
-    color: #2b1e14; /* dark chocolate */
-    line-height: 1.1;
-    margin-bottom: 0.25rem;
-}
+        .signature-line i {
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
 
-.member-title {
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #b28056; /* golden brown */
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        /* Team Section Header */
+        .team-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-.member-title i {
-    font-size: 1.4rem;
-    color: #ccaa84; /* light gold */
-}
+        .team-header h2 {
+            font-family: 'Forum', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 1px;
+            position: relative;
+        }
 
-.member-bio {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: #3f332b; /* warm brown */
-    margin-bottom: 2rem;
-}
+        .team-header h2:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--primary-gold);
+            margin-top: 0.6rem;
+        }
 
-.member-bio p {
-    margin-bottom: 1.4rem;
-}
+        .team-header span {
+            font-size: 1.1rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            color: var(--primary-gold);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--border-gold);
+        }
 
-.member-bio p:last-child {
-    margin-bottom: 0;
-}
+        /* Team Cards */
+        .team-row {
+            display: flex;
+            gap: 4rem;
+            margin-bottom: 6rem;
+            align-items: center;
+            background: var(--card-bg);
+            border-radius: 48px;
+            padding: 2rem 2rem 2rem 2rem;
+            box-shadow: 0 25px 45px -18px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
 
-.highlight-quote {
-    background: #fcf5ef !important; /* warm cream */
-    padding: 1.6rem 2rem;
-    border-radius: 30px;
-    margin: 1.5rem 0 1.8rem;
-    border-left: 5px solid #c6a27a; /* medium gold */
-    font-style: normal;
-    font-weight: 400;
-    color: #4e3c2f; /* rich brown */
-    box-shadow: inset 0 2px 8px #f9ede2; /* soft peach */
-    font-size: 1.05rem;
-}
+        .team-row:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--border-gold-hover);
+            box-shadow: 0 30px 50px -18px rgba(212, 175, 55, 0.15);
+        }
 
-.highlight-quote i {
-    color: #a57144; /* warm copper */
-    margin-right: 8px;
-    font-size: 1.2rem;
-}
+        /* Image column */
+        .team-image-col {
+            flex: 0 0 340px;
+        }
 
-.member-footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
+        .team-image-wrap {
+            width: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(212, 175, 55, 0.15);
+            aspect-ratio: 1 / 1.1;
+        }
 
-.btn-outline {
-    background: transparent;
-    border: 2px solid #c8a27b; /* tan */
-    color: #6f4e37; /* coffee brown */
-    padding: 0.8rem 2.2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    transition: 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    cursor: default;
-    opacity: 0.8;
-    font-family: 'Work Sans', sans-serif;
-}
+        .team-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+            filter: brightness(0.9);
+        }
 
-.btn-outline i {
-    font-size: 1.2rem;
-    color: #b28056; /* golden brown */
-}
+        .team-row:hover .team-image-wrap img {
+            transform: scale(1.03);
+        }
 
-.btn-outline:hover {
-    background: #f3e5d9; /* light peach */
-    border-color: #a56f42; /* darker gold */
-}
+        /* Content column */
+        .team-content-col {
+            flex: 1;
+            padding-right: 1rem;
+        }
 
-.pill-badge {
-    background: #efe1d3 !important; /* light tan */
-    padding: 0.5rem 1.8rem;
-    border-radius: 40px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #523d2e; /* dark brown */
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    letter-spacing: 0.3px;
-}
+        .member-name {
+            font-family: 'Forum', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.5px;
+        }
 
-.pill-badge i {
-    color: #a7622b; /* terracotta */
-}
+        .member-title {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-/* closing note */
-.closing-note {
-    text-align: center;
-    margin-top: 4rem;
-    font-size: 1.3rem;
-    font-family: 'Forum', serif;
-    color: #6f523b; /* warm brown */
-    background: #f5ece3 !important; /* warm cream */
-    padding: 2rem;
-    border-radius: 100px 100px 40px 40px;
-    border: 1px solid #e1cbb8; /* light tan */
-}
+        .member-title i {
+            font-size: 1.4rem;
+            color: var(--primary-gold);
+        }
 
-.closing-note i {
-    margin: 0 8px;
-    color: #b2652a; /* burnt orange */
-}
+        .member-bio {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
 
-/* responsive */
-@media (max-width: 1000px) {
-    .team-row {
-        flex-direction: column;
-        padding: 2rem;
-        gap: 2rem;
-    }
-    
-    .team-image-col {
-        flex: 0 0 auto;
-        width: 70%;
-        max-width: 380px;
-    }
-    
-    .hero-title {
-        font-size: 3rem;
-    }
-    
-    .story-block {
-        padding: 2.5rem;
-    }
-    
-    .team-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
+        .member-bio p {
+            margin-bottom: 1.4rem;
+        }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 1.5rem 1rem 3rem;
-    }
-    
-    .hero-banner {
-        padding: 4rem 1.5rem;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .story-block {
-        padding: 2rem;
-        border-radius: 30px;
-    }
-    
-    .member-name {
-        font-size: 2.2rem;
-    }
-    
-    .team-image-col {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .member-footer {
-        flex-direction: column;
-    }
-    
-    .pill-badge, .btn-outline {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .closing-note {
-        border-radius: 40px;
-        padding: 1.5rem;
-    }
-}
+        .member-bio p:last-child {
+            margin-bottom: 0;
+        }
 
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .hero-sub {
-        font-size: 1rem;
-    }
-    
-    .story-text p:first-child {
-        font-size: 1.1rem;
-    }
-    
-    .highlight-quote {
-        padding: 1.2rem;
-    }
-}
+        .highlight-quote {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 1.6rem 2rem;
+            border-radius: 30px;
+            margin: 1.5rem 0 1.8rem;
+            border-left: 5px solid var(--primary-gold);
+            font-style: normal;
+            font-weight: 400;
+            color: var(--text-light);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+            font-size: 1.05rem;
+            border: 1px solid var(--border-gold);
+        }
+
+        .highlight-quote i {
+            color: var(--primary-gold);
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .member-footer {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-gold);
+            color: var(--text-light);
+            padding: 0.8rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: default;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-outline i {
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-gold);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .pill-badge {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
+            border: 1px solid var(--border-gold);
+        }
+
+        .pill-badge i {
+            color: var(--primary-gold);
+        }
+
+        /* Closing note */
+        .closing-note {
+            text-align: center;
+            margin-top: 4rem;
+            font-size: 1.3rem;
+            font-family: 'Forum', serif;
+            color: #fff;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 100px 100px 40px 40px;
+            border: 1px solid var(--border-gold);
+            backdrop-filter: blur(10px);
+        }
+
+        .closing-note i {
+            margin: 0 8px;
+            color: var(--primary-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .team-row {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+            }
+            
+            .team-image-col {
+                flex: 0 0 auto;
+                width: 70%;
+                max-width: 380px;
+            }
+            
+            .story-block {
+                padding: 2.5rem;
+            }
+            
+            .team-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            
+            .hero-banner {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-sub {
+                font-size: 1.1rem;
+            }
+            
+            .story-block {
+                padding: 2rem;
+                border-radius: 30px;
+            }
+            
+            .member-name {
+                font-size: 2.5rem;
+            }
+            
+            .team-image-col {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .member-footer {
+                flex-direction: column;
+            }
+            
+            .pill-badge, .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .closing-note {
+                border-radius: 40px;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-sub {
+                font-size: 1rem;
+            }
+            
+            .story-text p:first-child {
+                font-size: 1.1rem;
+            }
+            
+            .highlight-quote {
+                padding: 1.2rem;
+            }
+            
+            .member-name {
+                font-size: 2rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 
 </head>
 <body>
     @include('shop::partials.thf-header')
 
-    <!-- HERO BANNER (original warm gradient) -->
+    <!-- Floating decoration elements -->
+    <div class="hero-decoration deco-1"></div>
+    <div class="hero-decoration deco-2"></div>
+    <div class="hero-decoration deco-3"></div>
+
+    <!-- HERO BANNER -->
     <div class="hero-banner">
         <div class="hero-content">
-            <div class="hero-title">The storytellers</div>
+            <div class="hero-title">The <span>storytellers</span></div>
             <div class="hero-sub">Two brothers, one unwavering dream — to craft sweets that carry tradition into the future.</div>
         </div>
     </div>
 
     <div class="container">
-        <!-- STORY NARRATIVE (original warm #fcf6f0 background) -->
+        <!-- STORY NARRATIVE -->
         <div class="story-block">
             <div class="story-text">
                 <p>Every creation at The Hazelnut Factory reflects the vision of two dreamers who believed that Indian sweets could tell a new story — one of innovation, authenticity, and joy. What began as a small idea in Lucknow has today grown into a celebrated brand of artisanal indulgence, led with heart and guided by craft.</p>
@@ -469,12 +586,11 @@ body {
             <span><i class="fas fa-hand-holding-heart"></i> handcrafted legacy</span>
         </div>
 
-        <!-- TEAM MEMBER 1: ANKIT SAHNI (left image, right content) -->
+        <!-- TEAM MEMBER 1: ANKIT SAHNI -->
         <div class="team-row">
             <div class="team-image-col">
                 <div class="team-image-wrap">
-                    <!-- actual image path; fallback for demo -->
-                    <img src="https://cdn.shopify.com/s/files/1/0780/1759/3645/files/Ankit_bhaiya_500x700_4d78bfd1-5382-4b21-96d4-ef98cea7a9d9.png?v=1688639858" alt="Ankit Sahni" onerror="this.src='https://placehold.co/600x700/efdccf/7b5f4a?text=Ankit+Sahni'">
+                    <img src="https://cdn.shopify.com/s/files/1/0780/1759/3645/files/Ankit_bhaiya_500x700_4d78bfd1-5382-4b21-96d4-ef98cea7a9d9.png?v=1688639858" alt="Ankit Sahni" onerror="this.src='https://placehold.co/600x700/2a2a2a/d4af37?text=Ankit+Sahni'">
                 </div>
             </div>
             <div class="team-content-col">
@@ -496,11 +612,11 @@ body {
             </div>
         </div>
 
-        <!-- TEAM MEMBER 2: BADAL SAHNI (same left/right order) -->
+        <!-- TEAM MEMBER 2: BADAL SAHNI -->
         <div class="team-row">
             <div class="team-image-col">
                 <div class="team-image-wrap">
-                    <img src="https://cdn.shopify.com/s/files/1/0780/1759/3645/files/Badal_bhaiya_500x700_3239a2f9-bd48-40a6-bf95-aa7a72b847a5.png?v=1689335830" alt="Badal Sahni" onerror="this.src='https://placehold.co/600x700/efdccf/7b5f4a?text=Badal+Sahni'">
+                    <img src="https://cdn.shopify.com/s/files/1/0780/1759/3645/files/Badal_bhaiya_500x700_3239a2f9-bd48-40a6-bf95-aa7a72b847a5.png?v=1689335830" alt="Badal Sahni" onerror="this.src='https://placehold.co/600x700/2a2a2a/d4af37?text=Badal+Sahni'">
                 </div>
             </div>
             <div class="team-content-col">
@@ -522,7 +638,7 @@ body {
             </div>
         </div>
 
-        <!-- CLOSING ELEMENT with original warm tone -->
+        <!-- CLOSING ELEMENT -->
         <div class="closing-note">
             <i class="fas fa-wheat-alt"></i> Handcrafted with heritage · every recipe tells a story <i class="fas fa-wheat-alt"></i>
         </div>
@@ -530,7 +646,6 @@ body {
 
     <!-- FOOTER -->
     @include("shop::partials.thf-footer")
-
 
 </body>
 </html>
